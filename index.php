@@ -54,10 +54,6 @@ include 'Templates/header.php';
     </div>
 </div>
 
-<div class="container-fluid">
-
-
-
-    <?php
-    include 'Templates/footer.php';
-    ?>
+<?php
+include 'Templates/footer.php';
+?>
