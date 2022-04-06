@@ -14,18 +14,18 @@ include 'Templates/header.php';
     </div>
 
     <!-- Cards for movie -->
-    <div class="row py-4 row-cols-1 row-cols-md-4 g-4">
+    <div class="row py-4 row-cols-1 row-cols-lg-4 g-4">
         <div class="col">
-            <div class="card mx-4 h-100">
-                <img src="Images/john_wick.jpg" class="card-img-top h-100" alt="...">
+            <div class="card h-100">
+                <img src="Images/avengers.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <h5 class="card-title">Avengers</h5>
+                    <p class="card-text">This is the avengers movie.</p>
                 </div>
             </div>
         </div>
         <div class="col">
-            <div class="card mx-4 h-100">
+            <div class="card h-100">
                 <img src="..." class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Card title</h5>
@@ -34,7 +34,7 @@ include 'Templates/header.php';
             </div>
         </div>
         <div class="col">
-            <div class="card mx-4 h-100">
+            <div class="card h-100">
                 <img src="..." class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Card title</h5>
@@ -43,7 +43,7 @@ include 'Templates/header.php';
             </div>
         </div>
         <div class="col">
-            <div class="card mx-4 h-100">
+            <div class="card h-100">
                 <img src="..." class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Card title</h5>
