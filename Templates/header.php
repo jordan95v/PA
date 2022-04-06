@@ -17,6 +17,7 @@ session_start()
 </head>
 
 <body>
+    <!-- Navbar + jumbotron -->
     <div class="jumbotron text-center" id="main">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark">
