@@ -1,7 +1,7 @@
-<footer class="bg-dark text-center text-white">
-    <div class="container p-4 pb-0">
+<footer class="container-fluid bg-dark text-center text-white">
+    <div class="p-4 pb-0">
         <!-- Section: Social media -->
-        <section class="mb-4">
+        <section class="mb-3">
             <!-- Facebook -->
             <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="bi bi-facebook"></i></a>
 
@@ -19,10 +19,19 @@
         </section>
     </div>
 
+    <!-- Links -->
+    <ul class="nav justify-content-center mb-3 bg-dark">
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+    </ul>
+
     <!-- Copyright -->
-    <div class="text-center p-3" class="opacity-50">
+    <div class="text-center p-3">
         © 2022 Copyright:
-        <a class=" text-white fw-bold text-decoration-none" href="#">Les Lumières</a>
+        <a class="text-white fw-bold text-decoration-none" href="#">Les Lumières</a>
     </div>
 </footer>
 
