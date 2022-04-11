@@ -1,4 +1,4 @@
-<footer class="container-fluid bg-dark text-center text-white">
+<footer class="container-fluid text-center text-white">
     <div class="p-4 pb-0">
         <!-- Section: Social media -->
         <section class="mb-3">

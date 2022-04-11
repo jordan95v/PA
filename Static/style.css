@@ -49,12 +49,10 @@ body {
 }
 
 .zoom {
-    transition: transform .2s; /* Animation */
-    border: none;
+    transition: transform .3s;
+    cursor: pointer;
 }
   
 .zoom:hover {
-    transform: scale(1.15); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-    border: none;
+    transform: scale(1.12);
 }
-  
