@@ -50,7 +50,7 @@ body {
 }
 
 .zoom {
-    transition: transform .2s;
+    transition: transform .15s;
     cursor: pointer;
 }
 
