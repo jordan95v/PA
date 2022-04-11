@@ -10,19 +10,19 @@
                 </div>
                 <div class="modal-body">
                     <form method="POST" action="index.php">
-                        <div class="mb-4">
+                        <div class="mb-5">
                             <input type="email" class="form-control" placeholder="Entrez votre email.">
                             <div id="userHelp" class="form-text text-center">Nom d'utilisateur oublier ? <a href="">Cliquez ici</a></div>
                         </div>
-                        <div class="mb-4">
+                        <div class="mb-5">
                             <input type="password" class="form-control" placeholder="Entrez votre mot de passe.">
                             <div id="pwdHelp" class="form-text text-center">Mot de passe oublier ? <a href="">Cliquez ici</a></div>
                         </div>
                         <button type="submit" class="btn btn-dark w-100">Se connecter</button>
-                    </form>   
+                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dark w-100" data-bs-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-danger w-100" data-bs-dismiss="modal">Fermer</button>
                 </div>
             </div>
         </div>

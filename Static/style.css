@@ -30,6 +30,7 @@ body {
 .film-search {
     border: 2px solid white;
     border-radius: 10px;
+    align-content: center;
 }
 
 .arrow {
@@ -49,10 +50,10 @@ body {
 }
 
 .zoom {
-    transition: transform .3s;
+    transition: transform .2s;
     cursor: pointer;
 }
-  
+
 .zoom:hover {
     transform: scale(1.12);
 }

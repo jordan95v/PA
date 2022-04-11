@@ -38,8 +38,8 @@ session_start()
                         </form>
                         <ul class="navbar-nav ms-auto mt-2 mb-lg-0 text-center">
                             <?php
-                                include 'Templates/register.php';
-                                include 'Templates/login.php';
+                            include 'Templates/register.php';
+                            include 'Templates/login.php';
                             ?>
                         </ul>
                     </div>
