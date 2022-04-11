@@ -1,3 +1,12 @@
+@font-face {
+    font-family: Lemon;
+    src: url(../Static/Font/LEMONMILK-Regular.otf);
+}
+
+body {
+    font-family: Lemon;
+}
+
 /* ID */
 #main {
     height: 400px;
@@ -34,3 +43,18 @@
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
 }
+
+.custom-cards {
+    background-color: rgb(170, 59, 59);
+}
+
+.zoom {
+    transition: transform .2s; /* Animation */
+    border: none;
+}
+  
+.zoom:hover {
+    transform: scale(1.15); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    border: none;
+}
+  

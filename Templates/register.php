@@ -27,13 +27,13 @@
                         </div>
                         
 
-                        <div class="form-check mb-1">
+                        <div class="form-check mb-1 text-start">
                             <input class="form-check-input" type="checkbox" name="age" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Je confirme avoir plus de 13 ans.
                             </label>
                         </div>
-                        <div class="form-check mb-3">
+                        <div class="form-check mb-3 text-start">
                             <input class="form-check-input" type="checkbox" name="cgu" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Je confirme avoir lu les CGU.

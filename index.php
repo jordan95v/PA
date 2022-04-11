@@ -16,11 +16,10 @@ include 'Templates/header.php';
     <!-- Cards for movie -->
     <div class="row py-4 row-cols-1 row-cols-lg-4 g-4 text-dark">
         <div class="col">
-            <div class="card h-100 border-0 shadow-lg">
+            <div class="card zoom h-100 border-0 shadow-lg">
                 <img src="Images/avengers.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h4 class="card-title">Avengers</h4>
-                    <p class="card-text">This is the avengers movie.</p>
+                <div class="card-body bg-danger text-light">
+                    <h4 class="card-title text-center">Avengers</h4>
                 </div>
             </div>
         </div>
