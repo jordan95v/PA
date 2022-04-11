@@ -21,13 +21,13 @@ session_start()
     <link rel="stylesheet" href="static/style.css">
 </head>
 
-<body>
+<body class="bg-dark text-light">
     <!-- Navbar + jumbotron -->
-    <div class="jumbotron text-center" id="main">
+    <div class="jumbotron" id="main">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand text-uppercase fw-bold" href="#">Les Lumières</a>
+                    <a class="navbar-brand text-uppercase fw-bold" href="index.php">Les Lumières</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -37,12 +37,10 @@ session_start()
                             <button class="btn ms-5" type="submit">🔍</button>
                         </form>
                         <ul class="navbar-nav ms-auto mt-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">S'inscrire</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Se connecter</a>
-                            </li>
+                            <?php
+                                include 'Templates/register.php';
+                                include 'Templates/login.php';
+                            ?>
                         </ul>
                     </div>
                 </div>
