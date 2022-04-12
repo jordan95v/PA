@@ -14,6 +14,12 @@ include 'Templates/header.php';
         echo '</div>';
         unset($_SESSION['errors']);
     }
+    if (!empty($_SESSION['created']) && isset($_SESSION['created'])) {
+        echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
+        echo '<h5 class="fw-bold">Le compte à bien été crée, vous pouvez vous connecter.';
+        echo '</div>';
+        unset($_SESSION['created']);
+    }
     ?>
     <!-- Featured Movies + Cards for movies -->
     <div class="d-flex pt-4 bd-highlight">
