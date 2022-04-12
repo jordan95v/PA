@@ -1,5 +1,5 @@
 <?php
-session_start()
+require 'Scripts/functions.php';
 ?>
 
 <!doctype html>
@@ -38,8 +38,12 @@ session_start()
                         </form>
                         <ul class="navbar-nav ms-auto mt-2 mb-lg-0 text-center">
                             <?php
-                            include 'Templates/register.php';
-                            include 'Templates/login.php';
+                                if (isConnected(connectDB())) {
+                                    include 'userMenu.php';
+                                } else {
+                                    include 'register.php';
+                                    include 'login.php';
+                                } 
                             ?>
                         </ul>
                     </div>

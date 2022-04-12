@@ -1,0 +1,1 @@
+<a href="Scripts/logOutUser.php" class="nav-link">Déconnexion</a>
