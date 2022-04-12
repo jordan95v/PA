@@ -9,32 +9,32 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="index.php">
+                    <form method="POST" action="Scripts/addUser.php">
                         <div class="mb-5">
-                            <input type="email" name="email" class="form-control" placeholder="Entrez votre email">
+                            <input type="email" name="email" class="form-control" placeholder="Entrez votre email" required="required">
                             <div id="emailHelp" class="form-text text-center">On la partegera à personne 😉</div>
                         </div>
                         <div class="mb-5">
-                            <input type="text" name="username" class="form-control" placeholder="Entrez votre nom d'utilisateur.">
+                            <input type="text" name="username" class="form-control" placeholder="Entrez votre nom d'utilisateur." required="required">
                             <div id="userHelp" class="form-text text-center">Faite nous rire 😉 !</div>
                         </div>
                         <div class="mb-2">
-                            <input type="password" name="password" class="form-control" placeholder="Entrez votre mot de passe.">
+                            <input type="password" name="password" class="form-control" placeholder="Entrez votre mot de passe." required="required">
                         </div>
                         <div class="mb-5">
-                            <input type="password" name="passwordConfirm" class="form-control" placeholder="Confirmez votre mot de passe.">
+                            <input type="password" name="passwordConfirm" class="form-control" placeholder="Confirmez votre mot de passe." required="required">
                             <div id="pwdHelp" class="form-text text-center">Vous trompez pas, c'est relou de tout réecrire ! 😎</div>
                         </div>
 
 
                         <div class="form-check mb-1 text-start">
-                            <input class="form-check-input" type="checkbox" name="age" id="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" name="age" id="flexCheckDefault" required="required">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Je confirme avoir plus de 13 ans.
                             </label>
                         </div>
                         <div class="form-check mb-3 text-start">
-                            <input class="form-check-input" type="checkbox" name="cgu" id="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" name="cgu" id="flexCheckDefault" required="required">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Je confirme avoir lu les CGU.
                             </label>

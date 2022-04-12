@@ -1,10 +1,10 @@
 @font-face {
-    font-family: Lemon;
-    src: url(../Static/Font/LEMONMILK-Regular.otf);
+    font-family: Caviar;
+    src: url(../Static/Font/CaviarDreams.ttf);
 }
 
 body {
-    font-family: Lemon;
+    font-family: Caviar;
 }
 
 /* ID */
@@ -55,5 +55,5 @@ body {
 }
 
 .zoom:hover {
-    transform: scale(1.12);
+    transform: scale(1.05);
 }

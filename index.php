@@ -3,6 +3,18 @@ include 'Templates/header.php';
 ?>
 
 <div class="container">
+    <?php
+    if (!empty($_SESSION['errors']) && isset($_SESSION['errors'])) {
+        echo '<div class="alert alert-danger mt-4 pb-1" role="alert">';
+
+        for ($i=0; $i < count($_SESSION['errors']); $i++) { 
+            $element = $_SESSION['errors'][$i];
+            echo '<h5 class="fw-bold">- '.$element.'</h5>';
+        }
+        echo '</div>';
+        unset($_SESSION['errors']);
+    }
+    ?>
     <!-- Featured Movies + Cards for movies -->
     <div class="d-flex pt-4 bd-highlight">
         <div class="p-2 flex-grow-1 bd-highlight">
@@ -14,13 +26,51 @@ include 'Templates/header.php';
     </div>
 
     <!-- Cards for movie -->
-    <div class="row py-4 row-cols-1 row-cols-lg-4 g-4 text-dark">
+    <div class="row py-4 row-cols-1 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 g-4 text-dark">
         <div class="col">
             <a href="#" class="text-decoration-none">
-                <div class="card zoom h-100 border-0">
-                    <img src="Images/avengers.jpg" class="card-img-top" alt="...">
-                    <div class="card-body custom-cards text-light">
-                        <h4 class="card-title text-center">Avengers</h4>
+                <div class="card h-100 border-0">
+                    <img src="Images/avengers.jpg" class="zoom card-img-top" alt="...">
+                    <div class="card-body bg-dark text-light text-start ps-0">
+                        <p class="card-subtitle text-secondary mb-1">USA, 2014</p>
+                        <h5 class="card-title mb-4">Avengers</h5>
+                        <p class="card-text text-secondary">Action, Aventure</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="#" class="text-decoration-none">
+                <div class="card h-100 border-0">
+                    <img src="Images/avengers.jpg" class="zoom card-img-top" alt="...">
+                    <div class="card-body bg-dark text-light text-start ps-0">
+                        <p class="card-subtitle text-secondary mb-1">USA, 2014</p>
+                        <h5 class="card-title mb-4">Avengers</h5>
+                        <p class="card-text text-secondary">Action, Aventure</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="#" class="text-decoration-none">
+                <div class="card h-100 border-0">
+                    <img src="Images/avengers.jpg" class="zoom card-img-top" alt="...">
+                    <div class="card-body bg-dark text-light text-start ps-0">
+                        <p class="card-subtitle text-secondary mb-1">USA, 2014</p>
+                        <h5 class="card-title mb-4">Avengers</h5>
+                        <p class="card-text text-secondary">Action, Aventure</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="#" class="text-decoration-none">
+                <div class="card h-100 border-0">
+                    <img src="Images/avengers.jpg" class="zoom card-img-top" alt="...">
+                    <div class="card-body bg-dark text-light text-start ps-0">
+                        <p class="card-subtitle text-secondary mb-1">USA, 2014</p>
+                        <h5 class="card-title mb-4">Avengers</h5>
+                        <p class="card-text text-secondary">Action, Aventure</p>
                     </div>
                 </div>
             </a>
