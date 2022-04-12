@@ -1,7 +1,4 @@
 <?php
-session_start();
-require 'functions.php';
-
 class UserManager {
     private $_email;
     private $_username;
@@ -20,6 +17,18 @@ class UserManager {
         $this->_age = $user['age'];
         $this->_cgu = $user['cgu'];
         $this->_errors = [];
+    }
+
+    public function getPwd() {
+        return $this->_password;
+    }
+
+    public function getEmail() {
+        return $this->_email;
+    }
+
+    public function getUsername() {
+        return $this->_username;
     }
 
     public function checkIntegrity($user) {
@@ -103,7 +112,9 @@ class UserManager {
                 }            
             $this->_errors[] = 'Les mots de passe ne correspondent pas.';
         }
-        $this->_errors[] = 'Le mot de passe doit faire plus de 8 caractères, content un chiffre et une majsucule.';
+        else {
+            $this->_errors[] = 'Le mot de passe doit faire plus de 8 caractères, content un chiffre et une majsucule.';
+        }
         return false;
     }
 }

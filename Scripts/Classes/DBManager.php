@@ -1,27 +1,15 @@
 <?php
-session_start();
-require 'functions.php';
-
 class DBManager {
-    private function isConnected() {
-        if (!isset($_SESSION["email"]) || !isset($_SESSION["token"])) {
-            return false;
-        }
-        $pdo = connectDB();
-        $queryPrepared = $pdo->prepare("SELECT id FROM petitchat_user WHERE email=:email AND token=:token");
-        $queryPrepared->execute(["email" => $_SESSION["email"], "token" => $_SESSION["token"]]);
-        return $queryPrepared->fetch();
-    }
-
-    private function createToken() {
-        $token = sha1(md5(rand(0, 100) . "gdgfm432") . uniqid());
-        return $token;
-    }
-
-    private function updateToken($userId, $token) {
     
-        $pdo = connectDB();
-        $queryPrepared = $pdo->prepare("UPDATE petitchat_user SET token=:token WHERE id=:id");
-        $queryPrepared->execute(["token" => $token, "id" => $userId]);
+    public function __construct() {
+        $this->_pdo = connectDB();
+    }
+
+    public function addToDatabase($user) {
+        $query = $this->_pdo->prepare("INSERT INTO petitchat_user (email, username, pwd) VALUES (:email, :username, :pwd);");
+        $pwd = password_hash($user->getPwd(), PASSWORD_DEFAULT);
+        $query->execute(["email"=>$user->getEmail(),
+                        "username"=>$user->getUsername(),
+                        "pwd"=>$pwd]);
     }
 }
