@@ -19,9 +19,12 @@ require 'Scripts/functions.php';
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="static/style.css">
+
+    <!-- Favicon -->
+    <!-- <link rel="shortcut icon" href="Static/favicon.ico" type="image/x-icon"> -->
 </head>
 
-<body class="bg-dark text-light">
+<body class="text-light">
     <!-- Navbar + jumbotron -->
     <div class="jumbotron" id="main">
         <div class="container">

@@ -5,6 +5,7 @@
 
 body {
     font-family: Caviar;
+    background-color: #161A3A;
 }
 
 /* ID */
@@ -46,7 +47,7 @@ body {
 }
 
 .custom-cards {
-    background-color: rgb(170, 59, 59);
+    background-color: #161A3A;
 }
 
 .zoom {

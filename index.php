@@ -37,7 +37,7 @@ include 'Templates/header.php';
             <a href="#" class="text-decoration-none">
                 <div class="card h-100 border-0">
                     <img src="Images/avengers.jpg" class="zoom card-img-top" alt="...">
-                    <div class="card-body bg-dark text-light text-start ps-0">
+                    <div class="card-body custom-cards text-light text-start ps-0">
                         <p class="card-subtitle text-secondary mb-1">USA, 2014</p>
                         <h5 class="card-title mb-4">Avengers</h5>
                         <p class="card-text text-secondary">Action, Aventure</p>
@@ -49,7 +49,7 @@ include 'Templates/header.php';
             <a href="#" class="text-decoration-none">
                 <div class="card h-100 border-0">
                     <img src="Images/avengers.jpg" class="zoom card-img-top" alt="...">
-                    <div class="card-body bg-dark text-light text-start ps-0">
+                    <div class="card-body custom-cards text-light text-start ps-0">
                         <p class="card-subtitle text-secondary mb-1">USA, 2014</p>
                         <h5 class="card-title mb-4">Avengers</h5>
                         <p class="card-text text-secondary">Action, Aventure</p>
@@ -61,7 +61,7 @@ include 'Templates/header.php';
             <a href="#" class="text-decoration-none">
                 <div class="card h-100 border-0">
                     <img src="Images/avengers.jpg" class="zoom card-img-top" alt="...">
-                    <div class="card-body bg-dark text-light text-start ps-0">
+                    <div class="card-body custom-cards text-light text-start ps-0">
                         <p class="card-subtitle text-secondary mb-1">USA, 2014</p>
                         <h5 class="card-title mb-4">Avengers</h5>
                         <p class="card-text text-secondary">Action, Aventure</p>
@@ -73,7 +73,7 @@ include 'Templates/header.php';
             <a href="#" class="text-decoration-none">
                 <div class="card h-100 border-0">
                     <img src="Images/avengers.jpg" class="zoom card-img-top" alt="...">
-                    <div class="card-body bg-dark text-light text-start ps-0">
+                    <div class="card-body custom-cards text-light text-start ps-0">
                         <p class="card-subtitle text-secondary mb-1">USA, 2014</p>
                         <h5 class="card-title mb-4">Avengers</h5>
                         <p class="card-text text-secondary">Action, Aventure</p>
