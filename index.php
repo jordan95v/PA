@@ -35,7 +35,7 @@ include 'Templates/header.php';
     <div class="row py-4 row-cols-1 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 g-4 text-dark">
         <div class="col">
             <a href="#" class="text-decoration-none">
-                <div class="card h-100 border-0">
+                <div class="card border-0">
                     <img src="Images/avengers.jpg" class="zoom card-img-top" alt="...">
                     <div class="card-body custom-cards text-light text-start ps-0">
                         <p class="card-subtitle text-secondary mb-1">USA, 2014</p>
@@ -47,7 +47,7 @@ include 'Templates/header.php';
         </div>
         <div class="col">
             <a href="#" class="text-decoration-none">
-                <div class="card h-100 border-0">
+                <div class="card border-0">
                     <img src="Images/avengers.jpg" class="zoom card-img-top" alt="...">
                     <div class="card-body custom-cards text-light text-start ps-0">
                         <p class="card-subtitle text-secondary mb-1">USA, 2014</p>
@@ -59,7 +59,7 @@ include 'Templates/header.php';
         </div>
         <div class="col">
             <a href="#" class="text-decoration-none">
-                <div class="card h-100 border-0">
+                <div class="card border-0">
                     <img src="Images/avengers.jpg" class="zoom card-img-top" alt="...">
                     <div class="card-body custom-cards text-light text-start ps-0">
                         <p class="card-subtitle text-secondary mb-1">USA, 2014</p>
@@ -71,7 +71,7 @@ include 'Templates/header.php';
         </div>
         <div class="col">
             <a href="#" class="text-decoration-none">
-                <div class="card h-100 border-0">
+                <div class="card border-0">
                     <img src="Images/avengers.jpg" class="zoom card-img-top" alt="...">
                     <div class="card-body custom-cards text-light text-start ps-0">
                         <p class="card-subtitle text-secondary mb-1">USA, 2014</p>
@@ -95,7 +95,7 @@ include 'Templates/header.php';
     <!-- Cards for movie -->
     <div class="row py-4 row-cols-1 row-cols-lg-4 g-4 text-dark">
         <div class="col">
-            <div class="card h-100 border-0 shadow-lg">
+            <div class="card border-0 shadow-lg">
                 <img src="Images/avengers.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Avengers</h5>

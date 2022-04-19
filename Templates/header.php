@@ -35,11 +35,11 @@ require 'Scripts/functions.php';
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarText">
-                        <form class="d-flex ms-auto mt-4 mt-lg-2 film-search " method="post">
+                        <form class="d-flex mt-4 mt-lg-2 film-search mx-auto" method="post">
                             <input class="form-control search pe-5" type="search" placeholder="Chercher un film ..." aria-label="Search">
                             <button class="btn ms-5" type="submit">🔍</button>
                         </form>
-                        <ul class="navbar-nav ms-auto mt-2 mb-lg-0 text-center">
+                        <ul class="navbar-nav mt-2 mb-lg-0 text-center">
                             <?php
                                 if (isConnected(connectDB())) {
                                     include 'userMenu.php';
