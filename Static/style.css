@@ -5,12 +5,13 @@
 
 body {
     font-family: Caviar;
+    background-color: #0d0f27;
 }
 
 /* ID */
 #main {
     height: 400px;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(5, 5, 5, 0.8) 100%), url(../Images/john_wick.jpg);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(5, 5, 5, 0.4) 100%), url(../Images/john_wick.jpg);
     background-size: cover;
     background-position: center;
 }

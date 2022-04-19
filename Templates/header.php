@@ -24,7 +24,7 @@ require 'Scripts/functions.php';
     <!-- <link rel="shortcut icon" href="Static/favicon.ico" type="image/x-icon"> -->
 </head>
 
-<body class="text-light custom-cards">
+<body class="text-light">
     <!-- Navbar + jumbotron -->
     <div class="jumbotron" id="main">
         <div class="container">
@@ -35,7 +35,7 @@ require 'Scripts/functions.php';
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarText">
-                        <form class="d-flex ms-auto mt-4 mt-lg-2 film-search" method="post">
+                        <form class="d-flex ms-auto mt-4 mt-lg-2 film-search " method="post">
                             <input class="form-control search pe-5" type="search" placeholder="Chercher un film ..." aria-label="Search">
                             <button class="btn ms-5" type="submit">🔍</button>
                         </form>

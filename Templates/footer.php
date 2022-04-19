@@ -20,7 +20,7 @@
     </div>
 
     <!-- Links -->
-    <ul class="nav justify-content-center mb-3 bg-dark">
+    <ul class="nav justify-content-center mb-3">
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
