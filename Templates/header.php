@@ -24,7 +24,7 @@ require 'Scripts/functions.php';
     <!-- <link rel="shortcut icon" href="Static/favicon.ico" type="image/x-icon"> -->
 </head>
 
-<body class="text-light">
+<body class="text-light custom-cards">
     <!-- Navbar + jumbotron -->
     <div class="jumbotron" id="main">
         <div class="container">
