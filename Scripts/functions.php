@@ -13,40 +13,45 @@ function connectDB()
 	return $pdo;
 }
 
-function isConnected($pdo) {
+function isConnected($pdo)
+{
 	if (!isset($_SESSION["email"]) || !isset($_SESSION["token"])) {
 		return false;
 	}
 	$queryPrepared = $pdo->prepare("SELECT id FROM petitchat_user WHERE email=:email AND token=:token");
 	$queryPrepared->execute(["email" => $_SESSION["email"], "token" => $_SESSION["token"]]);
-	if ($queryPrepared->fetch()){
+	if ($queryPrepared->fetch()) {
 		return true;
 	}
 	return false;
 }
 
-function createToken() {
+function createToken()
+{
 	$token = sha1(md5(rand(0, 100) . "gdgfm432") . uniqid());
 	return $token;
 }
 
-function updateToken($userId, $token, $pdo) {
+function updateToken($userId, $token, $pdo)
+{
 	$queryPrepared = $pdo->prepare("UPDATE petitchat_user SET token=:token WHERE id=:id");
 	$queryPrepared->execute(["token" => $token, "id" => $userId]);
 }
 
-function connectUser($email, $pwd, $pdo, &$errors) {
+function connectUser($email, $pwd, $pdo, &$errors)
+{
 	if ($email && $pwd) {
 		$queryPrepared = $pdo->prepare("SELECT * FROM petitchat_user WHERE email=:email");
 		$queryPrepared->execute(["email" => $email]);
 		$results = $queryPrepared->fetch();
-	
+
 		if (!empty($results) && password_verify($pwd, $results['pwd'])) {
 			$token = createToken();
 			updateToken($results["id"], $token, $pdo);
 			//Insertion dans la session du token
 			$_SESSION['email'] = $email;
 			$_SESSION['token'] = $token;
+			$_SESSION['username'] = $results['username'];
 		} else {
 			$errors[] = 'Identifiants incorrects.';
 		}

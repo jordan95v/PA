@@ -7,9 +7,9 @@ include 'Templates/header.php';
     if (!empty($_SESSION['errors']) && isset($_SESSION['errors'])) {
         echo '<div class="alert alert-danger mt-4 pb-1" role="alert">';
 
-        for ($i=0; $i < count($_SESSION['errors']); $i++) { 
+        for ($i = 0; $i < count($_SESSION['errors']); $i++) {
             $element = $_SESSION['errors'][$i];
-            echo '<h5 class="fw-bold">- '.$element.'</h5>';
+            echo '<h5 class="fw-bold">- ' . $element . '</h5>';
         }
         echo '</div>';
         unset($_SESSION['errors']);
@@ -19,6 +19,12 @@ include 'Templates/header.php';
         echo '<h5 class="fw-bold">Le compte à bien été crée, vous pouvez vous connecter.';
         echo '</div>';
         unset($_SESSION['created']);
+    }
+    if (!empty($_SESSION['updated']) && isset($_SESSION['updated'])) {
+        echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
+        echo '<h5 class="fw-bold">Le compte à bien été modifiée !';
+        echo '</div>';
+        unset($_SESSION['updated']);
     }
     ?>
     <!-- Featured Movies + Cards for movies -->

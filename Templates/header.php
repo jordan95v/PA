@@ -1,5 +1,5 @@
 <?php
-require 'Scripts/functions.php';
+require_once 'Scripts/functions.php';
 ?>
 
 <!doctype html>
@@ -41,12 +41,12 @@ require 'Scripts/functions.php';
                         </form>
                         <ul class="navbar-nav mt-2 mb-lg-0 text-center">
                             <?php
-                                if (isConnected(connectDB())) {
-                                    include 'userMenu.php';
-                                } else {
-                                    include 'register.php';
-                                    include 'login.php';
-                                } 
+                            if (isConnected(connectDB())) {
+                                include 'userMenu.php';
+                            } else {
+                                include 'register.php';
+                                include 'login.php';
+                            }
                             ?>
                         </ul>
                     </div>
