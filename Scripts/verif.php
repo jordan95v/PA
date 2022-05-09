@@ -4,16 +4,16 @@ require_once 'functions.php';
 $pdo = connectDB();
 $errors = [];
 
-if (isset($_GET['cle']) && !empty($_GET['cle'])) 
+if (isset($_GET['confirmKey']) && !empty($_GET['confirmKey'])) 
 {
-    $cle = $_GET['cle'];
-    $query=$pdo->prepare('SELECT * FROM petitchat_user WHERE cle=:cle AND statut=:statut');
-    $query->execute(['cle'=>$cle, 'statut'=>0]);
+    $confirmKey = $_GET['confirmKey'];
+    $query=$pdo->prepare('SELECT * FROM petitchat_user WHERE confirmKey=:confirmKey AND statut=:statut');
+    $query->execute(['confirmKey'=>$confirmKey, 'statut'=>0]);
 
     if (!empty($query->fetch())) 
     {
-        $query=$pdo->prepare('UPDATE petitchat_user SET statut=:statut WHERE cle=:cle');
-        $query->execute(['cle'=>$cle, 'statut'=>1]);
+        $query=$pdo->prepare('UPDATE petitchat_user SET statut=:statut WHERE confirmKey=:confirmKey');
+        $query->execute(['confirmKey'=>$confirmKey, 'statut'=>1]);
         $_SESSION['confirm'] = 1;
     }
     else

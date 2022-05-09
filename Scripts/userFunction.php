@@ -32,6 +32,9 @@ function checkUsername($username, &$errors)
 {
 	// Check if the username is correct.
 
+	// Args:
+	//	username (str): The username to check.
+
 	// Returns:
 	//     bool: If the username is correct or no.
 
@@ -44,6 +47,9 @@ function checkEmail($email, &$errors)
 {
 	// Check if the email is correct.
 
+	// Args:
+	//	email (str): The email to check.
+
 	// Returns:
 	//     bool: If the email is correct or no.
 
@@ -54,6 +60,14 @@ function checkEmail($email, &$errors)
 
 function checkEmailExist($email, $pdo, &$errors, $token = null)
 {
+	// Check if the email already exists.
+
+	// Args:
+	//	email(str): The email to check.
+	// 	pdo (PDO): The instance of PDO.
+	//	error (list[str]): List all of the errors.
+	//	token (str): Token to search.
+
 	if ($token != null) {
 		$queryPrepared = $pdo->prepare("SELECT id from petitchat_user WHERE email=:email AND token!=:token");
 		$queryPrepared->execute(["email" => $email, "token" => $token]);
@@ -68,6 +82,14 @@ function checkEmailExist($email, $pdo, &$errors, $token = null)
 
 function checkUsernameExist($username, $pdo, &$errors, $token = null)
 {
+	// Check if the username already exists.
+
+	// Args:
+	//	username(str): The username to check.
+	// 	pdo (PDO): The instance of PDO.
+	//	error (list[str]): List all of the errors.
+	//	token (str): Token to search.
+	
 	if ($token != null) {
 		$queryPrepared = $pdo->prepare("SELECT id from petitchat_user WHERE username=:username AND token!=:token");
 		$queryPrepared->execute(["username" => $username, "token" => $token]);
@@ -80,8 +102,16 @@ function checkUsernameExist($username, $pdo, &$errors, $token = null)
 	}
 }
 
-function sendConfirmMail($to, $cle, &$errors)
+function sendConfirmMail($to, $confirmKey, &$errors)
 {
+	// Send a confirmation mail.
+
+	// Args:
+	//	to (str): Email to send.
+	//	confirmKey(int): confirmKey of the confirmation mail.
+	//	error (list[str]): List all of the errors.
+
+
 	$mail = new PHPMailer(true);
 
 	try {
@@ -101,7 +131,7 @@ function sendConfirmMail($to, $cle, &$errors)
 		//Content
 		$mail->isHTML(true);                                 
 		$mail->Subject = 'Mail de confirmation pour Les Lumieres !';
-		$mail->Body    = 'Cliquez sur le lien pour confirmez votre email.<br><a href="http://localhost/PA/Scripts/verif.php?cle='.$cle.'">Lien de confirmation</a>';
+		$mail->Body    = 'Cliquez sur le lien pour confirmez votre email.<br><a href="http://localhost/PA/Scripts/verif.php?confirmKey='.$confirmKey.'">Lien de confirmation</a>';
 		$mail->send();
 	} catch (Exception $e) {
 		$errors[] = 'Echec lors de l\'envoie du mail, veuillez réessayer.';

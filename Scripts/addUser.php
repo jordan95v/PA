@@ -27,12 +27,12 @@ if (count($errors) != 0) {
     $_SESSION['errors'] = $errors;
     header('Location: ../index.php');
 } else {
-    $cle = rand(1000000, 9000000);
-    $query = $pdo->prepare("INSERT INTO petitchat_user (email, username, pwd, cle) VALUES (:email, :username, :pwd, :cle);");
+    $confirmKey = rand(1000000, 9000000);
+    $query = $pdo->prepare("INSERT INTO petitchat_user (email, username, pwd, confirmKey) VALUES (:email, :username, :pwd, :confirmKey);");
     $pwd = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $query->execute(["email" => $email, "username" => $username, "pwd" => $pwd, "cle"=>$cle]);
+    $query->execute(["email" => $email, "username" => $username, "pwd" => $pwd, "confirmKey"=>$confirmKey]);
 
-    sendConfirmMail($email, $cle, $errors);
+    sendConfirmMail($email, $confirmKey, $errors);
 
     if (count($errors) != 0) {
         $_SESSION['errors'] = $errors;
