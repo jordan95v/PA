@@ -46,7 +46,7 @@ function connectUser($email, $pwd, $pdo, &$errors)
 		$results = $queryPrepared->fetch();
 
 		if (!empty($results) && password_verify($pwd, $results['pwd'])) {
-			if ($result['status'] != 1)
+			if ($result['statut'] != 1)
 			{
 				$errors[] = 'Email non confirmé.';
 			}

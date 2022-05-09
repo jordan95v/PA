@@ -14,5 +14,7 @@ connectUser($_POST['email'], $_POST['password'], $pdo, $errors);
 if (count($errors) != 0) {
     $_SESSION['errors'] = $errors;
 }
-$_SESSION['logged'] = 'Connexion réussi.';
+else {
+    $_SESSION['logged'] = 'Connexion réussi.';
+}
 header('Location: ../index.php');
