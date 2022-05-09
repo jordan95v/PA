@@ -15,7 +15,7 @@
                         <div id="userHelp" class="form-text text-center">Titre du film 🐱‍👤</div>
                     </div>
                     <div class="mb-3">
-                        <select class="form-select" aria-label="Default select example">
+                        <select class="form-select" aria-label="Default select example" name="genre">
                             <option selected>Choissisez le genre du film</option>
                             <option value="action">Action</option>
                             <option value="aventure">Aventure</option>

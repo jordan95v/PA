@@ -25,8 +25,6 @@
                             <input type="password" name="passwordConfirm" class="form-control" placeholder="Confirmez votre mot de passe." required="required">
                             <div id="pwdHelp" class="form-text text-center">Vous trompez pas, c'est relou de tout réecrire ! 😎</div>
                         </div>
-
-
                         <div class="form-check mb-1 text-start">
                             <input class="form-check-input" type="checkbox" name="age" id="flexCheckDefault" required="required">
                             <label class="form-check-label" for="flexCheckDefault">
@@ -41,6 +39,7 @@
                         </div>
                         <div id="captcha" class="mb-4">
                             <div id="puzzle"></div>
+                            <div id="captchaHelp" class="form-text text-center">Complétez le captcha pour vous inscrire 😉</div>
                         </div>
                         <button type="submit" class="btn btn-dark w-100">S'inscrire</button>
                     </form>

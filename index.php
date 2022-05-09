@@ -38,6 +38,12 @@ include 'Templates/header.php';
         echo '</div>';
         unset($_SESSION['confirm']);
     }
+    if (!empty($_SESSION['upload']) && isset($_SESSION['upload'])) {
+        echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
+        echo '<h5 class="fw-bold">Le film à été correctement enregistrer.';
+        echo '</div>';
+        unset($_SESSION['upload']);
+    }
     ?>
     <!-- Featured Movies + Cards for movies -->
     <div class="d-flex pt-4 bd-highlight">
