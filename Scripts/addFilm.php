@@ -16,9 +16,14 @@ $errors = [];
 $pdo = connectDB();
 
 checkFileSize($_FILES['file']['size'], $errors);
-// checkFileExists($target_file, $errors);
+checkFileExists($target_file, $errors);
 checkImage($_FILES['file'], $errors);
 checkFileExtension($imageFileType, $errors);
+
+$title = strtolower($_POST['title']);
+$maker = strtolower($_POST['maker']);
+$actor = strtolower($_POST['actor']);
+
 
 if (count($errors) != 0)
 {
@@ -26,14 +31,17 @@ if (count($errors) != 0)
     header('Location: ../index.php');
 }
 else {
-    if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-        makeFiligrane($target_file);
-        $query = $pdo->prepare('INSERT INTO groschien_film (image_path, title, genre, maker, actors) VALUES (:image_path, :title, :genre, :maker, :actors);');
-        $query->execute(['image_path'=>$target_file, 'title'=>$_POST['title'], 'genre'=>$_POST['genre'], 'maker'=>$_POST['maker'], 'actors'=>$_POST['actor']]);
-        $_SESSION['upload'] = 1;
-        header('Location: ../index.php');
-    } else {
-        $errors[] = 'Impossible d\'uploader le fichier.';
+    if (filmExists($pdo, $title, $errors))
+    {
+        if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+            makeFiligrane($target_file);
+            $query = $pdo->prepare('INSERT INTO groschien_film (image_path, title, genre, maker, actors) VALUES (:image_path, :title, :genre, :maker, :actors);');
+            $query->execute(['image_path'=>$target_file, 'title'=>$title, 'genre'=>$_POST['genre'], 'maker'=>$maker, 'actors'=>$actor]);
+            $_SESSION['upload'] = 1;
+            header('Location: ../index.php');
+        } else {
+            $errors[] = 'Impossible d\'uploader le fichier.';
+        }
     }
     if (count($errors) != 0)
     {
@@ -46,6 +54,10 @@ function checkFileSize($fileSize, &$errors)
 {
     // Check file size.
 
+    // Args:
+    //  fileSize (str): The size to check.
+    //  errors(list[str]): The errors list.
+    
     if ($fileSize > 500000) {
         $errors[] = 'L\'image est trop volumineuse.';
     }
@@ -55,6 +67,11 @@ function checkFileExists($target, &$errors)
 {
     // Check if file already exists
 
+    // Args:
+    //  target (str): Where the file is supposed to be.
+    //  errors(list[str]): The errors list.
+    
+
     if (file_exists($target)) {
         $errors[] = 'Le fichier existe déjà dans la base de données.';
     }
@@ -62,6 +79,12 @@ function checkFileExists($target, &$errors)
 
 function checkImage($image, &$errors)
 {
+    // Check if the image is valid.
+
+    // Args:
+    //  image (...): The image to check.
+    //  errors(list[str]): The errors list.
+    
   $check = getimagesize($image["tmp_name"]);
   if($check === false) {
         $errors[] = 'Le fichier n\'est pas valide.';
@@ -70,28 +93,56 @@ function checkImage($image, &$errors)
 
 function checkFileExtension($extension, &$errors)
 {
+    // Check the extension of a file.
+
+    // Args:
+    //  extension (str): The extension to check.
+    //  errors(list[str]): The errors list.
+
     if($extension != "jpg" && $extension != "png" && $extension != "jpeg") {
         $errors[] = 'L\'image doit être en .jpg, .png ou .jpeg.';
     }
 }
 
 function makeFiligrane($imageName) {
-    // Charge le cachet et la photo afin d'y appliquer le tatouage numérique
+    // Add a watermark to an image.
+
+    // Args:
+    //  imageName (...): Where the image is located.
+
     $stamp = imagecreatefrompng('../Images/stamp.png');
     $im = imagecreatefromjpeg($imageName);
 
-    // Définit les marges pour le cachet et récupère la hauteur et la largeur de celui-ci
     $marge_right = 10;
     $marge_bottom = 10;
     $sx = imagesx($stamp);
     $sy = imagesy($stamp);
 
-    // Copie le cachet sur la photo en utilisant les marges et la largeur de la
-    // photo originale  afin de calculer la position du cachet 
     imagecopy($im, $stamp, imagesx($im) - $sx - $marge_right, imagesy($im) - $sy - $marge_bottom, 0, 0, imagesx($stamp), imagesy($stamp));
     
     imagejpeg($im, $imageName);
     imagedestroy($im);
 }
 
+function filmExists ($pdo, $title, &$errors)
+{
+    // Check if a movie already exists.
 
+    // Args:
+    //  pdo (PDO): The PDO instane.
+    //  title (str): The title to search.
+    //  errors (list[str]): The list of errors.
+
+    // Returns:
+    //  bool: True if movie exists, else False.
+
+    $query=$pdo->prepare('SELECT * FROM groschien_film WHERE title=:title');
+    $query->execute(['title'=>$title]);
+
+    if (empty($query->fetch()))
+    {
+        return true;
+    }
+    $errors[] = 'Le film existe déjà dans la base de données.';
+    return false;
+}

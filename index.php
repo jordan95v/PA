@@ -56,55 +56,31 @@ include 'Templates/header.php';
     </div>
 
     <!-- Cards for movie -->
+    
     <div class="row py-4 row-cols-1 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 g-4 text-dark">
-        <div class="col">
-            <a href="#" class="text-decoration-none">
-                <div class="card border-0">
-                    <img src="Images/avengers.jpg" class="zoom card-img-top" alt="...">
-                    <div class="card-body custom-cards text-light text-start ps-0">
-                        <p class="card-subtitle text-secondary mb-1">USA, 2014</p>
-                        <h5 class="card-title mb-4">Avengers</h5>
-                        <p class="card-text text-secondary">Action, Aventure</p>
-                    </div>
+        <?php
+            $pdo=connectDB();
+            $query=$pdo->prepare('SELECT * FROM groschien_film');
+            $query->execute();
+            $result = $query->fetchAll();
+
+            for ($i=0; $i < count($result); $i++) { 
+                echo '
+                <div class="col">
+                    <a href="#" class="text-decoration-none">
+                        <div class="card border-0">
+                            <img src="'.str_replace('../', '', $result[$i]['image_path']).'" class="zoom card-img-top" alt="...">
+                            <div class="card-body custom-cards text-light text-start ps-0">
+                                <p class="card-subtitle text-secondary mb-1">USA, 2014</p>
+                                <h5 class="card-title mb-4">'.ucwords($result[$i]['title']).'</h5>
+                                <p class="card-text text-secondary">'.ucwords($result[$i]['genre']).'</p>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-            </a>
-        </div>
-        <div class="col">
-            <a href="#" class="text-decoration-none">
-                <div class="card border-0">
-                    <img src="Images/avengers.jpg" class="zoom card-img-top" alt="...">
-                    <div class="card-body custom-cards text-light text-start ps-0">
-                        <p class="card-subtitle text-secondary mb-1">USA, 2014</p>
-                        <h5 class="card-title mb-4">Avengers</h5>
-                        <p class="card-text text-secondary">Action, Aventure</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col">
-            <a href="#" class="text-decoration-none">
-                <div class="card border-0">
-                    <img src="Images/avengers.jpg" class="zoom card-img-top" alt="...">
-                    <div class="card-body custom-cards text-light text-start ps-0">
-                        <p class="card-subtitle text-secondary mb-1">USA, 2014</p>
-                        <h5 class="card-title mb-4">Avengers</h5>
-                        <p class="card-text text-secondary">Action, Aventure</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col">
-            <a href="#" class="text-decoration-none">
-                <div class="card border-0">
-                    <img src="Images/avengers.jpg" class="zoom card-img-top" alt="...">
-                    <div class="card-body custom-cards text-light text-start ps-0">
-                        <p class="card-subtitle text-secondary mb-1">USA, 2014</p>
-                        <h5 class="card-title mb-4">Avengers</h5>
-                        <p class="card-text text-secondary">Action, Aventure</p>
-                    </div>
-                </div>
-            </a>
-        </div>
+                ';
+            }
+        ?>
     </div>
 
     <div class="d-flex pt-4 bd-highlight">
