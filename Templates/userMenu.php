@@ -6,11 +6,17 @@ $user = $query->fetch();
 ?>
 
 <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $_SESSION['email']; ?></a>
+    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $_SESSION['username']; ?></a>
     <ul class="dropdown-menu dropdown-menu-center dropdown-menu-dark w-100" aria-labelledby="navbarScrollingDropdown">
         <li>
             <a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#profile">Mon profil</a>
         </li>
+        <?php 
+            if (isAdmin(connectDB())) 
+            {
+                include 'adminItem.php';
+            }
+        ?>
         <li>
             <hr class="dropdown-divider">
         </li>
@@ -20,7 +26,7 @@ $user = $query->fetch();
     </ul>
 </li>
 
-<div class="modal fade mt-5" id="profile" tabindex="-1" aria-labelledby="profileModal" aria-hidden="true">
+<div class="modal fade" id="profile" tabindex="-1" aria-labelledby="profileModal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content text-dark">
             <div class="modal-header">
@@ -59,3 +65,10 @@ $user = $query->fetch();
         </div>
     </div>
 </div>
+
+<?php 
+    if (isAdmin(connectDB())) 
+    {
+        include 'adminModal.php';
+    }
+?>

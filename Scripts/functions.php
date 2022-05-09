@@ -101,7 +101,7 @@ function isAdmin($pdo) {
 	if (!isset($_SESSION["email"]) || !isset($_SESSION["token"])) {
 		return false;
 	}
-	$queryPrepared = $pdo->prepare("SELECT id FROM petitchat_user WHERE email=:email AND token=:token AND is_admin=:admin");
+	$queryPrepared = $pdo->prepare("SELECT id FROM petitchat_user WHERE email=:email AND token=:token AND is_admin=:is_admin");
 	$queryPrepared->execute(["email" => $_SESSION["email"], "token" => $_SESSION["token"], 'is_admin'=>1]);
 	if ($queryPrepared->fetch()) {
 		return true;

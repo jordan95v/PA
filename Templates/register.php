@@ -33,14 +33,18 @@
                                 Je confirme avoir plus de 13 ans.
                             </label>
                         </div>
-                        <div class="form-check mb-3 text-start">
+                        <div class="form-check mb-4 text-start">
                             <input class="form-check-input" type="checkbox" name="cgu" id="flexCheckDefault" required="required">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Je confirme avoir lu les CGU.
                             </label>
                         </div>
+                        <div id="captcha" class="mb-4">
+                            <div id="puzzle"></div>
+                        </div>
                         <button type="submit" class="btn btn-dark w-100">S'inscrire</button>
                     </form>
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger w-100" data-bs-dismiss="modal">Fermer</button>
