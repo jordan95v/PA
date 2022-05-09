@@ -41,26 +41,24 @@ function updateToken($userId, $token, $pdo)
 function connectUser($email, $pwd, $pdo, &$errors)
 {
 	if ($email && $pwd) {
-		$queryPrepared = $pdo->prepare("SELECT * FROM petitchat_user WHERE email=:email");
-		$queryPrepared->execute(["email" => $email]);
+		$queryPrepared = $pdo->prepare("SELECT * FROM petitchat_user WHERE email=:email AND statut=:statut");
+		$queryPrepared->execute(["email" => $email, "statut" => 1]);
 		$results = $queryPrepared->fetch();
 
-		if (!empty($results) && password_verify($pwd, $results['pwd'])) {
-			if ($result['statut'] != 1)
-			{
-				$errors[] = 'Email non confirmé.';
-			}
-			else {
+		if (!empty($results)) {
+			if (password_verify($pwd, $results['pwd'])) {
 				$token = createToken();
 				updateToken($results["id"], $token, $pdo);
-				//Insertion dans la session du token
 				$_SESSION['email'] = $email;
 				$_SESSION['token'] = $token;
 				$_SESSION['username'] = $results['username'];
 			}
-			
-		} else {
-			$errors[] = 'Identifiants incorrects.';
+			else {
+				$errors[] = 'Identifiants incorrects.';
+			}
+		}
+		else {
+			$errors[] = 'Veuillez confirmez votre adresse email pour vous connecter.';
 		}
 	}
 }
