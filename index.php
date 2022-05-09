@@ -16,7 +16,7 @@ include 'Templates/header.php';
     }
     if (!empty($_SESSION['created']) && isset($_SESSION['created'])) {
         echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
-        echo '<h5 class="fw-bold">Le compte à bien été crée, vous pouvez vous connecter.';
+        echo '<h5 class="fw-bold">Le compte à bien été crée, confirmez votre mail pour vous connecter.';
         echo '</div>';
         unset($_SESSION['created']);
     }
@@ -25,6 +25,18 @@ include 'Templates/header.php';
         echo '<h5 class="fw-bold">Le compte à bien été modifiée !';
         echo '</div>';
         unset($_SESSION['updated']);
+    }
+    if (!empty($_SESSION['logged']) && isset($_SESSION['logged'])) {
+        echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
+        echo '<h5 class="fw-bold">La connexion à réussi.';
+        echo '</div>';
+        unset($_SESSION['logged']);
+    }
+    if (!empty($_SESSION['confirm']) && isset($_SESSION['confirm'])) {
+        echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
+        echo '<h5 class="fw-bold">Le mail à été vérifié, vous pouvez vous connectez.';
+        echo '</div>';
+        unset($_SESSION['confirm']);
     }
     ?>
     <!-- Featured Movies + Cards for movies -->

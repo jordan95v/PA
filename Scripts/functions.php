@@ -46,12 +46,19 @@ function connectUser($email, $pwd, $pdo, &$errors)
 		$results = $queryPrepared->fetch();
 
 		if (!empty($results) && password_verify($pwd, $results['pwd'])) {
-			$token = createToken();
-			updateToken($results["id"], $token, $pdo);
-			//Insertion dans la session du token
-			$_SESSION['email'] = $email;
-			$_SESSION['token'] = $token;
-			$_SESSION['username'] = $results['username'];
+			if ($result['status'] != 1)
+			{
+				$errors[] = 'Email non confirmé.';
+			}
+			else {
+				$token = createToken();
+				updateToken($results["id"], $token, $pdo);
+				//Insertion dans la session du token
+				$_SESSION['email'] = $email;
+				$_SESSION['token'] = $token;
+				$_SESSION['username'] = $results['username'];
+			}
+			
 		} else {
 			$errors[] = 'Identifiants incorrects.';
 		}
