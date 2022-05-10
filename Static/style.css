@@ -35,7 +35,7 @@ body {
 }
 
 .arrow {
-    border: solid black;
+    border: solid #d9534f;
     border-width: 0 3px 3px 0;
     display: inline-block;
     padding: 3px;
