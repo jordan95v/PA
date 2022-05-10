@@ -32,6 +32,12 @@ include 'Templates/header.php';
         echo '</div>';
         unset($_SESSION['logged']);
     }
+    if (!empty($_SESSION['unlogged']) && isset($_SESSION['unlogged'])) {
+        echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
+        echo '<h5 class="fw-bold">La déconnexion à réussi.';
+        echo '</div>';
+        unset($_SESSION['unlogged']);
+    }
     if (!empty($_SESSION['confirm']) && isset($_SESSION['confirm'])) {
         echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
         echo '<h5 class="fw-bold">Le mail à été vérifié, vous pouvez vous connectez.';
