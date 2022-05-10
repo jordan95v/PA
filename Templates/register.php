@@ -31,13 +31,13 @@
                                 Je confirme avoir plus de 13 ans.
                             </label>
                         </div>
-                        <div class="form-check mb-4 text-start">
+                        <div class="form-check mb-1 text-start">
                             <input class="form-check-input" type="checkbox" name="newsletter" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Je m'inscrit à la newsletter.
                             </label>
                         </div>
-                        <div class="form-check mb-1 text-start">
+                        <div class="form-check mb-' text-start">
                             <input class="form-check-input" type="checkbox" name="cgu" id="flexCheckDefault" required="required">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Je confirme avoir lu les CGU.

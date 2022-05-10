@@ -44,6 +44,12 @@ include 'Templates/header.php';
         echo '</div>';
         unset($_SESSION['upload']);
     }
+    if (!empty($_SESSION['send']) && isset($_SESSION['send'])) {
+        echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
+        echo '<h5 class="fw-bold">La newsletter à été envoyée.';
+        echo '</div>';
+        unset($_SESSION['send']);
+    }
     ?>
     <!-- Featured Movies + Cards for movies -->
     <div class="d-flex pt-4 bd-highlight">

@@ -1,10 +1,10 @@
 <?php
-require_once 'functions.php';
+require_once "functions.php";
 
 if (
-    empty($_POST['title']) && empty($_POST['genre']) &&
-    empty($_POST['maker']) && empty($_POST['actor']) &&
-    empty($_FILES['file']) && count($_POST) != 5
+    empty($_POST["title"]) || empty($_POST["genre"]) ||
+    empty($_POST["maker"]) || empty($_POST["actor"]) ||
+    empty($_FILES["file"]) || count($_POST) != 4 || empty($_FILES)
 ) {
     die();
 }
@@ -15,39 +15,39 @@ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 $errors = [];
 $pdo = connectDB();
 
-checkFileSize($_FILES['file']['size'], $errors);
+checkFileSize($_FILES["file"]["size"], $errors);
 checkFileExists($target_file, $errors);
-checkImage($_FILES['file'], $errors);
+checkImage($_FILES["file"], $errors);
 checkFileExtension($imageFileType, $errors);
 
-$title = strtolower($_POST['title']);
-$maker = strtolower($_POST['maker']);
-$actor = strtolower($_POST['actor']);
+$title = strtolower($_POST["title"]);
+$maker = strtolower($_POST["maker"]);
+$actor = strtolower($_POST["actor"]);
 
 if (isAdmin($pdo))
 {
     if (count($errors) != 0)
     {
-        $_SESSION['errors'] = $errors;
-        header('Location: ../index.php');
+        $_SESSION["errors"] = $errors;
+        header("Location: ../index.php");
     }
     else {
         if (filmExists($pdo, $title, $errors))
         {
             if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
                 makeFiligrane($target_file);
-                $query = $pdo->prepare('INSERT INTO groschien_film (image_path, title, genre, maker, actors) VALUES (:image_path, :title, :genre, :maker, :actors);');
-                $query->execute(['image_path'=>$target_file, 'title'=>$title, 'genre'=>$_POST['genre'], 'maker'=>$maker, 'actors'=>$actor]);
-                $_SESSION['upload'] = 1;
-                header('Location: ../index.php');
+                $query = $pdo->prepare("INSERT INTO groschien_film (image_path, title, genre, maker, actors) VALUES (:image_path, :title, :genre, :maker, :actors);");
+                $query->execute(["image_path"=>$target_file, "title"=>$title, "genre"=>$_POST["genre"], "maker"=>$maker, "actors"=>$actor]);
+                $_SESSION["upload"] = 1;
+                header("Location: ../index.php");
             } else {
-                $errors[] = 'Impossible d\'uploader le fichier.';
+                $errors[] = "Impossible d\"uploader le fichier.";
             }
         }
         if (count($errors) != 0)
         {
-            $_SESSION['errors'] = $errors;
-            header('Location: ../index.php');
+            $_SESSION["errors"] = $errors;
+            header("Location: ../index.php");
         } 
     }
 }
@@ -62,7 +62,7 @@ function checkFileSize($fileSize, &$errors)
     //  errors(list[str]): The errors list.
     
     if ($fileSize > 500000) {
-        $errors[] = 'L\'image est trop volumineuse.';
+        $errors[] = "L\"image est trop volumineuse.";
     }
 }
 
@@ -76,7 +76,7 @@ function checkFileExists($target, &$errors)
     
 
     if (file_exists($target)) {
-        $errors[] = 'Le fichier existe déjà dans la base de données.';
+        $errors[] = "Le fichier existe déjà dans la base de données.";
     }
 }
 
@@ -90,7 +90,7 @@ function checkImage($image, &$errors)
     
   $check = getimagesize($image["tmp_name"]);
   if($check === false) {
-        $errors[] = 'Le fichier n\'est pas valide.';
+        $errors[] = "Le fichier n\"est pas valide.";
   }
 }
 
@@ -103,7 +103,7 @@ function checkFileExtension($extension, &$errors)
     //  errors(list[str]): The errors list.
 
     if($extension != "jpg" && $extension != "png" && $extension != "jpeg") {
-        $errors[] = 'L\'image doit être en .jpg, .png ou .jpeg.';
+        $errors[] = "L\"image doit être en .jpg, .png ou .jpeg.";
     }
 }
 
@@ -113,7 +113,7 @@ function makeFiligrane($imageName) {
     // Args:
     //  imageName (...): Where the image is located.
 
-    $stamp = imagecreatefrompng('../Images/stamp.png');
+    $stamp = imagecreatefrompng("../Images/stamp.png");
     $im = imagecreatefromjpeg($imageName);
 
     $marge_right = 10;
@@ -139,13 +139,13 @@ function filmExists ($pdo, $title, &$errors)
     // Returns:
     //  bool: True if movie exists, else False.
 
-    $query=$pdo->prepare('SELECT * FROM groschien_film WHERE title=:title');
-    $query->execute(['title'=>$title]);
+    $query=$pdo->prepare("SELECT * FROM groschien_film WHERE title=:title");
+    $query->execute(["title"=>$title]);
 
     if (empty($query->fetch()))
     {
         return true;
     }
-    $errors[] = 'Le film existe déjà dans la base de données.';
+    $errors[] = "Le film existe déjà dans la base de données.";
     return false;
 }

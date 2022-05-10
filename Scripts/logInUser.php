@@ -1,20 +1,20 @@
 <?php
-require 'functions.php';
+require "functions.php";
 
 $errors = [];
 $pdo = connectDB();
 
 if (count($_POST) != 2) {
-    $errors[] = 'Veuillez réessayer.';
-    $_SESSION['errors'] = $errors;
-    header('Location: ../index.php');
+    $errors[] = "Veuillez réessayer.";
+    $_SESSION["errors"] = $errors;
+    header("Location: ../index.php");
 }
-connectUser($_POST['email'], $_POST['password'], $pdo, $errors);
+connectUser($_POST["email"], $_POST["password"], $pdo, $errors);
 
 if (count($errors) != 0) {
-    $_SESSION['errors'] = $errors;
+    $_SESSION["errors"] = $errors;
 }
 else {
-    $_SESSION['logged'] = 'Connexion réussi.';
+    $_SESSION["logged"] = "Connexion réussi.";
 }
-header('Location: ../index.php');
+header("Location: ../index.php");

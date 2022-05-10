@@ -2,9 +2,9 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require '../PHPMailer/src/Exception.php';
-require '../PHPMailer/src/PHPMailer.php';
-require '../PHPMailer/src/SMTP.php';
+require "../PHPMailer/src/Exception.php";
+require "../PHPMailer/src/PHPMailer.php";
+require "../PHPMailer/src/SMTP.php";
 
 function checkPassword($password1, $password2, &$errors)
 {
@@ -18,11 +18,11 @@ function checkPassword($password1, $password2, &$errors)
 		preg_match("#[a-z]#", $password1) > 0 && preg_match("#[A-Z]#", $password1) > 0
 	) {
 		if ($password1 != $password2) {
-			$errors[] = 'Les mots de passe ne correspondent pas.';
+			$errors[] = "Les mots de passe ne correspondent pas.";
 			return false;
 		}
 	} else {
-		$errors[] = 'Le mot de passe doit faire plus de 8 caractères, content un chiffre et une majsucule.';
+		$errors[] = "Le mot de passe doit faire plus de 8 caractères, content un chiffre et une majsucule.";
 		return false;
 	}
 	return true;
@@ -39,7 +39,7 @@ function checkUsername($username, &$errors)
 	//     bool: If the username is correct or no.
 
 	if (strlen($username) < 4 && strlen($username) > 60) {
-		$errors[] = 'Nom d\'utilisateur incorrect';
+		$errors[] = "Nom d'utilisateur incorrect";
 	}
 }
 
@@ -54,7 +54,7 @@ function checkEmail($email, &$errors)
 	//     bool: If the email is correct or no.
 
 	if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-		$errors[] = 'Email incorrect.';
+		$errors[] = "Email incorrect.";
 	}
 }
 
@@ -102,7 +102,7 @@ function checkUsernameExist($username, $pdo, &$errors, $token = null)
 	}
 }
 
-function sendConfirmMail($to, $confirmKey, &$errors)
+function sendMail($to, $title, $body, &$errors)
 {
 	// Send a confirmation mail.
 
@@ -117,23 +117,23 @@ function sendConfirmMail($to, $confirmKey, &$errors)
 	try {
 		//Server settings
 		$mail->isSMTP();                                            
-		$mail->Host       = 'smtp.gmail.com';                     
+		$mail->Host       = "smtp.gmail.com";                     
 		$mail->SMTPAuth   = true;                                   
-		$mail->Username   = 't36tt3st@gmail.com';                     
-		$mail->Password   = 'Test12345+';                               
+		$mail->Username   = "t36tt3st@gmail.com";                     
+		$mail->Password   = "Test12345+";                               
 		$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            
 		$mail->Port       = 465;                                   
 
 		//Recipients
-		$mail->setFrom('t36tt3st@gmail.com', 'Les Lumieres');
+		$mail->setFrom("t36tt3st@gmail.com", "Les Lumieres");
 		$mail->addAddress($to);                 				
 
 		//Content
 		$mail->isHTML(true);                                 
-		$mail->Subject = 'Mail de confirmation pour Les Lumieres !';
-		$mail->Body    = 'Cliquez sur le lien pour confirmez votre email.<br><a href="http://localhost/PA/Scripts/verif.php?confirmKey='.$confirmKey.'">Lien de confirmation</a>';
+		$mail->Subject = $title;
+		$mail->Body    = $body;
 		$mail->send();
 	} catch (Exception $e) {
-		$errors[] = 'Echec lors de l\'envoie du mail, veuillez réessayer.';
+		$errors[] = "Echec lors de l'envoie du mail, veuillez réessayer.";
 	}
 }

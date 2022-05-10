@@ -51,9 +51,9 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="Scripts/sendNewsletter.php" enctype="multipart/form-data">
+                <form method="POST" action="Scripts/sendNews.php">
                     <div class="mb-5">
-                        <input type="text" name="actor" class="form-control" placeholder="Entrez le titre de la newsletter.">
+                        <input type="text" name="title" class="form-control" placeholder="Entrez le titre de la newsletter.">
                         <div id="userHelp" class="form-text text-center">Soyez créatif ✌</div>
                     </div>
                     <div class="mb-5">

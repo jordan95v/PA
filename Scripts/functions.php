@@ -71,19 +71,19 @@ function connectUser($email, $pwd, $pdo, &$errors)
 		$results = $queryPrepared->fetch();
 
 		if (!empty($results)) {
-			if (password_verify($pwd, $results['pwd'])) {
+			if (password_verify($pwd, $results["pwd"])) {
 				$token = createToken();
 				updateToken($results["id"], $token, $pdo);
-				$_SESSION['email'] = $email;
-				$_SESSION['token'] = $token;
-				$_SESSION['username'] = $results['username'];
+				$_SESSION["email"] = $email;
+				$_SESSION["token"] = $token;
+				$_SESSION["username"] = $results["username"];
 			}
 			else {
-				$errors[] = 'Identifiants incorrects.';
+				$errors[] = "Identifiants incorrects.";
 			}
 		}
 		else {
-			$errors[] = 'Veuillez confirmez votre adresse email pour vous connecter.';
+			$errors[] = "Veuillez confirmez votre adresse email pour vous connecter.";
 		}
 	}
 }
@@ -102,7 +102,7 @@ function isAdmin($pdo) {
 		return false;
 	}
 	$queryPrepared = $pdo->prepare("SELECT id FROM petitchat_user WHERE email=:email AND token=:token AND is_admin=:is_admin");
-	$queryPrepared->execute(["email" => $_SESSION["email"], "token" => $_SESSION["token"], 'is_admin'=>1]);
+	$queryPrepared->execute(["email" => $_SESSION["email"], "token" => $_SESSION["token"], "is_admin"=>1]);
 	if ($queryPrepared->fetch()) {
 		return true;
 	}

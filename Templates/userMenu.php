@@ -1,20 +1,20 @@
 <?php
 $pdo = connectDB();
-$query = $pdo->prepare('SELECT * FROM petitchat_user WHERE email=:email');
-$query->execute(['email' => $_SESSION['email']]);
+$query = $pdo->prepare("SELECT * FROM petitchat_user WHERE email=:email");
+$query->execute(["email" => $_SESSION["email"]]);
 $user = $query->fetch();
 ?>
 
 <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $_SESSION['username']; ?></a>
+    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $user["username"]; ?></a>
     <ul class="dropdown-menu dropdown-menu-center dropdown-menu-dark w-100" aria-labelledby="navbarScrollingDropdown">
         <li>
             <a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#profile">Mon profil</a>
         </li>
         <?php 
-            if (isAdmin(connectDB())) 
+            if (isAdmin($pdo))
             {
-                include 'adminItem.php';
+                include "adminItem.php";
             }
         ?>
         <li>
@@ -30,17 +30,17 @@ $user = $query->fetch();
     <div class="modal-dialog">
         <div class="modal-content text-dark">
             <div class="modal-header">
-                <h4 class="modal-title" id="profileModal"><?php echo 'Profil de ' . $user['username']; ?></h4>
+                <h4 class="modal-title" id="profileModal"><?php echo "Profil de " . $user["username"]; ?></h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form method="POST" action="Scripts/updateUser.php">
                     <div class=" mb-5">
-                        <input type="email" name="email" class="form-control" value="<?php echo $user['email']; ?>">
+                        <input type="email" name="email" class="form-control" value="<?php echo $user["email"]; ?>">
                         <div id="emailHelp" class="form-text text-center">Vous voulez changer votre email 😊 ?</div>
                     </div>
                     <div class="mb-5">
-                        <input type="text" name="username" class="form-control" value="<?php echo $user['username']; ?>">
+                        <input type="text" name="username" class="form-control" value="<?php echo $user["username"]; ?>">
                         <div id="userHelp" class="form-text text-center">Vous voulez changer votre nom d'utilisateur 😊 ?</div>
                     </div>
                     <div class="mb-3">
@@ -56,8 +56,8 @@ $user = $query->fetch();
                     <button type="submit" class="btn btn-dark w-100">Modifier mon profil</button>
                 </form>
                 <h5 class="my-5">Psssst ... Quelque petites infos sur vous 🤩</h5>
-                <p class=mt-3>Vous avez rejoins <b>Les Lumières</b> le : <b><?php echo $user['creation_date']; ?></b></p>
-                <p>Dernière MaJ du profil : <b><?php echo $user['update_date']; ?></b></p>
+                <p class=mt-3>Vous avez rejoins <b>Les Lumières</b> le : <b><?php echo $user["creation_date"]; ?></b></p>
+                <p>Dernière MaJ du profil : <b><?php echo $user["update_date"]; ?></b></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger w-100" data-bs-dismiss="modal">Fermer</button>
@@ -67,8 +67,8 @@ $user = $query->fetch();
 </div>
 
 <?php 
-    if (isAdmin(connectDB())) 
+    if (isAdmin($pdo)) 
     {
-        include 'adminModal.php';
+        include "adminModal.php";
     }
 ?>
