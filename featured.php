@@ -1,5 +1,6 @@
 <?php
 include 'Templates/header.php';
+$pdo=connectDB();
 ?>
 
 <!-- Featured Movies + Cards for movies -->
@@ -12,9 +13,8 @@ include 'Templates/header.php';
 
     <div class="row py-4 row-cols-sm-2 row-cols-lg-5 row-cols-md-3 row-cols-sm-2 g-4 text-dark">
         <?php
-            $pdo=connectDB();
-            $query=$pdo->prepare("SELECT * FROM groschien_film");
-            $query->execute();
+            $query=$pdo->prepare("SELECT * FROM groschien_film WHERE featured=:featured");
+            $query->execute(["featured"=>1]);
             $result = $query->fetchAll();
 
             for ($i=0; $i < count($result); $i++) { 

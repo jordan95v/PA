@@ -1,5 +1,6 @@
 <?php
 include "Templates/header.php";
+$pdo=connectDB();
 ?>
 
 <div class="container">
@@ -71,9 +72,8 @@ include "Templates/header.php";
     
     <div class="row py-4 row-cols-sm-2 row-cols-lg-5 row-cols-md-3 row-cols-sm-2 g-4 text-dark">
         <?php
-            $pdo=connectDB();
-            $query=$pdo->prepare("SELECT * FROM groschien_film");
-            $query->execute();
+            $query=$pdo->prepare("SELECT * FROM groschien_film WHERE featured=:featured");
+            $query->execute(["featured"=>1]);
             $result = $query->fetchAll();
             $count = (count($result) >= 5) ? 5 : count($result);
 
@@ -84,7 +84,6 @@ include "Templates/header.php";
                         <div class="card border-0">
                             <img src="'.str_replace('../', '', $result[$i]['image_path']).'" class="zoom card-img-top" alt="...">
                             <div class="card-body custom-cards text-light text-start ps-0">
-                                <p class="card-subtitle text-secondary mb-1">USA, 2014</p>
                                 <h5 class="card-title mb-4">'.ucwords($result[$i]['title']).'</h5>
                                 <p class="card-text text-secondary">'.ucwords($result[$i]['genre']).'</p>
                             </div>
@@ -96,14 +95,7 @@ include "Templates/header.php";
         ?>
     </div>
 
-    <div class="d-flex pt-4 bd-highlight">
-        <div class="p-2 flex-grow-1 bd-highlight">
-            <h2 class="fw-bold">Les nouveaux films 🎥</h2>
-        </div>
-        <div class="p-3 flex-shrink-1 bd-highlight">
-            <a href="films.php" class="text-danger text-decoration-none">Voir plus <span class='arrow right'></span></a>
-        </div>
-    </div>
+    <a href="films.php" class="btn btn-outline-danger w-100">Voir tous les films</a>
 
     <!-- Cards for movie -->
     <!-- <div class="row py-4 row-cols-1 row-cols-lg-4 g-4 text-dark">

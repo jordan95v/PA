@@ -33,6 +33,12 @@
                         <input type="text" name="actor" class="form-control" placeholder="Entrez le nom des acteurs.">
                         <div id="userHelp" class="form-text text-center">Le nom des acteurs 🎦</div>
                     </div>
+                    <div class="form-check mb-4 text-start">
+                        <input class="form-check-input" type="checkbox" name="featured" id="flexCheck">
+                        <label class="form-check-label" for="flexCheck">
+                            Est-ce que le film est à l'affiche ?
+                        </label>
+                    </div>
                     <button type="submit" class="btn btn-dark w-100">Enregistrer le film</button>
                 </form>
             </div>

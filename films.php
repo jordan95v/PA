@@ -1,8 +1,6 @@
 <?php
 include 'Templates/header.php';
 
-# TODO : Include GET so users can choose genre.
-
 $pdo=connectDB();
 
 if (isset($_GET["genre"]))
