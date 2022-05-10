@@ -24,31 +24,34 @@ $title = strtolower($_POST['title']);
 $maker = strtolower($_POST['maker']);
 $actor = strtolower($_POST['actor']);
 
-
-if (count($errors) != 0)
+if (isAdmin($pdo))
 {
-    $_SESSION['errors'] = $errors;
-    header('Location: ../index.php');
-}
-else {
-    if (filmExists($pdo, $title, $errors))
-    {
-        if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-            makeFiligrane($target_file);
-            $query = $pdo->prepare('INSERT INTO groschien_film (image_path, title, genre, maker, actors) VALUES (:image_path, :title, :genre, :maker, :actors);');
-            $query->execute(['image_path'=>$target_file, 'title'=>$title, 'genre'=>$_POST['genre'], 'maker'=>$maker, 'actors'=>$actor]);
-            $_SESSION['upload'] = 1;
-            header('Location: ../index.php');
-        } else {
-            $errors[] = 'Impossible d\'uploader le fichier.';
-        }
-    }
     if (count($errors) != 0)
     {
         $_SESSION['errors'] = $errors;
         header('Location: ../index.php');
-    } 
+    }
+    else {
+        if (filmExists($pdo, $title, $errors))
+        {
+            if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+                makeFiligrane($target_file);
+                $query = $pdo->prepare('INSERT INTO groschien_film (image_path, title, genre, maker, actors) VALUES (:image_path, :title, :genre, :maker, :actors);');
+                $query->execute(['image_path'=>$target_file, 'title'=>$title, 'genre'=>$_POST['genre'], 'maker'=>$maker, 'actors'=>$actor]);
+                $_SESSION['upload'] = 1;
+                header('Location: ../index.php');
+            } else {
+                $errors[] = 'Impossible d\'uploader le fichier.';
+            }
+        }
+        if (count($errors) != 0)
+        {
+            $_SESSION['errors'] = $errors;
+            header('Location: ../index.php');
+        } 
+    }
 }
+
 
 function checkFileSize($fileSize, &$errors)
 {

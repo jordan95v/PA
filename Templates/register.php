@@ -10,18 +10,18 @@
                 </div>
                 <div class="modal-body">
                     <form method="POST" action="Scripts/addUser.php">
-                        <div class="mb-5">
+                        <div class="mb-4">
                             <input type="email" name="email" class="form-control" placeholder="Entrez votre email" required="required">
                             <div id="emailHelp" class="form-text text-center">On la partegera à personne 😉</div>
                         </div>
-                        <div class="mb-5">
+                        <div class="mb-4">
                             <input type="text" name="username" class="form-control" placeholder="Entrez votre nom d'utilisateur." required="required">
                             <div id="userHelp" class="form-text text-center">Faite nous rire 😉 !</div>
                         </div>
                         <div class="mb-2">
                             <input type="password" name="password" class="form-control" placeholder="Entrez votre mot de passe." required="required">
                         </div>
-                        <div class="mb-5">
+                        <div class="mb-4">
                             <input type="password" name="passwordConfirm" class="form-control" placeholder="Confirmez votre mot de passe." required="required">
                             <div id="pwdHelp" class="form-text text-center">Vous trompez pas, c'est relou de tout réecrire ! 😎</div>
                         </div>
@@ -32,6 +32,12 @@
                             </label>
                         </div>
                         <div class="form-check mb-4 text-start">
+                            <input class="form-check-input" type="checkbox" name="newsletter" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Je m'inscrit à la newsletter.
+                            </label>
+                        </div>
+                        <div class="form-check mb-1 text-start">
                             <input class="form-check-input" type="checkbox" name="cgu" id="flexCheckDefault" required="required">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Je confirme avoir lu les CGU.

@@ -42,3 +42,30 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="newsletter" tabindex="-1" aria-labelledby="newsletterModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content text-dark">
+            <div class="modal-header">
+                <h4 class="modal-title" id="newsletterModal">Envoyer une newsletter 💌</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="Scripts/sendNewsletter.php" enctype="multipart/form-data">
+                    <div class="mb-5">
+                        <input type="text" name="actor" class="form-control" placeholder="Entrez le titre de la newsletter.">
+                        <div id="userHelp" class="form-text text-center">Soyez créatif ✌</div>
+                    </div>
+                    <div class="mb-5">
+                        <textarea name="body" class="form-control" placeholder="Entrez le contenu de la newsletter." rows="4"></textarea>
+                        <div id="userHelp" class="form-text text-center">Laissez libre cours à votre imagination 😎</div>
+                    </div>
+                    <button type="submit" class="btn btn-dark w-100">Envoyez la newsletter</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger w-100" data-bs-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
