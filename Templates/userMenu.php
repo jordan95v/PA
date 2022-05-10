@@ -3,6 +3,7 @@ $pdo = connectDB();
 $query = $pdo->prepare("SELECT * FROM petitchat_user WHERE email=:email");
 $query->execute(["email" => $_SESSION["email"]]);
 $user = $query->fetch();
+$newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
 ?>
 
 <li class="nav-item dropdown">
@@ -35,23 +36,29 @@ $user = $query->fetch();
             </div>
             <div class="modal-body">
                 <form method="POST" action="Scripts/updateUser.php">
-                    <div class=" mb-5">
+                    <div class=" mb-4">
                         <input type="email" name="email" class="form-control" value="<?php echo $user["email"]; ?>">
                         <div id="emailHelp" class="form-text text-center">Vous voulez changer votre email 😊 ?</div>
                     </div>
-                    <div class="mb-5">
+                    <div class="mb-4">
                         <input type="text" name="username" class="form-control" value="<?php echo $user["username"]; ?>">
                         <div id="userHelp" class="form-text text-center">Vous voulez changer votre nom d'utilisateur 😊 ?</div>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <input type="password" name="oldPassword" class="form-control" placeholder="Entrez votre ancien mot de passe.">
                         <div id="pwdHelp" class="form-text text-center">Mot de passe oublier ? <a href="">Cliquez ici</a></div>
                     </div>
                     <div class="mb-1">
                         <input type="password" name="password" class="form-control" placeholder="Entrez votre nouveau mot de passe.">
                     </div>
-                    <div class="mb-5">
+                    <div class="mb-4">
                         <input type="password" name="passwordConfirm" class="form-control" placeholder="Confirmez votre mot de passe">
+                    </div>
+                    <div class="form-check mb-4 text-start">
+                        <input class="form-check-input" type="checkbox" name="newsletter" id="flexCheck" <?php echo $newsletter; ?>>
+                        <label class="form-check-label" for="flexCheck">
+                            Activer / désactiver la newsletter.
+                        </label>
                     </div>
                     <button type="submit" class="btn btn-dark w-100">Modifier mon profil</button>
                 </form>

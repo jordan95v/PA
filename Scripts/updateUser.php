@@ -8,6 +8,7 @@ $pdo = connectDB();
 
 $email = strtolower(trim($_POST["email"]));
 $username = strtolower(trim($_POST["username"]));
+$newsletter = ($_POST["newsletter"] === "on") ? 1 : 0;
 
 checkUsername($username, $errors);
 checkEmail($email, $errors);
@@ -18,11 +19,12 @@ if (count($errors) != 0) {
     $_SESSION["errors"] = $errors;
     header("Location: ../index.php");
 } else {
-    $query = $pdo->prepare("UPDATE petitchat_user SET email=:email, username=:username WHERE token=:token");
+    $query = $pdo->prepare("UPDATE petitchat_user SET email=:email, username=:username, newsletter=:news WHERE token=:token");
     $query->execute([
         "email" => $email,
         "username" => $username,
-        "token" => $_SESSION["token"]
+        "token" => $_SESSION["token"],
+        "news" => $newsletter
     ]);
 }
 if (!empty($_POST["oldPassword"]) && !empty($_POST["password"]) && !empty($_POST["passwordConfirm"])) {

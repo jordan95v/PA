@@ -63,7 +63,7 @@ include 'Templates/header.php';
 
     <!-- Cards for movie -->
     
-    <div class="row py-4 row-cols-1 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 g-4 text-dark">
+    <div class="row py-4 row-cols-sm-2 row-cols-lg-5 row-cols-md-3 row-cols-sm-2 g-4 text-dark">
         <?php
             $pdo=connectDB();
             $query=$pdo->prepare('SELECT * FROM groschien_film');
@@ -99,7 +99,7 @@ include 'Templates/header.php';
     </div>
 
     <!-- Cards for movie -->
-    <div class="row py-4 row-cols-1 row-cols-lg-4 g-4 text-dark">
+    <!-- <div class="row py-4 row-cols-1 row-cols-lg-4 g-4 text-dark">
         <div class="col">
             <div class="card border-0 shadow-lg">
                 <img src="Images/avengers.jpg" class="card-img-top" alt="...">
@@ -109,7 +109,7 @@ include 'Templates/header.php';
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 
 <?php
