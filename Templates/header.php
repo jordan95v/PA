@@ -30,7 +30,7 @@ require_once 'Scripts/functions.php';
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand text-uppercase fw-bold ms-5" href="index.php">Les Lumières</a>
+                    <a class="navbar-brand text-uppercase fw-bold ms-5" href="index.php"><img id="logo" src="Images/logo.png" alt="LES LUMIERES"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>

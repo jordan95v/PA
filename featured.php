@@ -6,8 +6,11 @@ $pdo=connectDB();
 <!-- Featured Movies + Cards for movies -->
 <div class="container">
     <div class="d-flex pt-4 bd-highlight">
-        <div class="p-2 flex-grow-1 text-center bd-highlight">
+        <div class="p-2 flex-grow-1 bd-highlight">
             <h2 class="fw-bold">Les films à l'affiche 🎥</h2>
+        </div>
+        <div class="p-3 flex-shrink-1 bd-highlight">
+            <h6><a href="index.php" class="text-danger text-decoration-none">Retour à l'accueil <span class='arrow right'></span></a></h6>
         </div>
     </div>
 
@@ -24,7 +27,6 @@ $pdo=connectDB();
                         <div class="card border-0">
                             <img src="'.str_replace('../', '', $result[$i]['image_path']).'" class="zoom card-img-top" alt="...">
                             <div class="card-body custom-cards text-light text-start ps-0">
-                                <p class="card-subtitle text-secondary mb-1">USA, 2014</p>
                                 <h5 class="card-title mb-4">'.ucwords($result[$i]['title']).'</h5>
                                 <p class="card-text text-secondary">'.ucwords($result[$i]['genre']).'</p>
                             </div>

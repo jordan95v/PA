@@ -16,6 +16,13 @@ body {
     background-position: center;
 }
 
+#logo {
+    height: 80px;
+    width: 120px;
+    margin-left: 0;
+    transform: scale(2);
+}
+
 /* Class */
 .search {
     background: none;

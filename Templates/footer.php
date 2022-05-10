@@ -29,7 +29,7 @@
     </ul>
 
     <!-- Copyright -->
-    <div class="text-center p-3">
+    <div class="text-center p-3 mb-3">
         © 2022 Copyright:
         <a class="text-white fw-bold text-decoration-none" href="#">Les Lumières</a>
     </div>

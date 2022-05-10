@@ -74,7 +74,6 @@ if (isset($_GET["genre"]))
                         <div class="card border-0">
                             <img src="'.str_replace('../', '', $result[$i]['image_path']).'" class="zoom card-img-top" alt="...">
                             <div class="card-body custom-cards text-light text-start ps-0">
-                                <p class="card-subtitle text-secondary mb-1">USA, 2014</p>
                                 <h5 class="card-title mb-4">'.ucwords($result[$i]['title']).'</h5>
                                 <p class="card-text text-secondary">'.ucwords($result[$i]['genre']).'</p>
                             </div>

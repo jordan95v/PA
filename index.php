@@ -94,8 +94,9 @@ $pdo=connectDB();
             }
         ?>
     </div>
-
-    <a href="films.php" class="btn btn-outline-danger w-100">Voir tous les films</a>
+    <div class="text-center mt-2 mb-4">
+        <a href="films.php" class="btn btn-outline-danger p-2">Voir tous les films</a>
+    </div>
 
     <!-- Cards for movie -->
     <!-- <div class="row py-4 row-cols-1 row-cols-lg-4 g-4 text-dark">

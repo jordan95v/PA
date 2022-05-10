@@ -10,7 +10,7 @@ if (
     die();
 }
 
-$target_dir = "../Images/";
+$target_dir = "../Images/Movies/";
 $target_file = $target_dir . basename($_FILES["file"]["name"]);
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 $errors = [];
@@ -116,7 +116,7 @@ function makeFiligrane($imageName) {
     // Args:
     //  imageName (...): Where the image is located.
 
-    $stamp = imagecreatefrompng("../Images/stamp.png");
+    $stamp = imagecreatefrompng("../Images/stamps.png");
     $im = imagecreatefromjpeg($imageName);
 
     $marge_right = 10;
