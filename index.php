@@ -77,7 +77,7 @@ include "Templates/header.php";
 
     <div class="row py-4 row-cols-sm-2 row-cols-lg-5 row-cols-md-3 row-cols-sm-2 g-4 text-dark">
         <?php
-        $query = $pdo->prepare("SELECT * FROM groschien_film WHERE featured=:featured");
+        $query = $pdo->prepare("SELECT image_path, title, genre FROM groschien_film WHERE featured=:featured");
         $query->execute(["featured" => 1]);
         $result = $query->fetchAll();
         $count = (count($result) >= 5) ? 5 : count($result);
@@ -89,7 +89,7 @@ include "Templates/header.php";
                         <div class="card border-0">
                             <img src="' . str_replace('../', '', $result[$i]['image_path']) . '" class="zoom card-img-top" alt="...">
                             <div class="card-body custom-cards text-light text-start ps-0">
-                                <h5 class="card-title mb-4">' . ucwords($result[$i]['title']) . '</h5>
+                                <h5 class="card-title">' . ucwords($result[$i]['title']) . '</h5>
                                 <p class="card-text text-secondary">' . ucwords($result[$i]['genre']) . '</p>
                             </div>
                         </div>

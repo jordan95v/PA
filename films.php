@@ -1,13 +1,11 @@
 <?php
 include 'Templates/header.php';
 
-if (isset($_GET["genre"]))
-{
+if (isset($_GET["genre"])) {
     $genre = $_GET["genre"];
-    $query=$pdo->prepare("SELECT * FROM groschien_film WHERE genre=:genre");
-    $query->execute(["genre"=>$genre]);
+    $query = $pdo->prepare("SELECT image_path, title, genre FROM groschien_film WHERE genre=:genre");
+    $query->execute(["genre" => $genre]);
     $result = $query->fetchAll();
-    $checker = (count($result) != 0) ? 0 : 1;
 }
 ?>
 
@@ -15,7 +13,7 @@ if (isset($_GET["genre"]))
 <div class="container">
     <div class="d-flex pt-4 bd-highlight">
         <div class="p-2 flex-grow-1 bd-highlight">
-            <h2 class="fw-bold">Tous les films <?php echo (isset($genre)) ? "(".ucwords($genre).")" : " ";?>🎥</h2>
+            <h2 class="fw-bold">Tous les films <?php echo (isset($genre)) ? "(" . ucwords($genre) . ")" : " "; ?>🎥</h2>
         </div>
         <div class="p-3 flex-shrink-1 bd-highlight">
             <a href="films.php" class="text-danger text-decoration-none">Enlevez les filtres <span class='arrow right'></span></a>
@@ -46,7 +44,7 @@ if (isset($_GET["genre"]))
                     </li>
                     <li class="nav-item active mx-4">
                         <h4><a class="nav-link" href="?genre=sci-fi">Sci-Fi</a></h5>
-                    </li>   
+                    </li>
                 </ul>
             </div>
         </div>
@@ -55,28 +53,27 @@ if (isset($_GET["genre"]))
     <div class="row py-4 row-cols-sm-2 row-cols-lg-5 row-cols-md-3 row-cols-sm-2 g-4 text-dark">
         <?php
 
-            if (!isset($checker))
-            {
-                $query=$pdo->prepare("SELECT * FROM groschien_film");
-                $query->execute();
-                $result = $query->fetchAll();
-            }
+        if (!isset($result)) {
+            $query = $pdo->prepare("SELECT image_path, title, genre FROM groschien_film");
+            $query->execute();
+            $result = $query->fetchAll();
+        }
 
-            for ($i=0; $i < count($result); $i++) { 
-                echo '
+        for ($i = 0; $i < count($result); $i++) {
+            echo '
                 <div class="col">
                     <a href="#" class="text-decoration-none">
                         <div class="card border-0">
-                            <img src="'.str_replace('../', '', $result[$i]['image_path']).'" class="zoom card-img-top" alt="...">
+                            <img src="' . str_replace('../', '', $result[$i]['image_path']) . '" class="zoom card-img-top" alt="...">
                             <div class="card-body custom-cards text-light text-start ps-0">
-                                <h5 class="card-title mb-4">'.ucwords($result[$i]['title']).'</h5>
-                                <p class="card-text text-secondary">'.ucwords($result[$i]['genre']).'</p>
+                                <h5 class="card-title">' . ucwords($result[$i]['title']) . '</h5>
+                                <p class="card-text text-secondary">' . ucwords($result[$i]['genre']) . '</p>
                             </div>
                         </div>
                     </a>
                 </div>
                 ';
-            }
+        }
         ?>
     </div>
 </div>
