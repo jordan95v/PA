@@ -30,7 +30,7 @@
                         <div id="userHelp" class="form-text text-center">Le nom du réal 🎞</div>
                     </div>
                     <div class="mb-5">
-                        <input type="text" name="actor" class="form-control" placeholder="Entrez le nom des acteurs.">
+                        <input type="text" name="actors" class="form-control" placeholder="Entrez le nom des acteurs.">
                         <div id="userHelp" class="form-text text-center">Le nom des acteurs 🎦</div>
                     </div>
                     <div class="form-check mb-4 text-start">
