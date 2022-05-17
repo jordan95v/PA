@@ -5,5 +5,5 @@
     <a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#newsletter">Newsletter</a>
 </li>
 <li>
-    <a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#users">Liste des users</a>
+    <a class="dropdown-item" href="users.php">Liste des users</a>
 </li>

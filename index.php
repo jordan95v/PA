@@ -1,6 +1,5 @@
 <?php
 include "Templates/header.php";
-$pdo=connectDB();
 ?>
 
 <div class="container">

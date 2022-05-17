@@ -1,8 +1,6 @@
 <?php
 include 'Templates/header.php';
 
-$pdo=connectDB();
-
 if (isset($_GET["genre"]))
 {
     $genre = $_GET["genre"];
@@ -11,9 +9,6 @@ if (isset($_GET["genre"]))
     $result = $query->fetchAll();
     $checker = (count($result) != 0) ? 0 : 1;
 }
-
-
-
 ?>
 
 <!-- Featured Movies + Cards for movies -->

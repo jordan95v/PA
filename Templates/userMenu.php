@@ -1,5 +1,4 @@
 <?php
-$pdo = connectDB();
 $query = $pdo->prepare("SELECT * FROM petitchat_user WHERE email=:email");
 $query->execute(["email" => $_SESSION["email"]]);
 $user = $query->fetch();
@@ -28,7 +27,7 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
 </li>
 
 <div class="modal fade" id="profile" tabindex="-1" aria-labelledby="profileModal" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content text-dark">
             <div class="modal-header">
                 <h4 class="modal-title" id="profileModal"><?php echo "Profil de " . $user["username"]; ?></h4>

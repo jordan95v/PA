@@ -1,5 +1,5 @@
 <div class="modal fade" id="film" tabindex="-1" aria-labelledby="filmModal" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content text-dark">
             <div class="modal-header">
                 <h4 class="modal-title" id="filmModal">Ajouter un film 🎬</h4>
@@ -50,7 +50,7 @@
 </div>
 
 <div class="modal fade" id="newsletter" tabindex="-1" aria-labelledby="newsletterModal" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content text-dark">
             <div class="modal-header">
                 <h4 class="modal-title" id="newsletterModal">Envoyer une newsletter 💌</h4>

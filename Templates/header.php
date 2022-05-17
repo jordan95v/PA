@@ -1,5 +1,6 @@
 <?php
 require_once 'Scripts/functions.php';
+$pdo = connectDB();
 ?>
 
 <!doctype html>

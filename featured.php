@@ -1,6 +1,5 @@
 <?php
 include 'Templates/header.php';
-$pdo=connectDB();
 ?>
 
 <!-- Featured Movies + Cards for movies -->
