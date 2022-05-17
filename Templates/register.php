@@ -1,7 +1,7 @@
 <li class="nav-item">
     <a class="nav-link ms-5" href="" data-bs-toggle="modal" data-bs-target="#register">S'inscrire</a>
 
-    <div class="modal fade mt-5" id="register" tabindex="-1" aria-labelledby="registerModal" aria-hidden="true">
+    <div class="modal fade" id="register" tabindex="-1" aria-labelledby="registerModal" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content text-dark">
                 <div class="modal-header">
@@ -49,7 +49,7 @@
                         </div>
                         <button type="submit" class="btn btn-dark w-100">S'inscrire</button>
                     </form>
-                    
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger w-100" data-bs-dismiss="modal">Fermer</button>

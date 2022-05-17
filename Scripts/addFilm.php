@@ -3,9 +3,9 @@ require_once "functions.php";
 
 if (
     empty($_POST["title"]) || empty($_POST["genre"]) ||
-    empty($_POST["maker"]) || empty($_POST["actor"]) ||
+    empty($_POST["maker"]) || empty($_POST["actors"]) ||
     empty($_FILES["file"]) || empty($_POST["featured"]) ||
-    count($_POST) != 5 || empty($_FILES)
+    empty($_POST["desc"]) || count($_POST) != 6 || empty($_FILES)
 ) {
     $_SESSION["notAdmin"] = 1;
     header("Location: ../index.php");
@@ -25,8 +25,8 @@ checkFileExtension($imageFileType, $errors);
 $title = strtolower($_POST["title"]);
 $maker = strtolower($_POST["maker"]);
 $actors = strtolower($_POST["actors"]);
+$info = strtolower($_POST["desc"]);
 $featured = ($_POST["featured"] === "on") ? 1 : 0;
-
 
 if (isAdmin($pdo)) {
     if (count($errors) != 0) {
@@ -36,8 +36,8 @@ if (isAdmin($pdo)) {
         if (filmExists($pdo, $title, $errors)) {
             if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
                 makeFiligrane($target_file);
-                $query = $pdo->prepare("INSERT INTO groschien_film (image_path, title, genre, maker, actors, featured) VALUES (:image_path, :title, :genre, :maker, :actors, :featured);");
-                $query->execute(["image_path" => $target_file, "title" => $title, "genre" => $_POST["genre"], "maker" => $maker, "actors" => $actors, "featured" => $featured]);
+                $query = $pdo->prepare("INSERT INTO groschien_film (image_path, title, genre, maker, actors, info, featured) VALUES (:image_path, :title, :genre, :maker, :actors, :info, :featured);");
+                $query->execute(["image_path" => $target_file, "title" => $title, "genre" => $_POST["genre"], "maker" => $maker, "actors" => $actors, "info" => $info, "featured" => $featured]);
                 $_SESSION["upload"] = 1;
                 header("Location: ../index.php");
             } else {

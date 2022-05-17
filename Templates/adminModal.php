@@ -33,6 +33,10 @@
                         <input type="text" name="actors" class="form-control" placeholder="Entrez le nom des acteurs.">
                         <div id="userHelp" class="form-text text-center">Le nom des acteurs 🎦</div>
                     </div>
+                    <div class="mb-5">
+                        <textarea name="desc" class="form-control" placeholder="Entrez la description du film." rows="4"></textarea>
+                        <div id="userHelp" class="form-text text-center">Limitez à 255 caractères.</div>
+                    </div>
                     <div class="form-check mb-4 text-start">
                         <input class="form-check-input" type="checkbox" name="featured" id="flexCheck">
                         <label class="form-check-label" for="flexCheck">

@@ -10,7 +10,7 @@
     </a>
 </div>
 
-<div class="modal fade mt-5" id="<?php echo $result[$i]['title']; ?>" tabindex="-1" aria-labelledby="filmModal" aria-hidden="true">
+<div class="modal fade" id="<?php echo $result[$i]['title']; ?>" tabindex="-1" aria-labelledby="filmModal" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content text-dark">
             <div class="modal-header">
@@ -19,8 +19,9 @@
             </div>
             <div class="modal-body text-center">
                 <img src="<?php echo str_replace('../', '', $result[$i]['image_path']); ?>" alt="...">
-                <p class="my-4"><b>Réalisateur:</b> <?php echo ucwords($result[$i]['maker']); ?></p>
+                <p class="my-4">Réalisé par <b><?php echo ucwords($result[$i]['maker']); ?></b></p>
                 <p class="my-4"><b>Acteurs:</b> <?php echo ucwords($result[$i]['actors']); ?></p>
+                <p class="my-4"><b>Description:</b> <?php echo ucwords($result[$i]['info']); ?></p>
                 <!-- Add description -->
                 <?php
                 if (isAdmin($pdo)) {

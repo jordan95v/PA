@@ -1,7 +1,7 @@
 <li class="nav-item">
     <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#login">Se connecter</a>
 
-    <div class="modal fade mt-5" id="login" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
+    <div class="modal fade" id="login" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content text-dark">
                 <div class="modal-header">
