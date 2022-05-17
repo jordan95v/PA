@@ -22,6 +22,11 @@
                 <p class="my-4"><b>Réalisateur:</b> <?php echo ucwords($result[$i]['maker']); ?></p>
                 <p class="my-4"><b>Acteurs:</b> <?php echo ucwords($result[$i]['actors']); ?></p>
                 <!-- Add description -->
+                <?php
+                if (isAdmin($pdo)) {
+                    include "filmAdminButton.php";
+                }
+                ?>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger w-100" data-bs-dismiss="modal">Fermer</button>
