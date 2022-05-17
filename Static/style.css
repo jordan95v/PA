@@ -8,6 +8,11 @@ body {
     background-color: #0d0f27;
 }
 
+button {
+    padding: 0;
+    margin: 0;
+}
+
 /* ID */
 #main {
     height: 400px;
