@@ -51,5 +51,5 @@ if (isConnected($pdo)) {
     }
 } else {
     $_SESSION["notAdmin"] = 1;
-    header("Location: index.php");
+    header("Location: ../index.php");
 }

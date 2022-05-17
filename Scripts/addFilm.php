@@ -8,7 +8,7 @@ if (
     count($_POST) != 5 || empty($_FILES)
 ) {
     $_SESSION["notAdmin"] = 1;
-    header("Location: index.php");
+    header("Location: ../index.php");
 }
 
 $target_dir = "../Images/Movies/";
@@ -51,7 +51,7 @@ if (isAdmin($pdo)) {
     }
 } else {
     $_SESSION["notAdmin"] = 1;
-    header("Location: index.php");
+    header("Location: ../index.php");
 }
 
 
