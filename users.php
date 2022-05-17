@@ -1,10 +1,16 @@
 <?php
-include 'Templates/header.php';
-if (isset($_GET['search'])) {
-    $query = $pdo->prepare('SELECT * FROM petitchat_user WHERE username=:username');
-    $query->execute(["username" => $_GET['search']]);
+include "Templates/header.php";
+
+if (!isConnected($pdo) and !isAdmin($pdo)) {
+    $_SESSION["notAdmin"] = 1;
+    header("Location: index.php");
+}
+
+if (isset($_GET["search"])) {
+    $query = $pdo->prepare("SELECT * FROM petitchat_user WHERE username=:username");
+    $query->execute(["username" => $_GET["search"]]);
 } else {
-    $query = $pdo->prepare('SELECT * FROM petitchat_user');
+    $query = $pdo->prepare("SELECT * FROM petitchat_user");
     $query->execute();
 }
 $result = $query->fetchAll();
@@ -47,5 +53,5 @@ $title = (count($result) > 1) ? "Tous les utilisateurs" : "Résultat de la reche
 
 
 <?php
-include 'Templates/footer.php';
+include "Templates/footer.php";
 ?>
