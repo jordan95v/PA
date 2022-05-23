@@ -3,6 +3,14 @@
 require_once "functions.php";
 require_once "userFunction.php";
 
+if (
+    empty($_POST["email"]) || empty($_POST["username"])
+) {
+    $_SESSION["empty"] = 1;
+    header("Location: ../index.php");
+    die();
+}
+
 $errors = [];
 $pdo = connectDB();
 
