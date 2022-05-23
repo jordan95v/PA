@@ -4,7 +4,7 @@ require_once "functions.php";
 if (
     empty($_POST["title"]) || empty($_POST["genre"]) ||
     empty($_POST["maker"]) || empty($_POST["actors"]) ||
-    empty($_POST["featured"]) || empty($_POST["desc"]) || count($_POST) != 6
+    empty($_POST["desc"])
 ) {
     $_SESSION["empty"] = 1;
     header("Location: ../index.php");
