@@ -19,7 +19,7 @@ $pdo = connectDB();
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="Static/style.css">
 
     <!-- Favicon -->
     <!-- <link rel="shortcut icon" href="Static/favicon.ico" type="image/x-icon"> -->

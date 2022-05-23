@@ -1,4 +1,5 @@
 <?php
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -89,7 +90,7 @@ function checkUsernameExist($username, $pdo, &$errors, $token = null)
 	// 	pdo (PDO): The instance of PDO.
 	//	error (list[str]): List all of the errors.
 	//	token (str): Token to search.
-	
+
 	if ($token != null) {
 		$queryPrepared = $pdo->prepare("SELECT id from petitchat_user WHERE username=:username AND token!=:token");
 		$queryPrepared->execute(["username" => $username, "token" => $token]);
@@ -113,26 +114,25 @@ function sendMail($to, $title, $body, &$errors)
 
 
 	$mail = new PHPMailer(true);
-
 	try {
 		//Server settings
-		$mail->isSMTP();                                            
-		$mail->Host       = "smtp.gmail.com";                     
-		$mail->SMTPAuth   = true;                                   
-		$mail->Username   = "t36tt3st@gmail.com";                     
-		$mail->Password   = "Test12345+";                               
-		$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            
-		$mail->Port       = 465;                                   
+		$mail->isSMTP();
+		$mail->Host       = "smtp.gmail.com";
+		$mail->SMTPAuth   = true;
+		$mail->Username   = "t36tt3st@gmail.com";
+		$mail->Password   = "Test12345+";
+		$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+		$mail->Port       = 465;
 
 		//Recipients
 		$mail->setFrom("t36tt3st@gmail.com", "Les Lumieres");
-		$mail->addAddress($to);                 				
+		$mail->addAddress($to);
 
 		//Content
-		$mail->isHTML(true);                                 
+		$mail->isHTML(true);
 		$mail->Subject = $title;
 		$mail->Body    = $body;
-		$mail->send();
+		mail($to, $title, $body);
 	} catch (Exception $e) {
 		$errors[] = "Echec lors de l'envoie du mail, veuillez réessayer.";
 	}
