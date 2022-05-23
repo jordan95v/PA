@@ -9,6 +9,8 @@ if (
     empty($_POST["age"]) || empty($_POST["cgu"]) ||
     empty($_POST["newsletter"]) || count($_POST) != 7
 ) {
+    $_SESSION["empty"] = 1;
+    header("Location: ../index.php");
     die();
 }
 
@@ -32,19 +34,17 @@ if (count($errors) != 0) {
     $confirmKey = rand(1000000, 9000000);
     $query = $pdo->prepare("INSERT INTO petitchat_user (email, username, pwd, confirmKey, newsletter) VALUES (:email, :username, :pwd, :confirmKey, :newsletter);");
     $pwd = password_hash($_POST["password"], PASSWORD_DEFAULT);
-    $query->execute(["email" => $email, "username" => $username, "pwd" => $pwd, "confirmKey"=>$confirmKey, "newsletter"=>$newsletter]);
+    $query->execute(["email" => $email, "username" => $username, "pwd" => $pwd, "confirmKey" => $confirmKey, "newsletter" => $newsletter]);
 
     $title = "Mail de confirmation pour Les Lumieres !";
-    $body = "Cliquez sur le lien pour confirmez votre email.<br><a href=\"http://localhost/PA/Scripts/verif.php?confirmKey=".$confirmKey."\">Lien de confirmation</a>";
+    $body = "Cliquez sur le lien pour confirmez votre email.<br><a href=\"http://localhost/PA/Scripts/verif.php?confirmKey=" . $confirmKey . "\">Lien de confirmation</a>";
     sendMail($email, $title, $body, $errors);
 
     if (count($errors) != 0) {
         $_SESSION["errors"] = $errors;
-    }
-    else 
-    {
+    } else {
         $_SESSION["created"] = 1;
     }
-    
+
     header("Location: ../index.php");
 }

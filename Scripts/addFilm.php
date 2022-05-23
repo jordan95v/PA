@@ -7,8 +7,9 @@ if (
     empty($_FILES["file"]) || empty($_POST["featured"]) ||
     empty($_POST["desc"]) || count($_POST) != 6 || empty($_FILES)
 ) {
-    $_SESSION["notAdmin"] = 1;
+    $_SESSION["empty"] = 1;
     header("Location: ../index.php");
+    die();
 }
 
 $target_dir = "../Images/Movies/";

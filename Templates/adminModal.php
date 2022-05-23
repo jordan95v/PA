@@ -20,7 +20,7 @@
                             <option value="action">Action</option>
                             <option value="aventure">Aventure</option>
                             <option value="drame">Drame</option>
-                            <option value="horror">Horreur</option>
+                            <option value="horreur">Horreur</option>
                             <option value="thriller">Thriller</option>
                             <option value="sci-fi">Science-fiction</option>
                         </select>

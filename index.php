@@ -4,6 +4,7 @@ include "Templates/header.php";
 
 <div class="container">
     <?php
+
     if (!empty($_SESSION["errors"]) && isset($_SESSION["errors"])) {
         echo '<div class="alert alert-danger mt-4 pb-1" role="alert">';
 
@@ -16,51 +17,69 @@ include "Templates/header.php";
     }
     if (!empty($_SESSION["created"]) && isset($_SESSION["created"])) {
         echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
-        echo '<h5 class="fw-bold">Le compte à bien été crée, confirmez votre mail pour vous connecter.';
+        echo '<h5 class="fw-bold">Le compte à bien été crée, confirmez votre mail pour vous connecter.</h5>';
         echo '</div>';
         unset($_SESSION["created"]);
     }
     if (!empty($_SESSION["updated"]) && isset($_SESSION["updated"])) {
         echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
-        echo '<h5 class="fw-bold">Le compte à bien été modifiée !';
+        echo '<h5 class="fw-bold">Le compte à bien été modifiée !</h5>';
         echo '</div>';
         unset($_SESSION["updated"]);
     }
     if (!empty($_SESSION["logged"]) && isset($_SESSION["logged"])) {
         echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
-        echo '<h5 class="fw-bold">La connexion à réussi.';
+        echo '<h5 class="fw-bold">La connexion à réussi</h5>.';
         echo '</div>';
         unset($_SESSION["logged"]);
     }
     if (!empty($_SESSION["unlogged"]) && isset($_SESSION["unlogged"])) {
         echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
-        echo '<h5 class="fw-bold">La déconnexion à réussi.';
+        echo '<h5 class="fw-bold">La déconnexion à réussi.</h5>';
         echo '</div>';
         unset($_SESSION["unlogged"]);
     }
     if (!empty($_SESSION["confirm"]) && isset($_SESSION["confirm"])) {
         echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
-        echo '<h5 class="fw-bold">Le mail à été vérifié, vous pouvez vous connectez.';
+        echo '<h5 class="fw-bold">Le mail à été vérifié, vous pouvez vous connectez.</h5>';
         echo '</div>';
         unset($_SESSION["confirm"]);
     }
     if (!empty($_SESSION["upload"]) && isset($_SESSION["upload"])) {
         echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
-        echo '<h5 class="fw-bold">Le film à été correctement enregistrer.';
+        echo '<h5 class="fw-bold">Le film à été correctement enregistrer.</h5>';
         echo '</div>';
         unset($_SESSION["upload"]);
     }
     if (!empty($_SESSION["send"]) && isset($_SESSION["send"])) {
         echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
-        echo '<h5 class="fw-bold">La newsletter à été envoyée.';
+        echo '<h5 class="fw-bold">La newsletter à été envoyée.</h5>';
         echo '</div>';
         unset($_SESSION["send"]);
     }
     if (!empty($_SESSION["notAdmin"]) && isset($_SESSION["notAdmin"])) {
         echo '<div class="alert alert-danger mt-4 pb-1" role="alert">';
-        echo '<h5 class="fw-bold">Vous n\'avez pas la permission d\'accéder à cette page.';
+        echo '<h5 class="fw-bold">Vous n\'avez pas la permission d\'accéder à cette page.</h5>';
         echo '</div>';
         unset($_SESSION["notAdmin"]);
+    }
+    if (!empty($_SESSION["empty"]) && isset($_SESSION["empty"])) {
+        echo '<div class="alert alert-danger mt-4 pb-1" role="alert">';
+        echo '<h5 class="fw-bold">Il faut remplir tout les champs.</h5>';
+        echo '</div>';
+        unset($_SESSION["empty"]);
+    }
+    if (!empty($_SESSION["modified"]) && isset($_SESSION["modified"])) {
+        echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
+        echo '<h5 class="fw-bold">Le film à bien été modifiée.</h5>';
+        echo '</div>';
+        unset($_SESSION["modified"]);
+    }
+    if (!empty($_SESSION["deletedFilm"]) && isset($_SESSION["deletedFilm"])) {
+        echo '<div class="alert alert-warning mt-4 pb-1" role="alert">';
+        echo '<h5 class="fw-bold">Le film à bien été supprimé.</h5>';
+        echo '</div>';
+        unset($_SESSION["deletedFilm"]);
     }
     ?>
     <!-- Featured Movies + Cards for movies -->

@@ -11,11 +11,10 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
         <li>
             <a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#profile">Mon profil</a>
         </li>
-        <?php 
-            if (isAdmin($pdo))
-            {
-                include "adminItem.php";
-            }
+        <?php
+        if (isAdmin($pdo)) {
+            include "adminItem.php";
+        }
         ?>
         <li>
             <hr class="dropdown-divider">
@@ -72,9 +71,8 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
     </div>
 </div>
 
-<?php 
-    if (isAdmin($pdo)) 
-    {
-        include "adminModal.php";
-    }
+<?php
+if (isAdmin($pdo)) {
+    include "adminModal.php";
+}
 ?>

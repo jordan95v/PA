@@ -5,6 +5,7 @@ require_once "userFunction.php";
 if (empty($_POST["title"]) || empty($_POST["body"]) || count($_POST) != 2) {
     $_SESSION["notAdmin"] = 1;
     header("Location: ../index.php");
+    die();
 }
 
 $title = ucfirst(trim($_POST["title"]));
