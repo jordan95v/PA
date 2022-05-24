@@ -29,7 +29,7 @@ include "Templates/header.php";
     }
     if (!empty($_SESSION["logged"]) && isset($_SESSION["logged"])) {
         echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
-        echo '<h5 class="fw-bold">La connexion à réussi</h5>.';
+        echo '<h5 class="fw-bold">La connexion à réussi.</h5>';
         echo '</div>';
         unset($_SESSION["logged"]);
     }

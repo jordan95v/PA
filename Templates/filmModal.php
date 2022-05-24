@@ -1,5 +1,5 @@
 <div class="col">
-    <a type="button" data-bs-toggle="modal" data-bs-target="#<?php echo $result[$i]['title']; ?>" class="text-decoration-none">
+    <a type="button" data-bs-toggle="modal" data-bs-target="#<?php echo str_replace(' ', '-', $result[$i]['title']); ?>" class="text-decoration-none">
         <div class="card border-0">
             <img src="<?php echo str_replace('../', '', $result[$i]['image_path']); ?>" class="zoom card-img-top" alt="...">
             <div class="card-body custom-cards text-light text-start ps-0">
@@ -10,7 +10,7 @@
     </a>
 </div>
 
-<div class="modal fade" id="<?php echo $result[$i]['title']; ?>" tabindex="-1" aria-labelledby="filmModal" aria-hidden="true">
+<div class="modal fade" id="<?php echo str_replace(' ', '-', $result[$i]['title']); ?>" tabindex="-1" aria-labelledby="filmModal" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content text-dark">
             <div class="modal-header">
@@ -36,7 +36,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="<?php echo $result[$i]['title']; ?>-modif" tabindex="-1" aria-labelledby="filmModal" aria-hidden="true">
+<div class="modal fade" id="<?php echo str_replace(' ', '-', $result[$i]['title']); ?>-modif" tabindex="-1" aria-labelledby="filmModal" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content text-dark">
             <div class="modal-header">
@@ -87,7 +87,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="<?php echo $result[$i]['title']; ?>-del" tabindex="-1" aria-labelledby="filmModal" aria-hidden="true">
+<div class="modal fade" id="<?php echo str_replace(' ', '-', $result[$i]['title']); ?>-del" tabindex="-1" aria-labelledby="filmModal" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content text-dark">
             <div class="modal-header">
