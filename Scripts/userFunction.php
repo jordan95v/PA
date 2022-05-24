@@ -118,21 +118,31 @@ function sendMail($to, $title, $body, &$errors)
 		//Server settings
 		$mail->isSMTP();
 		$mail->Host       = "smtp.gmail.com";
+		$mail->SMTPOptions = array(
+			'ssl' => array(
+				'verify_peer' => false,
+				'verify_peer_name' => false,
+				'allow_self_signed' => true
+			)
+		);
 		$mail->SMTPAuth   = true;
 		$mail->Username   = "t36tt3st@gmail.com";
 		$mail->Password   = "Test12345+";
-		$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-		$mail->Port       = 465;
+		$mail->SMTPSecure = 'tls';
+		$mail->Port       = 587;
 
 		//Recipients
-		$mail->setFrom("t36tt3st@gmail.com", "Les Lumieres");
-		$mail->addAddress($to);
+		$mail->From = "t36tt3st@gmail.com";
+		$mail->FromName = "Les Lumieres";
+		$mail->Sender = "t36tt3st@gmail.com";
 
 		//Content
 		$mail->isHTML(true);
 		$mail->Subject = $title;
 		$mail->Body    = $body;
-		mail($to, $title, $body);
+		$mail->addAddress($to);
+
+		$mail->send();
 	} catch (Exception $e) {
 		$errors[] = "Echec lors de l'envoie du mail, veuillez réessayer.";
 	}
