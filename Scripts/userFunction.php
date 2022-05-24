@@ -147,3 +147,44 @@ function sendMail($to, $title, $body, &$errors)
 		$errors[] = "Echec lors de l'envoie du mail, veuillez réessayer.";
 	}
 }
+
+function sendNewsMail($title, $body, $emails, &$errors)
+{
+	// Send a confirmation mail.
+
+	// Args:
+	//	to (str): Email to send.
+	//	confirmKey(int): confirmKey of the confirmation mail.
+	//	error (list[str]): List all of the errors.
+
+
+	$mail = new PHPMailer(true);
+	try {
+		//Server settings
+		$mail->isSMTP();
+		$mail->Host       = "smtp.gmail.com";
+		$mail->SMTPAuth   = true;
+		$mail->Username   = "t36tt3st@gmail.com";
+		$mail->Password   = "Test12345+";
+		$mail->SMTPSecure = 'tls';
+		$mail->Port       = 587;
+
+		//Recipients
+		$mail->From = "t36tt3st@gmail.com";
+		$mail->FromName = "Les Lumieres";
+		$mail->Sender = "t36tt3st@gmail.com";
+
+		//Content
+		$mail->isHTML(true);
+		$mail->Subject = $title;
+		$mail->Body    = $body;
+
+		for ($i = 0; $i < count($emails); $i++) {
+			$mail->addCC($emails[$i]);
+		}
+
+		$mail->send();
+	} catch (Exception $e) {
+		$errors[] = "Echec lors de l'envoie du mail, veuillez réessayer.";
+	}
+}

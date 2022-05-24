@@ -17,15 +17,17 @@ if (isAdmin($pdo)) {
     $query = $pdo->prepare("SELECT * FROM petitchat_user WHERE newsletter=:news");
     $query->execute(["news" => 1]);
     $result = $query->fetchAll();
+    $emails = [];
 
     for ($i = 0; $i < count($result); $i++) {
-        $email = $result[$i]["email"];
-        sendMail($email, $title, $body, $errors);
+        $emails[] = $result[$i]["email"];
+    }
 
-        if (count($errors) != 0) {
-            $_SESSION["errors"] = $errors;
-            header("Location: ../index.php");
-        }
+    sendNewsMail($title, $body, $emails, $errors);
+    if (count($errors) != 0) {
+        $_SESSION["errors"] = $errors;
+        header("Location: ../index.php");
+        die();
     }
     $_SESSION['send'] = 1;
     header("Location: ../index.php");
