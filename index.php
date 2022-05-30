@@ -82,7 +82,7 @@ updateLogs($pdo, 'index.php');
     }
     if (!empty($_SESSION["sell"]) && isset($_SESSION["sell"])) {
         echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
-        echo '<h5 class="fw-bold">L\'achat est un succès, vous allez reçevoir votre ticket par mail.</h5>';
+        echo '<h5 class="fw-bold">L\'achat est un succès, vous allez reçevoir votre billet dans le section Mes Billets.</h5>';
         echo '</div>';
         unset($_SESSION["sell"]);
     }

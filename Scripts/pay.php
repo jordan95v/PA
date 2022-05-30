@@ -28,6 +28,7 @@ if (isConnected($pdo)) {
     ]);
     $_SESSION["film"] = $_POST["film"];
     header("HTTP/1.1 303 See Other");
+    $_SESSION['stripe_ok'] = 1;
     header("Location: " . $checkout_session->url);
 } else {
     $_SESSION["notLogged"] = 1;
