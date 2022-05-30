@@ -22,7 +22,7 @@ $checkout_session = \Stripe\Checkout\Session::create([
     ]],
     'mode' => 'payment',
     'success_url' => $domain . '/PA/Scripts/success.php',
-    'cancel_url' => $domain . '/PA/cancel.html',
+    'cancel_url' => $domain . '/PA/Scripts/cancel.html',
 ]);
 $_SESSION["film"] = $_POST["film"];
 header("HTTP/1.1 303 See Other");

@@ -88,6 +88,12 @@ updateLogs($pdo, 'index.php');
         echo '</div>';
         unset($_SESSION["sell"]);
     }
+    if (!empty($_SESSION["notSell"]) && isset($_SESSION["notSell"])) {
+        echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
+        echo '<h5 class="fw-bold">L\'achat est annulée.</h5>';
+        echo '</div>';
+        unset($_SESSION["notSell"]);
+    }
     ?>
     <!-- Featured Movies + Cards for movies -->
     <div class="d-flex pt-4 bd-highlight">
