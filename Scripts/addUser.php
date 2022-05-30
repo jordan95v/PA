@@ -6,8 +6,7 @@ require_once "userFunction.php";
 if (
     empty($_POST["email"]) || empty($_POST["username"]) ||
     empty($_POST["password"]) || empty($_POST["passwordConfirm"]) ||
-    empty($_POST["age"]) || empty($_POST["cgu"]) ||
-    empty($_POST["newsletter"]) || count($_POST) != 7
+    empty($_POST["age"]) || empty($_POST["cgu"])
 ) {
     $_SESSION["empty"] = 1;
     header("Location: ../index.php");
