@@ -82,6 +82,12 @@ updateLogs($pdo, 'index.php');
         echo '</div>';
         unset($_SESSION["deletedFilm"]);
     }
+    if (!empty($_SESSION["sell"]) && isset($_SESSION["sell"])) {
+        echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
+        echo '<h5 class="fw-bold">L\'achat est un succès, vous allez reçevoir votre ticket par mail.</h5>';
+        echo '</div>';
+        unset($_SESSION["sell"]);
+    }
     ?>
     <!-- Featured Movies + Cards for movies -->
     <div class="d-flex pt-4 bd-highlight">

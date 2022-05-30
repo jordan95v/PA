@@ -28,6 +28,10 @@
                     include "filmAdminButton.php";
                 }
                 ?>
+                <form action="Scripts/pay.php" method="post">
+                    <input type="hidden" name="film" value="<?php echo $result[$i]['id']; ?>">
+                    <input type="submit" class="btn btn-success w-100 my-2" value="Acheter un billet">
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger w-100" data-bs-dismiss="modal">Fermer</button>
