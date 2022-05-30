@@ -119,11 +119,11 @@ function sendUserMail($to, $from, $from_name, $title, $body, &$errors)
 	$mail->SMTPSecure = 'tls';
 	$mail->Host = 'smtp.gmail.com';
 	$mail->Port = 587;
-	$mail->Username = 't36tt3st@gmail.com';
+	$mail->Username = 'lumiereswebsite@gmail.com';
 	$mail->Password = 'Test12345+';
 
 	$mail->IsHTML(true);
-	$mail->From = "t36tt3st@gmail.com";
+	$mail->From = "lumiereswebsite@gmail.com";
 	$mail->FromName = $from_name;
 	$mail->Sender = $from;
 	$mail->AddReplyTo($from, $from_name);
@@ -137,7 +137,7 @@ function sendUserMail($to, $from, $from_name, $title, $body, &$errors)
 	}
 }
 
-function sendNewsMail($title, $body, $emails, &$errors)
+function sendNewsMail($from, $from_name, $title, $body, $emails, &$errors)
 {
 	// Send a confirmation mail.
 
@@ -147,33 +147,36 @@ function sendNewsMail($title, $body, $emails, &$errors)
 	//	error (list[str]): List all of the errors.
 
 
-	$mail = new PHPMailer(true);
-	try {
-		//Server settings
-		$mail->isSMTP();
-		$mail->Host       = "smtp.gmail.com";
-		$mail->SMTPAuth   = true;
-		$mail->Username   = "t36tt3st@gmail.com";
-		$mail->Password   = "Test12345+";
-		$mail->SMTPSecure = 'tls';
-		$mail->Port       = 587;
+	$mail = new PHPMailer();
+	$mail->SMTPDebug = 1;
+	$mail->IsSMTP();
+	$mail->SMTPAuth = true;
+	$mail->SMTPOptions = array(
+		'ssl' => array(
+			'verify_peer' => false,
+			'verify_peer_name' => false,
+			'allow_self_signed' => true
+		)
+	);
+	$mail->SMTPSecure = 'tls';
+	$mail->Host = 'smtp.gmail.com';
+	$mail->Port = 587;
+	$mail->Username = 'lumiereswebsite@gmail.com';
+	$mail->Password = 'Test12345+';
 
-		//Recipients
-		$mail->From = "t36tt3st@gmail.com";
-		$mail->FromName = "Les Lumieres";
-		$mail->Sender = "t36tt3st@gmail.com";
+	$mail->IsHTML(true);
+	$mail->From = "lumiereswebsite@gmail.com";
+	$mail->FromName = $from_name;
+	$mail->Sender = $from;
+	$mail->AddReplyTo($from, $from_name);
+	$mail->Subject = $title;
+	$mail->Body = $body;
 
-		//Content
-		$mail->isHTML(true);
-		$mail->Subject = $title;
-		$mail->Body    = $body;
+	for ($i = 0; $i < count($emails); $i++) {
+		$mail->addCC($emails[$i]);
+	}
 
-		for ($i = 0; $i < count($emails); $i++) {
-			$mail->addCC($emails[$i]);
-		}
-
-		$mail->send();
-	} catch (Exception $e) {
-		$errors[] = "Echec lors de l'envoie du mail, veuillez réessayer.";
+	if (!$mail->Send()) {
+		$errors[] = 'Erreur lors de l\'envoi de la newsletter.';
 	}
 }
