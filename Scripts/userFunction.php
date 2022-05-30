@@ -103,48 +103,37 @@ function checkUsernameExist($username, $pdo, &$errors, $token = null)
 	}
 }
 
-function sendMail($to, $title, $body, &$errors)
+function sendUserMail($to, $from, $from_name, $title, $body, &$errors)
 {
-	// Send a confirmation mail.
+	$mail = new PHPMailer();
+	$mail->SMTPDebug = 1;
+	$mail->IsSMTP();
+	$mail->SMTPAuth = true;
+	$mail->SMTPOptions = array(
+		'ssl' => array(
+			'verify_peer' => false,
+			'verify_peer_name' => false,
+			'allow_self_signed' => true
+		)
+	);
+	$mail->SMTPSecure = 'tls';
+	$mail->Host = 'smtp.gmail.com';
+	$mail->Port = 587;
+	$mail->Username = 't36tt3st@gmail.com';
+	$mail->Password = 'Test12345+';
 
-	// Args:
-	//	to (str): Email to send.
-	//	confirmKey(int): confirmKey of the confirmation mail.
-	//	error (list[str]): List all of the errors.
+	$mail->IsHTML(true);
+	$mail->From = "t36tt3st@gmail.com";
+	$mail->FromName = $from_name;
+	$mail->Sender = $from;
+	$mail->AddReplyTo($from, $from_name);
+	$mail->Subject = $title;
+	$mail->Body = $body;
+	$mail->AddAddress($to);
+	// $mail->send();
 
-
-	$mail = new PHPMailer(true);
-	try {
-		//Server settings
-		$mail->isSMTP();
-		$mail->Host       = "smtp.gmail.com";
-		$mail->SMTPOptions = array(
-			'ssl' => array(
-				'verify_peer' => false,
-				'verify_peer_name' => false,
-				'allow_self_signed' => true
-			)
-		);
-		$mail->SMTPAuth   = true;
-		$mail->Username   = "t36tt3st@gmail.com";
-		$mail->Password   = "Test12345+";
-		$mail->SMTPSecure = 'tls';
-		$mail->Port       = 587;
-
-		//Recipients
-		$mail->From = "t36tt3st@gmail.com";
-		$mail->FromName = "Les Lumieres";
-		$mail->Sender = "t36tt3st@gmail.com";
-
-		//Content
-		$mail->isHTML(true);
-		$mail->Subject = $title;
-		$mail->Body    = $body;
-		$mail->addAddress($to);
-
-		$mail->send();
-	} catch (Exception $e) {
-		$errors[] = "Echec lors de l'envoie du mail, veuillez réessayer.";
+	if (!$mail->Send()) {
+		$errors[] = 'Erreur lors de l\'envoi du mail.';
 	}
 }
 

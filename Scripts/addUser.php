@@ -38,7 +38,7 @@ if (count($errors) != 0) {
 
     $title = "Mail de confirmation pour Les Lumieres !";
     $body = "Cliquez sur le lien pour confirmez votre email.<br><a href=\"http://localhost/PA/Scripts/verif.php?confirmKey=" . $confirmKey . "\">Lien de confirmation</a>";
-    sendMail($email, $title, $body, $errors);
+    sendUserMail($email, "t36tt3st@gmail.com", "Les Lumieres", $title, $body, $errors);
 
     if (count($errors) != 0) {
         $_SESSION["errors"] = $errors;
