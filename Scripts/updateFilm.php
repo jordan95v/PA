@@ -21,6 +21,7 @@ $featured = ($_POST["featured"] === "on") ? 1 : 0;
 if (isAdmin($pdo)) {
     $query = $pdo->prepare("UPDATE groschien_film SET title=:title, maker=:maker, genre=:genre, actors=:actors, info=:info, featured=:featured WHERE id=:id");
     $query->execute(["title" => $title, "maker" => $maker, "genre" => $_POST["genre"], "actors" => $actors, "info" => $info, "featured" => $featured, "id" => $_GET["id"]]);
+    updateUserLogs($pdo, $results["id"], "updated film " . $_GET["id"]);
     $_SESSION["modified"] = 1;
     header("Location: ../index.php");
 }

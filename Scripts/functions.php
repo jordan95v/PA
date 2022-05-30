@@ -78,7 +78,6 @@ function connectUser($email, $pwd, $pdo, &$errors)
 				$_SESSION["token"] = $token;
 				$_SESSION["username"] = $results["username"];
 				$_SESSION["id"] = $results["id"];
-				updateUserLogs($pdo, $results["id"], "login");
 			} else {
 				$errors[] = "Identifiants incorrects.";
 			}

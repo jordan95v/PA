@@ -55,6 +55,7 @@ if (isConnected($pdo)) {
         $_SESSION["updated"] = 1;
         $_SESSION["email"] = $email;
         $_SESSION["username"] = $username;
+        updateUserLogs($pdo, $user["id"], 'updated');
         header("Location: ../index.php");
     }
 } else {

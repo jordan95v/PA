@@ -5,10 +5,8 @@ updateLogs($pdo, 'index.php');
 
 <div class="container">
     <?php
-
     if (!empty($_SESSION["errors"]) && isset($_SESSION["errors"])) {
         echo '<div class="alert alert-danger mt-4 pb-1" role="alert">';
-
         for ($i = 0; $i < count($_SESSION["errors"]); $i++) {
             $element = $_SESSION["errors"][$i];
             echo '<h5 class="fw-bold">- ' . $element . '</h5>';
@@ -89,12 +87,13 @@ updateLogs($pdo, 'index.php');
         unset($_SESSION["sell"]);
     }
     if (!empty($_SESSION["notSell"]) && isset($_SESSION["notSell"])) {
-        echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
+        echo '<div class="alert alert-danger mt-4 pb-1" role="alert">';
         echo '<h5 class="fw-bold">L\'achat est annulée.</h5>';
         echo '</div>';
         unset($_SESSION["notSell"]);
     }
     ?>
+
     <!-- Featured Movies + Cards for movies -->
     <div class="d-flex pt-4 bd-highlight">
         <div class="p-2 flex-grow-1 bd-highlight">
@@ -106,7 +105,6 @@ updateLogs($pdo, 'index.php');
     </div>
 
     <!-- Cards for movie -->
-
     <div class="row py-4 row-cols-sm-2 row-cols-lg-5 row-cols-md-3 row-cols-sm-2 g-4 text-dark">
         <?php
         $query = $pdo->prepare("SELECT * FROM groschien_film WHERE featured=:featured");

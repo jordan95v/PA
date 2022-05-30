@@ -29,6 +29,7 @@ if (isAdmin($pdo)) {
         header("Location: ../index.php");
         die();
     }
+    updateUserLogs($pdo, $results["id"], "send a newsletter");
     $_SESSION['send'] = 1;
     header("Location: ../index.php");
 } else {

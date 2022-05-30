@@ -7,3 +7,6 @@
 <li>
     <a class="dropdown-item" href="users.php">Liste des users</a>
 </li>
+<li>
+    <a class="dropdown-item" href="logs.php">Liste des logs</a>
+</li>
