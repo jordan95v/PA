@@ -28,7 +28,7 @@ if (isConnected($pdo)) {
         $_SESSION["errors"] = $errors;
         header("Location: ../index.php");
     } else {
-        $query = $pdo->prepare("UPDATE petitchat_user SET email=:email, username=:username, newsletter=:news WHERE token=:token");
+        $query = $pdo->prepare("UPDATE petitchat_user SET email=:email, username=:username, newsletter=:news WHERE token=:token;");
         $query->execute([
             "email" => $email,
             "username" => $username,
@@ -37,13 +37,13 @@ if (isConnected($pdo)) {
         ]);
     }
     if (!empty($_POST["oldPassword"]) && !empty($_POST["password"]) && !empty($_POST["passwordConfirm"])) {
-        $query = $pdo->prepare("SELECT * FROM petitchat_user WHERE token=:token");
+        $query = $pdo->prepare("SELECT * FROM petitchat_user WHERE token=:token;");
         $query->execute(["token" => $_SESSION["token"]]);
         $user = $query->fetch();
         if (checkPassword($_POST["password"], $_POST["passwordConfirm"], $errors)) {
             if (password_verify($_POST["oldPassword"], $user["pwd"])) {
                 $pwd = password_hash($_POST["password"], PASSWORD_DEFAULT);
-                $query = $pdo->prepare("UPDATE petitchat_user SET pwd=:pwd WHERE token=:token");
+                $query = $pdo->prepare("UPDATE petitchat_user SET pwd=:pwd WHERE token=:token;");
                 $query->execute(["pwd" => $pwd, "token" => $_SESSION["token"]]);
             }
         }
@@ -55,7 +55,7 @@ if (isConnected($pdo)) {
         $_SESSION["updated"] = 1;
         $_SESSION["email"] = $email;
         $_SESSION["username"] = $username;
-        updateUserLogs($pdo, $user["id"], 'updated');
+        updateUserLogs($pdo, $_SESSION["id"], 'updated profile.');
         header("Location: ../index.php");
     }
 } else {

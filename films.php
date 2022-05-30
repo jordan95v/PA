@@ -4,7 +4,7 @@ updateLogs($pdo, 'films.php');
 
 if (isset($_GET["genre"])) {
     $genre = $_GET["genre"];
-    $query = $pdo->prepare("SELECT * FROM groschien_film WHERE genre=:genre");
+    $query = $pdo->prepare("SELECT * FROM groschien_film WHERE genre=:genre;");
     $query->execute(["genre" => $genre]);
     $result = $query->fetchAll();
 }
@@ -55,7 +55,7 @@ if (isset($_GET["genre"])) {
         <?php
 
         if (!isset($result)) {
-            $query = $pdo->prepare("SELECT * FROM groschien_film");
+            $query = $pdo->prepare("SELECT * FROM groschien_film;");
             $query->execute();
             $result = $query->fetchAll();
         }

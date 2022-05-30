@@ -14,7 +14,7 @@ $pdo = connectDB();
 $errors = [];
 
 if (isAdmin($pdo)) {
-    $query = $pdo->prepare("SELECT * FROM petitchat_user WHERE newsletter=:news");
+    $query = $pdo->prepare("SELECT * FROM petitchat_user WHERE newsletter=:news;");
     $query->execute(["news" => 1]);
     $result = $query->fetchAll();
     $emails = [];
@@ -29,7 +29,8 @@ if (isAdmin($pdo)) {
         header("Location: ../index.php");
         die();
     }
-    updateUserLogs($pdo, $results["id"], "send a newsletter");
+    updateUserLogs($pdo, $_SESSION["id"], "send a newsletter");
+    updateNews($pdo, $_SESSION["id"], $title, $body);
     $_SESSION['send'] = 1;
     header("Location: ../index.php");
 } else {

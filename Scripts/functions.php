@@ -25,7 +25,7 @@ function isConnected($pdo)
 	if (!isset($_SESSION["email"]) || !isset($_SESSION["token"])) {
 		return false;
 	}
-	$query = $pdo->prepare("SELECT id FROM petitchat_user WHERE email=:email AND token=:token");
+	$query = $pdo->prepare("SELECT id FROM petitchat_user WHERE email=:email AND token=:token;");
 	$query->execute(["email" => $_SESSION["email"], "token" => $_SESSION["token"]]);
 	if ($query->fetch()) {
 		return true;
@@ -51,7 +51,7 @@ function updateToken($id, $token, $pdo)
 	// 	pdo (PDO): The instance of PDO.
 
 
-	$query = $pdo->prepare("UPDATE petitchat_user SET token=:token WHERE id=:id");
+	$query = $pdo->prepare("UPDATE petitchat_user SET token=:token WHERE id=:id;");
 	$query->execute(["token" => $token, "id" => $id]);
 }
 
@@ -66,7 +66,7 @@ function connectUser($email, $pwd, $pdo, &$errors)
 	//	error (list[str]): List all of the errors.
 
 	if ($email && $pwd) {
-		$query = $pdo->prepare("SELECT * FROM petitchat_user WHERE email=:email AND statut=:statut");
+		$query = $pdo->prepare("SELECT * FROM petitchat_user WHERE email=:email AND statut=:statut;");
 		$query->execute(["email" => $email, "statut" => 1]);
 		$results = $query->fetch();
 
@@ -101,7 +101,7 @@ function isAdmin($pdo)
 	if (!isset($_SESSION["email"]) || !isset($_SESSION["token"])) {
 		return false;
 	}
-	$query = $pdo->prepare("SELECT id FROM petitchat_user WHERE email=:email AND token=:token AND is_admin=:is_admin");
+	$query = $pdo->prepare("SELECT id FROM petitchat_user WHERE email=:email AND token=:token AND is_admin=:is_admin;");
 	$query->execute(["email" => $_SESSION["email"], "token" => $_SESSION["token"], "is_admin" => 1]);
 	if ($query->fetch()) {
 		return true;
@@ -117,7 +117,7 @@ function updateLogs($pdo, $view)
 		$query = $pdo->prepare("UPDATE grandcanard_logs SET connection=connection+1 WHERE view=:view");
 		$query->execute(["view" => $view]);
 	} else {
-		$query = $pdo->prepare("INSERT INTO grandcanard_logs (view, connection) VALUES (:view, :nbr)");
+		$query = $pdo->prepare("INSERT INTO grandcanard_logs (view, connection) VALUES (:view, :nbr);");
 		$query->execute(["view" => $view, "nbr" => 1]);
 	}
 }
@@ -126,4 +126,10 @@ function updateUserLogs($pdo, $id, $type)
 {
 	$query = $pdo->prepare("INSERT INTO moyenlezard_user_logs (type, user_id) VALUES (:type, :user_id);");
 	$query->execute(["type" => $type, "user_id" => $id]);
+}
+
+function updateNews($pdo, $id, $sub, $content)
+{
+	$query = $pdo->prepare("INSERT INTO minisculecome_newsletter (user_id, subject, content) VALUES (:user_id, :sub, :content);");
+	$query->execute(["user_id" => $id, "sub" => $sub, "content" => $content]);
 }

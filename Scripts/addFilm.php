@@ -39,7 +39,7 @@ if (isAdmin($pdo)) {
                 makeFiligrane($target_file);
                 $query = $pdo->prepare("INSERT INTO groschien_film (image_path, title, genre, maker, actors, info, featured) VALUES (:image_path, :title, :genre, :maker, :actors, :info, :featured);");
                 $query->execute(["image_path" => $target_file, "title" => $title, "genre" => $_POST["genre"], "maker" => $maker, "actors" => $actors, "info" => $info, "featured" => $featured]);
-                updateUserLogs($pdo, $results["id"], "added a movie:" . $title);
+                updateUserLogs($pdo, $results["id"], "added a movie:" . $title . ".");
                 $_SESSION["upload"] = 1;
                 header("Location: ../index.php");
             } else {
@@ -144,7 +144,7 @@ function filmExists($pdo, $title, &$errors)
     // Returns:
     //  bool: True if movie exists, else False.
 
-    $query = $pdo->prepare("SELECT * FROM groschien_film WHERE title=:title");
+    $query = $pdo->prepare("SELECT * FROM groschien_film WHERE title=:title;");
     $query->execute(["title" => $title]);
 
     if (empty($query->fetch())) {

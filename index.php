@@ -107,7 +107,7 @@ updateLogs($pdo, 'index.php');
     <!-- Cards for movie -->
     <div class="row py-4 row-cols-sm-2 row-cols-lg-5 row-cols-md-3 row-cols-sm-2 g-4 text-dark">
         <?php
-        $query = $pdo->prepare("SELECT * FROM groschien_film WHERE featured=:featured");
+        $query = $pdo->prepare("SELECT * FROM groschien_film WHERE featured=:featured;");
         $query->execute(["featured" => 1]);
         $result = $query->fetchAll();
         $count = (count($result) >= 5) ? 5 : count($result);

@@ -16,7 +16,7 @@ updateLogs($pdo, 'featured.php');
 
     <div class="row py-4 row-cols-sm-2 row-cols-lg-5 row-cols-md-3 row-cols-sm-2 g-4 text-dark">
         <?php
-        $query = $pdo->prepare("SELECT * FROM groschien_film WHERE featured=:featured");
+        $query = $pdo->prepare("SELECT * FROM groschien_film WHERE featured=:featured;");
         $query->execute(["featured" => 1]);
         $result = $query->fetchAll();
 

@@ -8,7 +8,7 @@ if (!isConnected($pdo) and !isAdmin($pdo)) {
 }
 
 if (isset($_GET["search"])) {
-    $query = $pdo->prepare("SELECT * FROM petitchat_user WHERE username=:username");
+    $query = $pdo->prepare("SELECT * FROM petitchat_user WHERE username=:username;");
     $query->execute(["username" => $_GET["search"]]);
 } else {
     $query = $pdo->prepare("SELECT * FROM petitchat_user");
