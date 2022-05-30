@@ -1,5 +1,6 @@
 <?php
 include 'Templates/header.php';
+updateLogs($pdo, 'films.php');
 
 if (isset($_GET["genre"])) {
     $genre = $_GET["genre"];

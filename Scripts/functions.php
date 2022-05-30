@@ -25,9 +25,9 @@ function isConnected($pdo)
 	if (!isset($_SESSION["email"]) || !isset($_SESSION["token"])) {
 		return false;
 	}
-	$queryPrepared = $pdo->prepare("SELECT id FROM petitchat_user WHERE email=:email AND token=:token");
-	$queryPrepared->execute(["email" => $_SESSION["email"], "token" => $_SESSION["token"]]);
-	if ($queryPrepared->fetch()) {
+	$query = $pdo->prepare("SELECT id FROM petitchat_user WHERE email=:email AND token=:token");
+	$query->execute(["email" => $_SESSION["email"], "token" => $_SESSION["token"]]);
+	if ($query->fetch()) {
 		return true;
 	}
 	return false;
@@ -51,8 +51,8 @@ function updateToken($id, $token, $pdo)
 	// 	pdo (PDO): The instance of PDO.
 
 
-	$queryPrepared = $pdo->prepare("UPDATE petitchat_user SET token=:token WHERE id=:id");
-	$queryPrepared->execute(["token" => $token, "id" => $id]);
+	$query = $pdo->prepare("UPDATE petitchat_user SET token=:token WHERE id=:id");
+	$query->execute(["token" => $token, "id" => $id]);
 }
 
 function connectUser($email, $pwd, $pdo, &$errors)
@@ -66,9 +66,9 @@ function connectUser($email, $pwd, $pdo, &$errors)
 	//	error (list[str]): List all of the errors.
 
 	if ($email && $pwd) {
-		$queryPrepared = $pdo->prepare("SELECT * FROM petitchat_user WHERE email=:email AND statut=:statut");
-		$queryPrepared->execute(["email" => $email, "statut" => 1]);
-		$results = $queryPrepared->fetch();
+		$query = $pdo->prepare("SELECT * FROM petitchat_user WHERE email=:email AND statut=:statut");
+		$query->execute(["email" => $email, "statut" => 1]);
+		$results = $query->fetch();
 
 		if (!empty($results)) {
 			if (password_verify($pwd, $results["pwd"])) {
@@ -77,34 +77,46 @@ function connectUser($email, $pwd, $pdo, &$errors)
 				$_SESSION["email"] = $email;
 				$_SESSION["token"] = $token;
 				$_SESSION["username"] = $results["username"];
-			}
-			else {
+			} else {
 				$errors[] = "Identifiants incorrects.";
 			}
-		}
-		else {
+		} else {
 			$errors[] = "Veuillez confirmez votre adresse email pour vous connecter.";
 		}
 	}
 }
 
-function isAdmin($pdo) {
+function isAdmin($pdo)
+{
 	// Check if a user is admin or no.
 
 	// Args:
 	// 	pdo (PDO): The instance of PDO.
-	
+
 	// Returns:
 	// 	bool: If the user is admin or no.
-	
+
 
 	if (!isset($_SESSION["email"]) || !isset($_SESSION["token"])) {
 		return false;
 	}
-	$queryPrepared = $pdo->prepare("SELECT id FROM petitchat_user WHERE email=:email AND token=:token AND is_admin=:is_admin");
-	$queryPrepared->execute(["email" => $_SESSION["email"], "token" => $_SESSION["token"], "is_admin"=>1]);
-	if ($queryPrepared->fetch()) {
+	$query = $pdo->prepare("SELECT id FROM petitchat_user WHERE email=:email AND token=:token AND is_admin=:is_admin");
+	$query->execute(["email" => $_SESSION["email"], "token" => $_SESSION["token"], "is_admin" => 1]);
+	if ($query->fetch()) {
 		return true;
 	}
 	return false;
+}
+
+function updateLogs($pdo, $view)
+{
+	$query = $pdo->prepare("SELECT * FROM grandcanard_logs WHERE view=:view");
+	$query->execute(["view" => $view]);
+	if (!empty($query->fetch())) {
+		$query = $pdo->prepare("UPDATE grandcanard_logs SET connection=connection+1 WHERE view=:view");
+		$query->execute(["view" => $view]);
+	} else {
+		$query = $pdo->prepare("INSERT INTO grandcanard_logs (view, connection) VALUES (:view, :nbr)");
+		$query->execute(["view" => $view, "nbr" => 1]);
+	}
 }

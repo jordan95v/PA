@@ -1,5 +1,6 @@
 <?php
 include "Templates/header.php";
+updateLogs($pdo, 'users.php');
 
 if (!isConnected($pdo) and !isAdmin($pdo)) {
     $_SESSION["notAdmin"] = 1;

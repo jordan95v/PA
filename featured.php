@@ -1,5 +1,6 @@
 <?php
 include 'Templates/header.php';
+updateLogs($pdo, 'featured.php');
 ?>
 
 <!-- Featured Movies + Cards for movies -->
