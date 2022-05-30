@@ -57,6 +57,12 @@ $pdo=connectDB();
         echo '</div>';
         unset($_SESSION["send"]);
     }
+    if (!empty($_SESSION["passwdModify"]) && isset($_SESSION["passwdModify"])) {
+        echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
+        echo '<h5 class="fw-bold">Votre mot de passe à bien était modifié.';
+        echo '</div>';
+        unset($_SESSION["passwdModify"]);
+    }
     ?>
     <!-- Featured Movies + Cards for movies -->
     <div class="d-flex pt-4 bd-highlight">
