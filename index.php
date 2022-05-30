@@ -92,6 +92,12 @@ updateLogs($pdo, 'index.php');
         echo '</div>';
         unset($_SESSION["notSell"]);
     }
+    if (!empty($_SESSION["notLogged"]) && isset($_SESSION["notLogged"])) {
+        echo '<div class="alert alert-danger mt-4 pb-1" role="alert">';
+        echo '<h5 class="fw-bold">Vous devez être connectée afin d\'acheter un billet.</h5>';
+        echo '</div>';
+        unset($_SESSION["notLogged"]);
+    }
     ?>
 
     <!-- Featured Movies + Cards for movies -->
