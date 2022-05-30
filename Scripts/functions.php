@@ -77,6 +77,8 @@ function connectUser($email, $pwd, $pdo, &$errors)
 				$_SESSION["email"] = $email;
 				$_SESSION["token"] = $token;
 				$_SESSION["username"] = $results["username"];
+				$_SESSION["id"] = $results["id"];
+				updateUserLogs($pdo, $results["id"], "login");
 			} else {
 				$errors[] = "Identifiants incorrects.";
 			}
@@ -119,4 +121,10 @@ function updateLogs($pdo, $view)
 		$query = $pdo->prepare("INSERT INTO grandcanard_logs (view, connection) VALUES (:view, :nbr)");
 		$query->execute(["view" => $view, "nbr" => 1]);
 	}
+}
+
+function updateUserLogs($pdo, $id, $type)
+{
+	$query = $pdo->prepare("INSERT INTO moyenlezard_user_logs (type, user_id) VALUES (:type, :user_id);");
+	$query->execute(["type" => $type, "user_id" => $id]);
 }
