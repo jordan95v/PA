@@ -106,7 +106,7 @@ function checkUsernameExist($username, $pdo, &$errors, $token = null)
 function sendUserMail($to, $title, $body, &$errors)
 {
 	$mail = new PHPMailer();
-	$mail->SMTPDebug = 1;
+	$mail->SMTPDebug = 0;
 	$mail->IsSMTP();
 	$mail->SMTPAuth = true;
 	$mail->SMTPOptions = array(
@@ -147,7 +147,7 @@ function sendNewsMail($title, $body, $emails, &$errors)
 
 
 	$mail = new PHPMailer();
-	$mail->SMTPDebug = 1;
+	$mail->SMTPDebug = 0;
 	$mail->IsSMTP();
 	$mail->SMTPAuth = true;
 	$mail->SMTPOptions = array(
@@ -190,7 +190,7 @@ function sendTicket($to, $title, $body, $img, &$errors)
 
 
 	$mail = new PHPMailer();
-	$mail->SMTPDebug = 1;
+	$mail->SMTPDebug = 0;
 	$mail->IsSMTP();
 	$mail->SMTPAuth = true;
 	$mail->SMTPOptions = array(
