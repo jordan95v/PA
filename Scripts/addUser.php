@@ -36,7 +36,7 @@ if (count($errors) != 0) {
     $query->execute(["email" => $email, "username" => $username, "pwd" => $pwd, "confirmKey" => $confirmKey, "newsletter" => $newsletter]);
 
     $title = "Mail de confirmation pour Les Lumieres !";
-    $body = "Cliquez sur le lien pour confirmez votre email.<br><a href=\"http://localhost/PA/Scripts/verif.php?confirmKey=" . $confirmKey . "\">Lien de confirmation</a>";
+    $body = "Cliquez sur le lien pour confirmez votre email.<br><a href=\"http://leslumieres.site/Scripts/verif.php?confirmKey=" . $confirmKey . "\">Lien de confirmation</a>";
     sendUserMail($email, $title, $body, $errors);
 
     if (count($errors) != 0) {

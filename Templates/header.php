@@ -1,6 +1,16 @@
 <?php
 require_once 'Scripts/functions.php';
 $pdo = connectDB();
+
+if (isset($_SESSION["email"])) {
+    if (isBanned($pdo, $_SESSION["email"])) {
+        unset($_SESSION["email"]);
+        unset($_SESSION["token"]);
+        unset($_SESSION["username"]);
+        unset($_SESSION["id"]);
+        $_SESSION["banned"] = 1;
+    }
+}
 ?>
 
 <!doctype html>
