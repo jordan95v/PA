@@ -16,14 +16,15 @@ if (isset($_SESSION["stripe_ok"])) {
     sendTicket($_SESSION["email"], "Confirmation d'achat", $body, $img, $errors);
     updateUserLogs($pdo, $_SESSION["id"], "achat de billet");
 
-    $_SESSION["sell"] = 1;
     unset($_SESSION["stripe_ok"]);
     unset($_SESSION["film_id"]);
     unset($_SESSION["film_name"]);
+    $_SESSION["sell"] = 1;
+    header("Location: ../index.php");
 } else {
     $_SESSION["notAdmin"] = 1;
+    header("Location: ../index.php");
 }
-header("Location: ../index.php");
 
 function createBarcode($code, $name)
 {

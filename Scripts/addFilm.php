@@ -39,7 +39,7 @@ if (isAdmin($pdo)) {
                 makeFiligrane($target_file);
                 $query = $pdo->prepare("INSERT INTO groschien_film (image_path, title, genre, maker, actors, info, featured) VALUES (:image_path, :title, :genre, :maker, :actors, :info, :featured);");
                 $query->execute(["image_path" => $target_file, "title" => $title, "genre" => $_POST["genre"], "maker" => $maker, "actors" => $actors, "info" => $info, "featured" => $featured]);
-                updateUserLogs($pdo, $results["id"], "added a movie:" . $title . ".");
+                updateUserLogs($pdo, $_SESSION["id"], "added a movie:" . $title . ".");
                 $_SESSION["upload"] = 1;
                 header("Location: ../index.php");
             } else {
