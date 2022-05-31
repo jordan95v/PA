@@ -7,7 +7,7 @@
             <div class=" card-body">
                 <h5 class="card-title mb-5">Billet pour <?php echo ucwords($ticket["film_name"]); ?></h5>
                 <p class="card-text">Présenter le billet à l'accueil du cinéma.</p>
-                <a href="" class="btn btn-dark w-100">Télécharger mon billet</a>
+                <a href="<?php echo str_replace("../", "", $ticket["ticket"]); ?>" download="<?php echo basename($ticket["ticket"]); ?>" class="btn btn-danger w-100">Télécharger mon billet</a>
             </div>
         </div>
     </div>

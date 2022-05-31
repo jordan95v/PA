@@ -82,7 +82,7 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
             </div>
             <div class="modal-body text-center bg-dark">
                 <?php
-                $query = $pdo->prepare("SELECT * FROM megalapin_ticket WHERE user_id=:id;");
+                $query = $pdo->prepare("SELECT * FROM megalapin_ticket WHERE user_id=:id ORDER BY id DESC;");
                 $query->execute(["id" => $user["id"]]);
                 $tickets = $query->fetchAll();
                 for ($i = 0; $i < count($tickets); $i++) {

@@ -104,6 +104,12 @@ updateLogs($pdo, 'index.php');
         echo '</div>';
         unset($_SESSION["banned"]);
     }
+    if (!empty($_SESSION["badDate"]) && isset($_SESSION["badDate"])) {
+        echo '<div class="alert alert-warning mt-4 pb-1" role="alert">';
+        echo '<h5 class="fw-bold">Choisissez une date et une heure valide.</h5>';
+        echo '</div>';
+        unset($_SESSION["badDate"]);
+    }
     ?>
 
     <!-- Featured Movies + Cards for movies -->
