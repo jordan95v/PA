@@ -52,19 +52,17 @@ if (isset($_GET["genre"])) {
     </nav>
 
     <div class="row py-4 text-dark">
-        <div class="col-6 col-md-2">
-            <?php
-            if (!isset($result)) {
-                $query = $pdo->prepare("SELECT * FROM groschien_film;");
-                $query->execute(["featured" => 1]);
-                $result = $query->fetchAll();
-            }
+        <?php
+        if (!isset($result)) {
+            $query = $pdo->prepare("SELECT * FROM groschien_film;");
+            $query->execute(["featured" => 1]);
+            $result = $query->fetchAll();
+        }
 
-            for ($i = 0; $i < count($result); $i++) {
-                include "Templates/filmModal.php";
-            }
-            ?>
-        </div>
+        for ($i = 0; $i < count($result); $i++) {
+            include "Templates/filmModal.php";
+        }
+        ?>
     </div>
 </div>
 

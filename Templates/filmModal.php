@@ -1,4 +1,4 @@
-<div class="col">
+<div class="col-6 col-md-2">
     <a type="button" data-bs-toggle="modal" data-bs-target="#<?php echo str_replace(' ', '-', $result[$i]['title']); ?>" class="text-decoration-none">
         <div class="card border-0 custom-cards">
             <img src="<?php echo str_replace('../', '', $result[$i]['image_path']); ?>" class="zoom card-img-top" alt="...">
