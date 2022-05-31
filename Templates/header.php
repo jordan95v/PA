@@ -53,5 +53,8 @@ $pdo = connectDB();
                     </div>
                 </div>
             </nav>
+            <div class="text-center mt-5">
+                <h1>Les Lumières<br>Le cinéma qui vous va bien.</h1>
+            </div>
         </div>
     </div>
