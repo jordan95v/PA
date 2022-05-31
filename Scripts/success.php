@@ -20,11 +20,11 @@ if (isset($_SESSION["stripe_ok"])) {
     unset($_SESSION["film_id"]);
     unset($_SESSION["film_name"]);
     $_SESSION["sell"] = 1;
-    header("Location: ../index.php");
 } else {
     $_SESSION["notAdmin"] = 1;
-    header("Location: ../index.php");
 }
+header("Location: ../index.php");
+die();
 
 function createBarcode($code, $name)
 {
