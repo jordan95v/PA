@@ -23,6 +23,12 @@ if (!empty($_SESSION["banned"]) && isset($_SESSION["banned"])) {
     echo '</div>';
     unset($_SESSION["banned"]);
 }
+if (!empty($_SESSION["unbanned"]) && isset($_SESSION["unbanned"])) {
+    echo '<div class="alert alert-info mt-4 pb-1" role="alert">';
+    echo '<h5 class="fw-bold">Le compte à été débanni.</h5>';
+    echo '</div>';
+    unset($_SESSION["unbanned"]);
+}
 if (!empty($_SESSION["deleted"]) && isset($_SESSION["deleted"])) {
     echo '<div class="alert alert-warning mt-4 pb-1" role="alert">';
     echo '<h5 class="fw-bold">Le compte à été supprimé.</h5>';
@@ -47,6 +53,7 @@ if (!empty($_SESSION["deleted"]) && isset($_SESSION["deleted"])) {
                 <th scope="col">USERNAME</th>
                 <th scope="col">DATE D'ARRIVEE</th>
                 <th scope="col">ADMIN</th>
+                <th scope="col">BANNED</th>
                 <th scope="col">ACTION</th>
             </thead>
             <tbody class="text-center">
@@ -54,6 +61,7 @@ if (!empty($_SESSION["deleted"]) && isset($_SESSION["deleted"])) {
                 for ($i = 0; $i < count($result); $i++) {
                     $user = $result[$i];
                     $admin = ($user["is_admin"] == 0) ? "Non" : "Oui";
+                    $banned = ($user["banned"] == 0) ? "Non" : "Oui";
                     include "Templates/userButtonAdmin.php";
                 }
                 ?>
