@@ -15,13 +15,13 @@ $result = $query->fetchAll();
     <!-- Logs des pages du sites -->
     <h2 class="text-center my-4">Logs de vue des pages du site</h2>
     <div class="table-responsive">
-        <table class="table table-hover my-5 p-4 table-dark">
-            <thead>
+        <table class="table table-hover my-5 p-4 table-dark table-borderless">
+            <thead class="text-center">
                 <th scope="col">ID</th>
                 <th scope="col">PAGE NAME</th>
                 <th scope="col">VIEW COUNT</th>
             </thead>
-            <tbody>
+            <tbody class="text-center">
                 <?php
                 for ($i = 0; $i < count($result); $i++) {
                     $page = $result[$i];
@@ -42,14 +42,14 @@ $result = $query->fetchAll();
     <!-- Logs des utilsateurs -->
     <h2 class="text-center my-4">Logs d'actions des utilsateurs</h2>
     <div class="table-responsive">
-        <table class="table table-hover my-5 p-4 table-dark">
-            <thead>
+        <table class="table table-hover my-5 p-4 table-dark table-borderless">
+            <thead class="text-center">
                 <th scope="col">ID</th>
                 <th scope="col">USERNAME</th>
                 <th scope="col">ACTION</th>
                 <th scope="col">DATE</th>
             </thead>
-            <tbody>
+            <tbody class="text-center">
                 <?php
                 for ($i = 0; $i < count($result); $i++) {
                     $action = $result[$i];
@@ -74,15 +74,15 @@ $result = $query->fetchAll();
     <!-- Logs de la newsletter -->
     <h2 class="text-center my-4">Logs de la newsletter</h2>
     <div class="table-responsive">
-        <table class="table table-hover my-5 p-4 table-dark">
-            <thead>
+        <table class="table table-hover my-5 p-4 table-dark table-borderless">
+            <thead class="text-center">
                 <th scope="col">ID</th>
                 <th scope="col">USERNAME</th>
                 <th scope="col">SUBJECT</th>
                 <th scope="col">CONTENT</th>
                 <th scope="col">DATE D'ENVOI</th>
             </thead>
-            <tbody>
+            <tbody class="text-center">
                 <?php
                 for ($i = 0; $i < count($result); $i++) {
                     $news = $result[$i];
@@ -100,7 +100,6 @@ $result = $query->fetchAll();
         </table>
     </div>
 </div>
-
 
 <?php
 include "Templates/footer.php";

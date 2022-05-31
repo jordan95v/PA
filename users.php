@@ -27,15 +27,16 @@ $title = (count($result) > 1) ? "Tous les utilisateurs" : "Résultat de la reche
 
     <h2 class="text-center my-4"><?php echo $title; ?></h2>
     <div class="table-responsive">
-        <table class="table table-hover my-5 p-4 table-dark">
-            <thead>
+        <table class="table table-hover my-5 p-4 table-dark table-borderless">
+            <thead class="text-center">
                 <th scope="col">ID</th>
                 <th scope="col">EMAIL</th>
                 <th scope="col">USERNAME</th>
                 <th scope="col">DATE D'ARRIVEE</th>
                 <th scope="col">ADMIN</th>
+                <th scope="col">ACTION</th>
             </thead>
-            <tbody>
+            <tbody class="text-center">
                 <?php
                 for ($i = 0; $i < count($result); $i++) {
                     $user = $result[$i];
@@ -44,7 +45,12 @@ $title = (count($result) > 1) ? "Tous les utilisateurs" : "Résultat de la reche
                     echo '<td>' . $user["email"] . '</td>';
                     echo '<td>' . $user["username"] . '</td>';
                     echo '<td>' . $user["creation_date"] . '</td>';
-                    echo '<td>' . $admin . '</td></tr>';
+                    echo '<td>' . $admin . '</td>';
+                    echo '<td class="text-center">
+                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                        <button type="button" class="btn btn-warning">Bannir</button>
+                        <button type="button" class="btn btn-danger">Supprimer</button>
+                        </div></td></tr>';
                 }
                 ?>
             </tbody>
