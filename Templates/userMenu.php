@@ -12,7 +12,7 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
             <a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#profile">Mon profil</a>
         </li>
         <li>
-            <a class="dropdown-item" href="">Mes billets</a>
+            <a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#ticket">Mes billets</a>
         </li>
         <?php
         if (isAdmin($pdo)) {
@@ -66,6 +66,30 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
                 <h5 class="my-5">Psssst ... Quelque petites infos sur vous 🤩</h5>
                 <p class=mt-3>Vous avez rejoins <b>Les Lumières</b> le : <b><?php echo $user["creation_date"]; ?></b></p>
                 <p>Dernière MaJ du profil : <b><?php echo $user["update_date"]; ?></b></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger w-100" data-bs-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ticket" tabindex="-1" aria-labelledby="ticketModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content text-dark">
+            <div class="modal-header">
+                <h4>Mes billets</h4>
+            </div>
+            <div class="modal-body text-center bg-dark">
+                <?php
+                $query = $pdo->prepare("SELECT * FROM megalapin_ticket WHERE user_id=:id;");
+                $query->execute(["id" => $user["id"]]);
+                $tickets = $query->fetchAll();
+                for ($i = 0; $i < count($tickets); $i++) {
+                    $ticket = $tickets[$i];
+                    include 'ticketCard.php';
+                }
+                ?>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger w-100" data-bs-dismiss="modal">Fermer</button>

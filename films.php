@@ -55,10 +55,9 @@ if (isset($_GET["genre"])) {
         <?php
         if (!isset($result)) {
             $query = $pdo->prepare("SELECT * FROM groschien_film;");
-            $query->execute(["featured" => 1]);
+            $query->execute();
             $result = $query->fetchAll();
         }
-
         for ($i = 0; $i < count($result); $i++) {
             include "Templates/filmModal.php";
         }
