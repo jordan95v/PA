@@ -16,28 +16,29 @@ if (isset($_GET["search"])) {
 }
 $result = $query->fetchAll();
 $title = (count($result) > 1) ? "Tous les utilisateurs" : "Résultat de la recherche";
-
-if (!empty($_SESSION["banned"]) && isset($_SESSION["banned"])) {
-    echo '<div class="alert alert-info mt-4 pb-1" role="alert">';
-    echo '<h5 class="fw-bold">Le compte à été banni.</h5>';
-    echo '</div>';
-    unset($_SESSION["banned"]);
-}
-if (!empty($_SESSION["unbanned"]) && isset($_SESSION["unbanned"])) {
-    echo '<div class="alert alert-info mt-4 pb-1" role="alert">';
-    echo '<h5 class="fw-bold">Le compte à été débanni.</h5>';
-    echo '</div>';
-    unset($_SESSION["unbanned"]);
-}
-if (!empty($_SESSION["deleted"]) && isset($_SESSION["deleted"])) {
-    echo '<div class="alert alert-warning mt-4 pb-1" role="alert">';
-    echo '<h5 class="fw-bold">Le compte à été supprimé.</h5>';
-    echo '</div>';
-    unset($_SESSION["deleted"]);
-}
 ?>
 
 <div class="container">
+    <?php
+    if (!empty($_SESSION["banned"]) && isset($_SESSION["banned"])) {
+        echo '<div class="alert alert-info mt-4 pb-1" role="alert">';
+        echo '<h5 class="fw-bold">Le compte à été banni.</h5>';
+        echo '</div>';
+        unset($_SESSION["banned"]);
+    }
+    if (!empty($_SESSION["unbanned"]) && isset($_SESSION["unbanned"])) {
+        echo '<div class="alert alert-info mt-4 pb-1" role="alert">';
+        echo '<h5 class="fw-bold">Le compte à été débanni.</h5>';
+        echo '</div>';
+        unset($_SESSION["unbanned"]);
+    }
+    if (!empty($_SESSION["deleted"]) && isset($_SESSION["deleted"])) {
+        echo '<div class="alert alert-warning mt-4 pb-1" role="alert">';
+        echo '<h5 class="fw-bold">Le compte à été supprimé.</h5>';
+        echo '</div>';
+        unset($_SESSION["deleted"]);
+    }
+    ?>
     <h2 class="text-center my-4">Recherche un utilsateur</h2>
     <form action="" method="get" class="my-4">
         <input type="text" class="form-control mb-2" name="search" placeholder="Entrez le nom d'utilsateur.">
