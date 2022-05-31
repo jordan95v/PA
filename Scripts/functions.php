@@ -71,15 +71,21 @@ function connectUser($email, $pwd, $pdo, &$errors)
 		$results = $query->fetch();
 
 		if (!empty($results)) {
-			if (password_verify($pwd, $results["pwd"])) {
-				$token = createToken();
-				updateToken($results["id"], $token, $pdo);
-				$_SESSION["email"] = $email;
-				$_SESSION["token"] = $token;
-				$_SESSION["username"] = $results["username"];
-				$_SESSION["id"] = $results["id"];
+			if (!isBanned($pdo, $email)) {
+				if (password_verify($pwd, $results["pwd"])) {
+					$token = createToken();
+					updateToken($results["id"], $token, $pdo);
+					$_SESSION["email"] = $email;
+					$_SESSION["token"] = $token;
+					$_SESSION["username"] = $results["username"];
+					$_SESSION["id"] = $results["id"];
+				} else {
+					$errors[] = "Identifiants incorrects.";
+				}
 			} else {
-				$errors[] = "Identifiants incorrects.";
+				$_SESSION['banned'] = 1;
+				header("Location: ../index.php");
+				die();
 			}
 		} else {
 			$errors[] = "Veuillez confirmez votre adresse email pour vous connecter.";
@@ -132,4 +138,22 @@ function updateNews($pdo, $id, $sub, $content)
 {
 	$query = $pdo->prepare("INSERT INTO minisculecome_newsletter (user_id, subject, content) VALUES (:user_id, :sub, :content);");
 	$query->execute(["user_id" => $id, "sub" => $sub, "content" => $content]);
+}
+
+function isBanned($pdo, $email)
+{
+	// Check if a user is admin or no.
+
+	// Args:
+	// 	pdo (PDO): The instance of PDO.
+
+	// Returns:
+	// 	bool: If the user is admin or no.
+
+	$query = $pdo->prepare("SELECT id FROM petitchat_user WHERE email=:email AND banned=:banned;");
+	$query->execute(["email" => $email, "banned" => 1]);
+	if ($query->fetch()) {
+		return true;
+	}
+	return false;
 }

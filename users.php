@@ -16,6 +16,19 @@ if (isset($_GET["search"])) {
 }
 $result = $query->fetchAll();
 $title = (count($result) > 1) ? "Tous les utilisateurs" : "Résultat de la recherche";
+
+if (!empty($_SESSION["banned"]) && isset($_SESSION["banned"])) {
+    echo '<div class="alert alert-info mt-4 pb-1" role="alert">';
+    echo '<h5 class="fw-bold">Le compte à été banni.</h5>';
+    echo '</div>';
+    unset($_SESSION["banned"]);
+}
+if (!empty($_SESSION["deleted"]) && isset($_SESSION["deleted"])) {
+    echo '<div class="alert alert-warning mt-4 pb-1" role="alert">';
+    echo '<h5 class="fw-bold">Le compte à été supprimé.</h5>';
+    echo '</div>';
+    unset($_SESSION["deleted"]);
+}
 ?>
 
 <div class="container">
@@ -41,16 +54,7 @@ $title = (count($result) > 1) ? "Tous les utilisateurs" : "Résultat de la reche
                 for ($i = 0; $i < count($result); $i++) {
                     $user = $result[$i];
                     $admin = ($user["is_admin"] == 0) ? "Non" : "Oui";
-                    echo '<tr><th scope="row">' . $user["id"] . '</th>';
-                    echo '<td>' . $user["email"] . '</td>';
-                    echo '<td>' . $user["username"] . '</td>';
-                    echo '<td>' . $user["creation_date"] . '</td>';
-                    echo '<td>' . $admin . '</td>';
-                    echo '<td class="text-center">
-                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                        <button type="button" class="btn btn-warning">Bannir</button>
-                        <button type="button" class="btn btn-danger">Supprimer</button>
-                        </div></td></tr>';
+                    include "Templates/userButtonAdmin.php";
                 }
                 ?>
             </tbody>

@@ -98,6 +98,12 @@ updateLogs($pdo, 'index.php');
         echo '</div>';
         unset($_SESSION["notLogged"]);
     }
+    if (!empty($_SESSION["banned"]) && isset($_SESSION["banned"])) {
+        echo '<div class="alert alert-warning mt-4 pb-1" role="alert">';
+        echo '<h5 class="fw-bold">Votre compte est banni, veuillez contacter le support.</h5>';
+        echo '</div>';
+        unset($_SESSION["banned"]);
+    }
     ?>
 
     <!-- Featured Movies + Cards for movies -->
