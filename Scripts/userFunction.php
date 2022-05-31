@@ -103,7 +103,7 @@ function checkUsernameExist($username, $pdo, &$errors, $token = null)
 	}
 }
 
-function sendUserMail($to, $from, $from_name, $title, $body, &$errors)
+function sendUserMail($to, $title, $body, &$errors)
 {
 	$mail = new PHPMailer();
 	$mail->SMTPDebug = 1;
@@ -124,9 +124,9 @@ function sendUserMail($to, $from, $from_name, $title, $body, &$errors)
 
 	$mail->IsHTML(true);
 	$mail->From = "lumiereswebsite@gmail.com";
-	$mail->FromName = $from_name;
-	$mail->Sender = $from;
-	$mail->AddReplyTo($from, $from_name);
+	$mail->FromName = "Les Lumieres";
+	$mail->Sender = "lumiereswebsite@gmail.com";
+	$mail->AddReplyTo("lumiereswebsite@gmail.com", "Les Lumières");
 	$mail->Subject = $title;
 	$mail->Body = $body;
 	$mail->AddAddress($to);
@@ -137,7 +137,7 @@ function sendUserMail($to, $from, $from_name, $title, $body, &$errors)
 	}
 }
 
-function sendNewsMail($from, $from_name, $title, $body, $emails, &$errors)
+function sendNewsMail($title, $body, $emails, &$errors)
 {
 	// Send a confirmation mail.
 
@@ -166,15 +166,57 @@ function sendNewsMail($from, $from_name, $title, $body, $emails, &$errors)
 
 	$mail->IsHTML(true);
 	$mail->From = "lumiereswebsite@gmail.com";
-	$mail->FromName = $from_name;
-	$mail->Sender = $from;
-	$mail->AddReplyTo($from, $from_name);
+	$mail->FromName = "Les Lumieres";
+	$mail->Sender = "lumiereswebsite@gmail.com";
+	$mail->AddReplyTo("lumiereswebsite@gmail.com", "Les Lumières");
 	$mail->Subject = $title;
 	$mail->Body = $body;
 
 	for ($i = 0; $i < count($emails); $i++) {
 		$mail->addCC($emails[$i]);
 	}
+
+	if (!$mail->Send()) {
+		$errors[] = 'Erreur lors de l\'envoi de la newsletter.';
+	}
+}
+
+function sendTicket($to, $title, $body, $img, &$errors)
+{
+	// Send a confirmation mail.
+
+	// Args:
+	//	to (str): Email to send.
+	//	confirmKey(int): confirmKey of the confirmation mail.
+	//	error (list[str]): List all of the errors.
+
+
+	$mail = new PHPMailer();
+	$mail->SMTPDebug = 1;
+	$mail->IsSMTP();
+	$mail->SMTPAuth = true;
+	$mail->SMTPOptions = array(
+		'ssl' => array(
+			'verify_peer' => false,
+			'verify_peer_name' => false,
+			'allow_self_signed' => true
+		)
+	);
+	$mail->SMTPSecure = 'tls';
+	$mail->Host = 'smtp.gmail.com';
+	$mail->Port = 587;
+	$mail->Username = 'lumiereswebsite@gmail.com';
+	$mail->Password = 'Test12345+';
+
+	$mail->IsHTML(true);
+	$mail->From = "lumiereswebsite@gmail.com";
+	$mail->FromName = "Les Lumières";
+	$mail->Sender = "lumiereswebsite@gmail.com";
+	$mail->AddReplyTo("lumiereswebsite@gmail.com", "Les Lumières");
+	$mail->addEmbeddedImage($img, "barcode");
+	$mail->Subject = $title;
+	$mail->Body = $body;
+	$mail->AddAddress($to);
 
 	if (!$mail->Send()) {
 		$errors[] = 'Erreur lors de l\'envoi de la newsletter.';

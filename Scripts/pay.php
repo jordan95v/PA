@@ -26,9 +26,10 @@ if (isConnected($pdo)) {
         'success_url' => $domain . '/PA/Scripts/success.php',
         'cancel_url' => $domain . '/PA/Scripts/cancel.php',
     ]);
-    $_SESSION["film"] = $_POST["film"];
-    header("HTTP/1.1 303 See Other");
+    $_SESSION["film_id"] = $_POST["film_id"];
+    $_SESSION["film_name"] = $_POST["film_name"];
     $_SESSION['stripe_ok'] = 1;
+    header("HTTP/1.1 303 See Other");
     header("Location: " . $checkout_session->url);
 } else {
     $_SESSION["notLogged"] = 1;

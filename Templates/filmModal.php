@@ -29,7 +29,8 @@
                 }
                 ?>
                 <form action="Scripts/pay.php" method="post">
-                    <input type="hidden" name="film" value="<?php echo $result[$i]['id']; ?>">
+                    <input type="hidden" name="film_id" value="<?php echo $result[$i]['id']; ?>">
+                    <input type="hidden" name="film_name" value="<?php echo $result[$i]['title']; ?>">
                     <input type="submit" class="btn btn-success w-100 my-2" value="Acheter un billet">
                 </form>
             </div>

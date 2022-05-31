@@ -111,17 +111,19 @@ updateLogs($pdo, 'index.php');
     </div>
 
     <!-- Cards for movie -->
-    <div class="row py-4 row-cols-sm-2 row-cols-lg-5 row-cols-md-3 row-cols-sm-2 g-4 text-dark">
-        <?php
-        $query = $pdo->prepare("SELECT * FROM groschien_film WHERE featured=:featured;");
-        $query->execute(["featured" => 1]);
-        $result = $query->fetchAll();
-        $count = (count($result) >= 5) ? 5 : count($result);
+    <div class="row py-4 text-dark">
+        <div class="col-6 col-md-2">
+            <?php
+            $query = $pdo->prepare("SELECT * FROM groschien_film WHERE featured=:featured;");
+            $query->execute(["featured" => 1]);
+            $result = $query->fetchAll();
+            $count = (count($result) >= 5) ? 5 : count($result);
 
-        for ($i = 0; $i < $count; $i++) {
-            include "Templates/filmModal.php";
-        }
-        ?>
+            for ($i = 0; $i < $count; $i++) {
+                include "Templates/filmModal.php";
+            }
+            ?>
+        </div>
     </div>
     <div class="text-center mt-2 mb-4">
         <a href="films.php" class="btn btn-outline-danger p-2">Voir tous les films</a>

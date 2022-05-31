@@ -23,7 +23,7 @@ if (isAdmin($pdo)) {
         $emails[] = $result[$i]["email"];
     }
 
-    sendNewsMail("lumiereswebsite@gmail.com", "Les Lumieres", $title, $body, $emails, $errors);
+    sendNewsMail($title, $body, $emails, $errors);
     if (count($errors) != 0) {
         $_SESSION["errors"] = $errors;
         header("Location: ../index.php");

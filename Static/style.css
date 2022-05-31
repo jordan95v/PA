@@ -6,6 +6,7 @@
 body {
     font-family: Caviar;
     background-color: #0d0f27;
+    overflow: overlay;
 }
 
 button {
