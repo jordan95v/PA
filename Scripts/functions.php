@@ -90,6 +90,8 @@ function connectUser($email, $pwd, $pdo, &$errors)
 		} else {
 			$errors[] = "Veuillez confirmez votre adresse email pour vous connecter.";
 		}
+	} else {
+		$errors[] = "Vous devez remplir tout les champs.";
 	}
 }
 

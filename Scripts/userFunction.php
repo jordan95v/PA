@@ -121,7 +121,6 @@ function sendUserMail($to, $title, $body, &$errors)
 	$mail->Port = 587;
 	$mail->Username = 'lumiereswebsite@gmail.com';
 	$mail->Password = 'Test12345+';
-
 	$mail->IsHTML(true);
 	$mail->From = "lumiereswebsite@gmail.com";
 	$mail->FromName = "Les Lumieres";
@@ -163,7 +162,6 @@ function sendNewsMail($title, $body, $emails, &$errors)
 	$mail->Port = 587;
 	$mail->Username = 'lumiereswebsite@gmail.com';
 	$mail->Password = 'Test12345+';
-
 	$mail->IsHTML(true);
 	$mail->From = "lumiereswebsite@gmail.com";
 	$mail->FromName = "Les Lumieres";
@@ -207,10 +205,9 @@ function sendTicket($to, $title, $body, $img, &$errors)
 	$mail->Port = 587;
 	$mail->Username = 'lumiereswebsite@gmail.com';
 	$mail->Password = 'Test12345+';
-
 	$mail->IsHTML(true);
 	$mail->From = "lumiereswebsite@gmail.com";
-	$mail->FromName = "Les Lumières";
+	$mail->FromName = "Les Lumieres";
 	$mail->Sender = "lumiereswebsite@gmail.com";
 	$mail->AddReplyTo("lumiereswebsite@gmail.com", "Les Lumières");
 	$mail->addEmbeddedImage($img, "barcode");
