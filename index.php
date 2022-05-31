@@ -112,7 +112,7 @@ updateLogs($pdo, 'index.php');
             <h2 class="fw-bold">Les films à l'affiche 🎥</h2>
         </div>
         <div class="p-3 flex-shrink-1 bd-highlight">
-            <h6><a href="featured.php" class="text-danger text-decoration-none">Voir plus <span class='arrow right'></span></a></h6>
+            <h6><a href="films.php" class="text-danger text-decoration-none">Voir plus <span class='arrow right'></span></a></h6>
         </div>
     </div>
 
@@ -124,7 +124,7 @@ updateLogs($pdo, 'index.php');
         $result = $query->fetchAll();
         $count = (count($result) >= 5) ? 5 : count($result);
 
-        for ($i = 0; $i < $count; $i++) {
+        for ($i = 0; $i < count($result); $i++) {
             include "Templates/filmModal.php";
         }
         ?>

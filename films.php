@@ -21,35 +21,26 @@ if (isset($_GET["genre"])) {
         </div>
     </div>
 
-    <nav class="navbar navbar-expand-sm navbar-light bg-light rounded">
-        <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse text-center" id="navbarsExample11">
-                <ul class="navbar-nav">
-                    <li class="nav-item active mx-4">
-                        <h4><a class="nav-link" href="?genre=action">Action</a></h5>
-                    </li>
-                    <li class="nav-item active mx-4">
-                        <h4><a class="nav-link" href="?genre=aventure">Aventure</a></h5>
-                    </li>
-                    <li class="nav-item active mx-4">
-                        <h4><a class="nav-link" href="?genre=drame">Drame</a></h5>
-                    </li>
-                    <li class="nav-item active mx-4">
-                        <h4><a class="nav-link" href="?genre=horror">Horreur</a></h5>
-                    </li>
-                    <li class="nav-item active mx-4">
-                        <h4><a class="nav-link" href="?genre=thriller">Thriller</a></h5>
-                    </li>
-                    <li class="nav-item active mx-4">
-                        <h4><a class="nav-link" href="?genre=sci-fi">Sci-Fi</a></h5>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <ul class="nav justify-content-center bg-dark p-2">
+        <li class="nav-item active mx-4">
+            <h4><a class="nav-link text-light" href="?genre=action">Action</a></h5>
+        </li>
+        <li class="nav-item active mx-4">
+            <h4><a class="nav-link text-light" href="?genre=aventure">Aventure</a></h5>
+        </li>
+        <li class="nav-item active mx-4">
+            <h4><a class="nav-link text-light" href="?genre=drame">Drame</a></h5>
+        </li>
+        <li class="nav-item active mx-4">
+            <h4><a class="nav-link text-light" href="?genre=horror">Horreur</a></h5>
+        </li>
+        <li class="nav-item active mx-4">
+            <h4><a class="nav-link text-light" href="?genre=thriller">Thriller</a></h5>
+        </li>
+        <li class="nav-item active mx-4">
+            <h4><a class="nav-link text-light" href="?genre=sci-fi">Sci-Fi</a></h5>
+        </li>
+    </ul>
 
     <div class="row py-4 text-dark">
         <?php
@@ -62,6 +53,9 @@ if (isset($_GET["genre"])) {
             include "Templates/filmModal.php";
         }
         ?>
+    </div>
+    <div class="text-center mt-2 mb-4">
+        <a href="index.php" class="btn btn-outline-danger p-2">Retour à l'accueil</a>
     </div>
 </div>
 
