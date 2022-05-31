@@ -7,7 +7,7 @@ $errors = [];
 $code = rand(10000000, 99999999);
 
 if (isset($_SESSION["stripe_ok"])) {
-    $img = str_replace("\\", "/", dirname(__DIR__) . "/Images/Ticket" . createBarcode($code, $_SESSION["film_name"]));
+    $img = str_replace("\\", "/", dirname(__DIR__) . "/Images/Ticket/" . createBarcode($code, $_SESSION["film_name"]));
     $body = '<html><body>Votre achat à été validé, voici votre ticket.</br><img src="cid:barcode"></body></html>';
 
     $query = $pdo->prepare("INSERT INTO megalapin_ticket (user_id, film_id, ticket) VALUES (:id, :film, :ticket);");
