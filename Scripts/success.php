@@ -10,14 +10,16 @@ if (isset($_SESSION["stripe_ok"])) {
     $img = str_replace("\\", "/", dirname(__DIR__) . "/Images/Ticket/" . createBarcode($code, $_SESSION["film_name"]));
     $body = '<html><body>Votre achat à été validé, voici votre ticket.</br><img src="cid:barcode"></body></html>';
 
-    $query = $pdo->prepare("INSERT INTO megalapin_ticket (user_id, film_id, ticket) VALUES (:id, :film, :ticket);");
-    $query->execute(["id" => $_SESSION["id"], "film" => $_SESSION["film_id"], "ticket" => $img]);
+    $query = $pdo->prepare("INSERT INTO megalapin_ticket (user_id, film_id, film_name, ticket) VALUES (:id, :film_id, :film_name,:ticket);");
+    $query->execute(["id" => $_SESSION["id"], "film_id" => $_SESSION["film_id"], "film_name" => $_SESSION["film_name"], "ticket" => $img]);
 
-    sendTicket($_SESSION["email"], "Confirmation d'achat", $img, $body, $errors);
+    sendTicket($_SESSION["email"], "Confirmation d'achat", $body, $img, $errors);
     updateUserLogs($pdo, $_SESSION["id"], "achat de billet");
 
     $_SESSION["sell"] = 1;
     unset($_SESSION["stripe_ok"]);
+    unset($_SESSION["film_id"]);
+    unset($_SESSION["film_name"]);
 } else {
     $_SESSION["notAdmin"] = 1;
 }

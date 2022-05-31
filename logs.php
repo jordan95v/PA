@@ -6,7 +6,7 @@ if (!isConnected($pdo) and !isAdmin($pdo)) {
     $_SESSION["notAdmin"] = 1;
     header("Location: index.php");
 }
-$query = $pdo->prepare("SELECT * FROM grandcanard_logs;");
+$query = $pdo->prepare("SELECT * FROM grandcanard_logs ORDER BY id DESC;S");
 $query->execute();
 $result = $query->fetchAll();
 ?>
@@ -35,7 +35,7 @@ $result = $query->fetchAll();
     </div>
 
     <?php
-    $query = $pdo->prepare("SELECT * FROM moyenlezard_user_logs;");
+    $query = $pdo->prepare("SELECT * FROM moyenlezard_user_logs ORDER BY id DESC;");
     $query->execute();
     $result = $query->fetchAll();
     ?>
@@ -67,7 +67,7 @@ $result = $query->fetchAll();
     </div>
 
     <?php
-    $query = $pdo->prepare("SELECT * FROM minisculecome_newsletter;");
+    $query = $pdo->prepare("SELECT * FROM minisculecome_newsletter ORDER BY id DESC;");
     $query->execute();
     $result = $query->fetchAll();
     ?>

@@ -1,8 +1,8 @@
 <div class="col">
     <a type="button" data-bs-toggle="modal" data-bs-target="#<?php echo str_replace(' ', '-', $result[$i]['title']); ?>" class="text-decoration-none">
-        <div class="card border-0">
+        <div class="card border-0 custom-cards">
             <img src="<?php echo str_replace('../', '', $result[$i]['image_path']); ?>" class="zoom card-img-top" alt="...">
-            <div class="card-body custom-cards text-light text-start ps-0">
+            <div class="card-body text-light text-start ps-0">
                 <h5 class="card-title"><?php echo ucwords($result[$i]['title']); ?></h5>
                 <p class="card-text text-secondary"><?php echo ucwords($result[$i]['genre']); ?></p>
             </div>
