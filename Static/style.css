@@ -70,3 +70,20 @@ body {
     margin: 0;
     padding: 0;
 }
+
+.researchSubject{
+    margin-left: 25%;
+}
+
+.cardQuestion {
+    color: black;
+}
+
+.button-forum{
+    text-decoration: none;
+}
+
+.card-color-search{
+    background-color: #0d0f27;
+
+}

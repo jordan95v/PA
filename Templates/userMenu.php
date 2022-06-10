@@ -12,6 +12,9 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
         <li>
             <a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#profile">Mon profil</a>
         </li>
+        <li>
+            <a class="dropdown-item" href="forum.php">Forum</a>
+        </li>
         <?php 
             if (isAdmin($pdo))
             {

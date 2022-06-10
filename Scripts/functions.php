@@ -108,3 +108,11 @@ function isAdmin($pdo) {
 	}
 	return false;
 }
+
+function getUserId($pdo) {
+
+    $query = $pdo->prepare('SELECT id FROM petitchat_user WHERE token=:token');
+    $query->execute(["token"=>$_SESSION["token"]]);
+
+    return $query->fetch()[0];
+}

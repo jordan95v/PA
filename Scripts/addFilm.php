@@ -4,7 +4,7 @@ require_once "functions.php";
 if (
     empty($_POST["title"]) || empty($_POST["genre"]) ||
     empty($_POST["maker"]) || empty($_POST["actor"]) ||
-    empty($_FILES["file"]) || empty($_POST["featured"]) ||
+    empty($_FILES["file"]) || isset($_POST["featured"]) ||
     count($_POST) != 5 || empty($_FILES)
 ) {
     die();

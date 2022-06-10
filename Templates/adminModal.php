@@ -49,6 +49,49 @@
     </div>
 </div>
 
+<div class="modal fade" id="event" tabindex="-1" aria-labelledby="eventModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content text-dark">
+            <div class="modal-header">
+                <h4 class="modal-title" id="eventModal">Ajouter un évènement 🎬</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="Scripts/addEvent.php" enctype="multipart/form-data">
+                    <div class="mb-5">
+                        <input type="file" name='file' class="form-control-file">
+                    </div>
+                    <div class="mb-5">
+                        <input type="text" name="title" class="form-control" placeholder="Entrez le titre de l'évènement.">
+                        <div id="userHelp" class="form-text text-center">Titre de l'évènement</div>
+                    </div>
+                    <div class="mb-5">
+                        <select class="form-select" aria-label="Default select example" name="type">
+                            <option selected>Choissisez le type d'évènement</option>
+                            <option value="avant-premiere">Avant-première</option>
+                            <option value="re-visionnage">Re-visionnage</option>
+                            <option value="marathon">Marathon</option>
+                        </select>
+                    </div>
+                    <div class="mb-5">
+                        <input type="date" class="form-control" name="date-debut" placeholder="Date début évent">
+                        Au 
+                        <input type="date" class="form-control" name="date-fin" placeholder="Date fin évent">
+                    </div>
+                    <div class="mb-5">
+                        <textarea name="desc" class="form-control" placeholder="Entrez la description de l'évent." rows="4"></textarea>
+                        <div id="userHelp" class="form-text text-center">Limitez à 255 caractères.</div>
+                    </div>
+                    <button type="submit" class="btn btn-dark w-100">Enregistrer l'évènement</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger w-100" data-bs-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="newsletter" tabindex="-1" aria-labelledby="newsletterModal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content text-dark">
