@@ -14,8 +14,8 @@ if (
 $errors = [];
 $pdo = connectDB();
 
-$email = strtolower(trim($_POST["email"]));
-$username = strtolower(trim($_POST["username"]));
+$email = htmlspecialchars(strtolower(trim($_POST["email"])));
+$username = htmlspecialchars(strtolower(trim($_POST["username"])));
 $newsletter = ($_POST["newsletter"] === "on") ? 1 : 0;
 
 checkUsername($username, $errors);

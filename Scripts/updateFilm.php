@@ -12,10 +12,10 @@ if (
 }
 
 $pdo = connectDB();
-$title = strtolower($_POST["title"]);
-$maker = strtolower($_POST["maker"]);
-$actors = strtolower($_POST["actors"]);
-$info = strtolower($_POST["desc"]);
+$title = htmlspecialchars(strtolower($_POST["title"]));
+$maker = htmlspecialchars(strtolower($_POST["maker"]));
+$actors = htmlspecialchars(strtolower($_POST["actors"]));
+$info = htmlspecialchars(strtolower($_POST["desc"]));
 $featured = ($_POST["featured"] === "on") ? 1 : 0;
 
 if (isAdmin($pdo)) {

@@ -8,8 +8,8 @@ if (empty($_POST["title"]) || empty($_POST["body"]) || count($_POST) != 2) {
     die();
 }
 
-$title = ucfirst(trim($_POST["title"]));
-$body = ucfirst(trim($_POST["body"]));
+$title = htmlspecialchars(ucfirst(trim($_POST["title"])));
+$body = htmlspecialchars(ucfirst(trim($_POST["body"])));
 $pdo = connectDB();
 $errors = [];
 
