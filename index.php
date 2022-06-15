@@ -63,6 +63,25 @@ $pdo=connectDB();
         echo '</div>';
         unset($_SESSION["passwdModify"]);
     }
+    if (!empty($_SESSION["uploadEvent"]) && isset($_SESSION["uploadEvent"])) {
+        echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
+        echo '<h5 class="fw-bold">L\'évènement à été correctement enregistré.';
+        echo '</div>';
+        unset($_SESSION["uploadEvent"]);
+    }
+    if (!empty($_SESSION["modifEvent"]) && isset($_SESSION["modifEvent"])) {
+        echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
+        echo '<h5 class="fw-bold">L\'évènement à été correctement modifié.';
+        echo '</div>';
+        unset($_SESSION["modifEvent"]);
+    }
+    if (!empty($_SESSION["deletedEvent"]) && isset($_SESSION["deletedEvent"])) {
+        echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
+        echo '<h5 class="fw-bold">L\'évènement à été correctement supprimer.';
+        echo '</div>';
+        unset($_SESSION["deletedEvent"]);
+    }
+    
     ?>
     <!-- Featured Movies + Cards for movies -->
     <div class="d-flex pt-4 bd-highlight">
@@ -81,7 +100,7 @@ $pdo=connectDB();
             $query=$pdo->prepare("SELECT * FROM groschien_film WHERE featured=:featured");
             $query->execute(["featured"=>1]);
             $result = $query->fetchAll();
-            $count = (count($result) >= 5) ? 5 : count($result);
+            $count = (count($result) >= 5) ? 5 : count($result); //si la requete renvoie moins de 5 on affiche le nombre film sinon on bloque à 5
 
             for ($i=0; $i < $count; $i++) { 
                 echo '
@@ -116,6 +135,30 @@ $pdo=connectDB();
             </div>
         </div>
     </div> -->
+
+    <!-- Cards events -->
+
+    <div class="d-flex pt-4 bd-highlight">
+        <div class="p-2 flex-grow-1 bd-highlight">
+            <h2 class="fw-bold">Les évènements 🍿</h2>
+        </div>
+        <div class="p-3 flex-shrink-1 bd-highlight">
+            <h6><a href="featured.php" class="text-danger text-decoration-none">Voir plus <span class='arrow right'></span></a></h6>
+        </div>
+    </div>
+
+    <div class="row py-4 text-dark">
+    <?php
+
+        $queryEvent = $pdo->prepare('SELECT * FROM gigaecureil_event WHERE featured=:featured');
+        $queryEvent->execute(["featured" => 1]);
+        $resultEvent = $queryEvent->fetchAll();
+        $count = (count($resultEvent) >= 5) ? 5 : count($resultEvent);
+        
+        for ($i=0; $i < count($resultEvent); $i++) { 
+            include "Templates/eventModal.php";
+        }
+    ?>
 </div>
 
 <?php

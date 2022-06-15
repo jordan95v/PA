@@ -24,15 +24,21 @@ if(isset($_POST['password']) && isset($_POST['password_repeat']) && isset($_POST
                 $delete = $pdo->prepare('DELETE FROM grandegirafe_pwd_recover WHERE token_user = ?');
                 $delete->execute(array($token));
 
-                $_SESSION["passwdModify"] = "Le mot de passe a bien été modifié";
+                $_SESSION["passwdModify"] = 1;
                 header("Location: ../index.php");
             }else{
-               echo "Les mots de passes ne sont pas identiques";
+                $errors [] = "Les mots de passes ne sont pas identiques";
+                $_SESSION["errors"] = $errors;
+                header("Location: ../index.php");
             }
         }else{
-            echo "Compte non existant";
+            $errors [] = "Compte non existant";
+            $_SESSION["errors"] = $errors;
+            header("Location: ../index.php");
         }
     }else{
-        echo "Merci de renseigner un mot de passe";
+        $errors [] = "Merci de renseigner un mot de passe";
+        $_SESSION["errors"] = $errors;
+        header("Location: ../index.php");
     }
 }

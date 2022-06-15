@@ -53,7 +53,7 @@
     <div class="modal-dialog">
         <div class="modal-content text-dark">
             <div class="modal-header">
-                <h4 class="modal-title" id="eventModal">Ajouter un évènement 🎬</h4>
+                <h4 class="modal-title" id="eventModal">Ajouter un évènement 🤩</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -74,12 +74,18 @@
                         </select>
                     </div>
                     <div class="mb-5">
+                        <input type="text" name="maker" class="form-control" placeholder="Entrez le nom du réalisateur">
+                    </div>
+                    <div class="mb-5">
+                        <input type="text" name="actor" class="form-control" placeholder="Entrez le nom des acteurs">
+                    </div>
+                    <div class="mb-5">
                         <input type="date" class="form-control" name="date-debut" placeholder="Date début évent">
                         Au 
                         <input type="date" class="form-control" name="date-fin" placeholder="Date fin évent">
                     </div>
                     <div class="mb-5">
-                        <textarea name="desc" class="form-control" placeholder="Entrez la description de l'évent." rows="4"></textarea>
+                        <textarea name="content" class="form-control" placeholder="Entrez la description de l'évent." rows="4"></textarea>
                         <div id="userHelp" class="form-text text-center">Limitez à 255 caractères.</div>
                     </div>
                     <button type="submit" class="btn btn-dark w-100">Enregistrer l'évènement</button>
