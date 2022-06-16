@@ -4,11 +4,13 @@ $query->execute(["email" => $_SESSION["email"]]);
 $user = $query->fetch();
 $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
 ?>
+<div class="dropdown mt-2 text-center">
+    <a class="text-decoration-none text-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+        <?php echo $user["username"]; ?>
+    </a>
 
-<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $user["username"]; ?></a>
-    <ul class="dropdown-menu dropdown-menu-center dropdown-menu-dark w-100" aria-labelledby="navbarScrollingDropdown">
-        <li>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+         <li>
             <a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#profile">Mon profil</a>
         </li>
         <li>
@@ -16,7 +18,7 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
         </li>
         <?php
         if (isAdmin($pdo)) {
-            include "adminItem.php";
+            include "Admin/adminItem.php";
         }
         ?>
         <li>
@@ -26,7 +28,9 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
             <a href="Scripts/logOutUser.php" class="dropdown-item">Déconnexion</a>
         </li>
     </ul>
-</li>
+    </ul>
+</div>
+
 
 <div class="modal fade" id="profile" tabindex="-1" aria-labelledby="profileModal" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -106,6 +110,6 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
 
 <?php
 if (isAdmin($pdo)) {
-    include "adminModal.php";
+    include "Admin/adminModal.php";
 }
 ?>

@@ -4,12 +4,11 @@ require_once "functions.php";
 if (
     empty($_POST["title"]) || empty($_POST["genre"]) ||
     empty($_POST["maker"]) || empty($_POST["actors"]) ||
-    empty($_FILES["file"]) || empty($_POST["featured"]) ||
-    empty($_POST["desc"]) || count($_POST) != 6 || empty($_FILES)
+    empty($_FILES["file"]) || empty($_POST["desc"]) || empty($_FILES)
 ) {
     $_SESSION["empty"] = 1;
     header("Location: ../index.php");
-    die();
+
 }
 
 $target_dir = "../Images/Movies/";

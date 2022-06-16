@@ -52,11 +52,11 @@ if (isset($_SESSION["email"])) {
                         </form>
                         <ul class="navbar-nav mt-2 mb-lg-0 text-center">
                             <?php
-                            if (isConnected(connectDB())) {
+                            if (isConnected($pdo)) {
                                 include 'userMenu.php';
                             } else {
-                                include 'register.php';
-                                include 'login.php';
+                                include 'Auth/register.php';
+                                include 'Auth/login.php';
                             }
                             ?>
                         </ul>
