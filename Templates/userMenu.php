@@ -85,9 +85,15 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
                 $query = $pdo->prepare("SELECT * FROM megalapin_ticket WHERE user_id=:id ORDER BY id DESC;");
                 $query->execute(["id" => $user["id"]]);
                 $tickets = $query->fetchAll();
-                for ($i = 0; $i < count($tickets); $i++) {
-                    $ticket = $tickets[$i];
-                    include 'ticketCard.php';
+                if (!empty($ticket))
+                {
+                    for ($i = 0; $i < count($tickets); $i++) {
+                        $ticket = $tickets[$i];
+                        include 'ticketCard.php';
+                    }
+                }
+                else {
+                    echo '<h4 class="text-light p-4">Vous n\'avez pas acheté de billets pour le moment.</h1>';
                 }
                 ?>
             </div>

@@ -6,6 +6,7 @@ use PHPMailer\PHPMailer\Exception;
 require "PHPMailer/src/Exception.php";
 require "PHPMailer/src/PHPMailer.php";
 require "PHPMailer/src/SMTP.php";
+require "config.inc.php";
 
 function checkPassword($password1, $password2, &$errors)
 {
@@ -106,9 +107,13 @@ function checkUsernameExist($username, $pdo, &$errors, $token = null)
 function sendUserMail($to, $title, $body, &$errors)
 {
 	$mail = new PHPMailer();
-	$mail->SMTPDebug = 0;
+	$mail->SMTPDebug = 2;
 	$mail->IsSMTP();
+	$mail->SMTPSecure = 'tls';
+	$mail->Port = 587;
 	$mail->SMTPAuth = true;
+	$mail->Username = EMAIL;
+	$mail->Password = PWD;
 	$mail->SMTPOptions = array(
 		'ssl' => array(
 			'verify_peer' => false,
@@ -116,16 +121,12 @@ function sendUserMail($to, $title, $body, &$errors)
 			'allow_self_signed' => true
 		)
 	);
-	$mail->SMTPSecure = 'tls';
-	$mail->Host = 'smtp.gmail.com';
-	$mail->Port = 587;
-	$mail->Username = 'lumiereswebsite@gmail.com';
-	$mail->Password = 'Test12345+';
+	$mail->Host = 'smtp-mail.outlook.com';
 	$mail->IsHTML(true);
-	$mail->From = "lumiereswebsite@gmail.com";
+	$mail->From = EMAIL;
 	$mail->FromName = "Les Lumieres";
-	$mail->Sender = "lumiereswebsite@gmail.com";
-	$mail->AddReplyTo("lumiereswebsite@gmail.com", "Les Lumières");
+	$mail->Sender = EMAIL;
+	$mail->AddReplyTo(EMAIL, "Les Lumières");
 	$mail->Subject = $title;
 	$mail->Body = $body;
 	$mail->AddAddress($to);
@@ -133,6 +134,7 @@ function sendUserMail($to, $title, $body, &$errors)
 
 	if (!$mail->Send()) {
 		$errors[] = 'Erreur lors de l\'envoi du mail.';
+		die();
 	}
 }
 
@@ -147,8 +149,9 @@ function sendNewsMail($title, $body, $emails, &$errors)
 
 
 	$mail = new PHPMailer();
-	$mail->SMTPDebug = 0;
+	$mail->SMTPDebug = 2;
 	$mail->IsSMTP();
+	$mail->SMTPSecure = 'tls';
 	$mail->SMTPAuth = true;
 	$mail->SMTPOptions = array(
 		'ssl' => array(
@@ -157,16 +160,16 @@ function sendNewsMail($title, $body, $emails, &$errors)
 			'allow_self_signed' => true
 		)
 	);
-	$mail->SMTPSecure = 'tls';
-	$mail->Host = 'smtp.gmail.com';
+	$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+	$mail->Host = 'mail.yahoo.com';
 	$mail->Port = 587;
-	$mail->Username = 'lumiereswebsite@gmail.com';
-	$mail->Password = 'Test12345+';
+	$mail->Username = EMAIL;
+	$mail->Password = PWD;
 	$mail->IsHTML(true);
-	$mail->From = "lumiereswebsite@gmail.com";
+	$mail->From = EMAIL;
 	$mail->FromName = "Les Lumieres";
-	$mail->Sender = "lumiereswebsite@gmail.com";
-	$mail->AddReplyTo("lumiereswebsite@gmail.com", "Les Lumières");
+	$mail->Sender = EMAIL;
+	$mail->AddReplyTo(EMAIL, "Les Lumières");
 	$mail->Subject = $title;
 	$mail->Body = $body;
 
@@ -176,6 +179,7 @@ function sendNewsMail($title, $body, $emails, &$errors)
 
 	if (!$mail->Send()) {
 		$errors[] = 'Erreur lors de l\'envoi de la newsletter.';
+		die();
 	}
 }
 
@@ -203,13 +207,13 @@ function sendTicket($to, $title, $body, $img, &$errors)
 	$mail->SMTPSecure = 'tls';
 	$mail->Host = 'smtp.gmail.com';
 	$mail->Port = 587;
-	$mail->Username = 'lumiereswebsite@gmail.com';
-	$mail->Password = 'Test12345+';
+	$mail->Username = EMAIL;
+	$mail->Password = PWD;
 	$mail->IsHTML(true);
-	$mail->From = "lumiereswebsite@gmail.com";
+	$mail->From = EMAIL;
 	$mail->FromName = "Les Lumieres";
-	$mail->Sender = "lumiereswebsite@gmail.com";
-	$mail->AddReplyTo("lumiereswebsite@gmail.com", "Les Lumières");
+	$mail->Sender = EMAIL;
+	$mail->AddReplyTo(EMAIL, "Les Lumières");
 	$mail->addEmbeddedImage($img, "barcode");
 	$mail->Subject = $title;
 	$mail->Body = $body;

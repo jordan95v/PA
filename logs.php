@@ -107,11 +107,6 @@ $result = $query->fetchAll();
     </div>
 </div>
 
-
-
-
-
-
 <?php
 include "Templates/footer.php";
 ?>
