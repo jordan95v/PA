@@ -32,7 +32,7 @@ if (isAdmin($pdo)) {
     updateUserLogs($pdo, $_SESSION["id"], "send a newsletter");
     updateNews($pdo, $_SESSION["id"], $title, $body);
     $_SESSION['send'] = 1;
-    header("Location: ../index.php");
+    header("Location: ../admin.php?type=newsletter");
 } else {
     $_SESSION["notAdmin"] = 1;
     header("Location: ../index.php");

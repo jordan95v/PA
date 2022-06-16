@@ -44,18 +44,6 @@ updateLogs($pdo, 'index.php');
         echo '</div>';
         unset($_SESSION["confirm"]);
     }
-    if (!empty($_SESSION["upload"]) && isset($_SESSION["upload"])) {
-        echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
-        echo '<h5 class="fw-bold">Le film à été correctement enregistrer.</h5>';
-        echo '</div>';
-        unset($_SESSION["upload"]);
-    }
-    if (!empty($_SESSION["send"]) && isset($_SESSION["send"])) {
-        echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
-        echo '<h5 class="fw-bold">La newsletter à été envoyée.</h5>';
-        echo '</div>';
-        unset($_SESSION["send"]);
-    }
     if (!empty($_SESSION["notAdmin"]) && isset($_SESSION["notAdmin"])) {
         echo '<div class="alert alert-danger mt-4 pb-1" role="alert">';
         echo '<h5 class="fw-bold">Vous n\'avez pas la permission d\'accéder à cette page.</h5>';
@@ -67,18 +55,6 @@ updateLogs($pdo, 'index.php');
         echo '<h5 class="fw-bold">Il faut remplir tout les champs.</h5>';
         echo '</div>';
         unset($_SESSION["empty"]);
-    }
-    if (!empty($_SESSION["modified"]) && isset($_SESSION["modified"])) {
-        echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
-        echo '<h5 class="fw-bold">Le film à bien été modifiée.</h5>';
-        echo '</div>';
-        unset($_SESSION["modified"]);
-    }
-    if (!empty($_SESSION["deletedFilm"]) && isset($_SESSION["deletedFilm"])) {
-        echo '<div class="alert alert-warning mt-4 pb-1" role="alert">';
-        echo '<h5 class="fw-bold">Le film à bien été supprimé.</h5>';
-        echo '</div>';
-        unset($_SESSION["deletedFilm"]);
     }
     if (!empty($_SESSION["sell"]) && isset($_SESSION["sell"])) {
         echo '<div class="alert alert-success mt-4 pb-1" role="alert">';

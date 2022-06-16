@@ -11,5 +11,5 @@ if (isAdmin($pdo)) {
     header("Location: ../users.php");
 } else {
     $_SESSION["notAdmin"] = 1;
-    header("Location: ../index.php");
+    header("Location: ../admin.php?type=users");
 }

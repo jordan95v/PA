@@ -9,7 +9,7 @@ if (isAdmin($pdo)) {
     $query->execute(["id" => $_GET["id"]]);
     updateUserLogs($pdo, $_SESSION["id"], "deleted user id: " . $_GET["id"] . ".");
     $_SESSION["deleted"] = 1;
-    header("Location: ../users.php");
+    header("Location: ../admin.php?type=users");
 } else {
     $_SESSION["notAdmin"] = 1;
     header("Location: ../index.php");

@@ -21,7 +21,7 @@ button {
 /* ID */
 #main {
     height: 400px;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(5, 5, 5, 0.4) 100%), url(../Images/john_wick.jpeg);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 20%, rgba(5, 5, 5, 0.4) 100%), url(../Images/john_wick.jpeg);
     background-size: cover;
     background-position: center;
 }

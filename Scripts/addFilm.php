@@ -34,7 +34,7 @@ if (isset($_POST["featured"]))
 if (isAdmin($pdo)) {
     if (count($errors) != 0) {
         $_SESSION["errors"] = $errors;
-        header("Location: ../index.php");
+        header("Location: ../admin.php?type=film");
         die();
     } else {
         if (filmExists($pdo, $title, $errors)) {
@@ -51,7 +51,7 @@ if (isAdmin($pdo)) {
         }
         if (count($errors) != 0) {
             $_SESSION["errors"] = $errors;
-            header("Location: ../index.php");
+            header("Location: ../admin.php?type=film");
         }
     }
 } else {

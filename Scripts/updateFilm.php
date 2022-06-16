@@ -23,7 +23,7 @@ if (isAdmin($pdo)) {
     $query->execute(["title" => $title, "maker" => $maker, "genre" => $_POST["genre"], "actors" => $actors, "info" => $info, "featured" => $featured, "id" => $_GET["id"]]);
     updateUserLogs($pdo, $_SESSION["id"], "updated film: " . getTitle($pdo, $_GET["id"]) . ".");
     $_SESSION["modified"] = 1;
-    header("Location: ../index.php");
+    header("Location: ../admin.php?type=film");
 }
 
 function getTitle($pdo, $id)

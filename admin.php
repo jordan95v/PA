@@ -27,7 +27,7 @@ $pdo = connectDB();
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">Les Lumières - Page administrateur</a>
+            <a class="navbar-brand" href="index.php">Les Lumières - Page administrateur</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -38,6 +38,41 @@ $pdo = connectDB();
             </div>
         </div>
     </nav>
+
+    <div class="container">
+        <?php
+        if (!empty($_SESSION["upload"]) && isset($_SESSION["upload"])) {
+            echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
+            echo '<h5 class="fw-bold">Le film à été correctement enregistrer.</h5>';
+            echo '</div>';
+            unset($_SESSION["upload"]);
+        }
+        if (!empty($_SESSION["send"]) && isset($_SESSION["send"])) {
+            echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
+            echo '<h5 class="fw-bold">La newsletter à été envoyée.</h5>';
+            echo '</div>';
+            unset($_SESSION["send"]);
+        }
+        if (!empty($_SESSION["empty"]) && isset($_SESSION["empty"])) {
+            echo '<div class="alert alert-danger mt-4 pb-1" role="alert">';
+            echo '<h5 class="fw-bold">Il faut remplir tout les champs.</h5>';
+            echo '</div>';
+            unset($_SESSION["empty"]);
+        }
+        if (!empty($_SESSION["modified"]) && isset($_SESSION["modified"])) {
+            echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
+            echo '<h5 class="fw-bold">Le film à bien été modifiée.</h5>';
+            echo '</div>';
+            unset($_SESSION["modified"]);
+        }
+        if (!empty($_SESSION["deletedFilm"]) && isset($_SESSION["deletedFilm"])) {
+            echo '<div class="alert alert-warning mt-4 pb-1" role="alert">';
+            echo '<h5 class="fw-bold">Le film à bien été supprimé.</h5>';
+            echo '</div>';
+            unset($_SESSION["deletedFilm"]);
+        }
+        ?>
+    </div>
 
     <div class="container text-light">
         <h4 class="text-center text-light my-4">🙅‍♂️ Ceci est une page réservé aux administrateurs ⛔</h4>
