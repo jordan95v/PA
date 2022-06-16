@@ -8,7 +8,7 @@ if (
 ) {
     $_SESSION["empty"] = 1;
     header("Location: ../index.php");
-
+    die();
 }
 
 $target_dir = "../Images/Movies/";
@@ -26,12 +26,16 @@ $title = htmlspecialchars(strtolower($_POST["title"]));
 $maker = htmlspecialchars(strtolower($_POST["maker"]));
 $actors = htmlspecialchars(strtolower($_POST["actors"]));
 $info = htmlspecialchars(strtolower($_POST["desc"]));
-$featured = ($_POST["featured"] === "on") ? 1 : 0;
+if (isset($_POST["featured"]))
+{
+    $featured = ($_POST["featured"] === "on") ? 1 : 0;
+}
 
 if (isAdmin($pdo)) {
     if (count($errors) != 0) {
         $_SESSION["errors"] = $errors;
         header("Location: ../index.php");
+        die();
     } else {
         if (filmExists($pdo, $title, $errors)) {
             if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {

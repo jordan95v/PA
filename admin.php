@@ -39,19 +39,41 @@ $pdo = connectDB();
         </div>
     </nav>
 
-    <div class="container-fluid">
-        <h4 class="text-center text-light my-4">🙅‍♂️ Ceci est une page réservé aux administrateur ⛔</h4>
+    <div class="container text-light">
+        <h4 class="text-center text-light my-4">🙅‍♂️ Ceci est une page réservé aux administrateurs ⛔</h4>
+        <h5>Choix de la section</h5>
+        <ul class="nav justify-content-center bg-dark rounded p-2">
+            <li class="nav-item mx-4">
+                <a class="nav-link text-light" href="?type=film">Films</a>
+            </li>
+            <li class="nav-item mx-4">
+                <a class="nav-link text-light" href="?type=newsletter">Newsletter</a>
+            </li>
+            <li class="nav-item mx-4">
+                <a class="nav-link text-light" href="?type=event">Events</a>
+            </li>
+            <li class="nav-item mx-4">
+                <a class="nav-link text-light" href="?type=users">Users</a>
+            </li>
+            <li class="nav-item mx-4">
+                <a class="nav-link text-light" href="?type=logs">Logs</a>
+            </li>
+    </ul>
 
         <?php
             if ($_GET["type"] == "film")
             {
-                
+                include "Templates/Misc/filmAdmin.php";
             }
             elseif ($_GET["type"] == "newsletter")
             {
-
+                include "Templates/Misc/newsletterAdmin.php";
             }
             elseif ($_GET["type"] == "logs")
+            {
+                include "Templates/Misc/logsAdmin.php";
+            }
+            elseif ($_GET["type"] == "users")
             {
                 
             }

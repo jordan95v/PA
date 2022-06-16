@@ -45,9 +45,9 @@ $title = (count($result) > 1) ? "Tous les utilisateurs" : "Résultat de la reche
         <input type="submit" class="btn btn-outline-danger w-100" value="Rechercher">
     </form>
 
-    <h2 class="text-center my-4"><?php echo $title; ?></h2>
+    <h2 class="text-center pt-4"><?php echo $title; ?></h2>
     <div class="table-responsive">
-        <table class="table table-hover my-5 p-4 table-dark table-borderless">
+        <table class="table table-hover mt-2 p-4 table-dark table-borderless">
             <thead class="text-center">
                 <th scope="col">ID</th>
                 <th scope="col">EMAIL</th>
