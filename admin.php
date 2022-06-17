@@ -71,7 +71,25 @@ $pdo = connectDB();
             echo '</div>';
             unset($_SESSION["deletedFilm"]);
         }
-        ?>
+        if (!empty($_SESSION["banned"]) && isset($_SESSION["banned"])) {
+            echo '<div class="alert alert-info mt-4 pb-1" role="alert">';
+            echo '<h5 class="fw-bold">Le compte à été banni.</h5>';
+            echo '</div>';
+            unset($_SESSION["banned"]);
+        }
+        if (!empty($_SESSION["unbanned"]) && isset($_SESSION["unbanned"])) {
+            echo '<div class="alert alert-info mt-4 pb-1" role="alert">';
+            echo '<h5 class="fw-bold">Le compte à été débanni.</h5>';
+            echo '</div>';
+            unset($_SESSION["unbanned"]);
+        }
+        if (!empty($_SESSION["deleted"]) && isset($_SESSION["deleted"])) {
+            echo '<div class="alert alert-warning mt-4 pb-1" role="alert">';
+            echo '<h5 class="fw-bold">Le compte à été supprimé.</h5>';
+            echo '</div>';
+            unset($_SESSION["deleted"]);
+        }
+    ?>
     </div>
 
     <div class="container text-light">
@@ -98,19 +116,19 @@ $pdo = connectDB();
         <?php
             if ($_GET["type"] == "film")
             {
-                include "Templates/Misc/filmAdmin.php";
+                include "Templates/Admin/filmAdmin.php";
             }
             elseif ($_GET["type"] == "newsletter")
             {
-                include "Templates/Misc/newsletterAdmin.php";
+                include "Templates/Admin/newsletterAdmin.php";
             }
             elseif ($_GET["type"] == "logs")
             {
-                include "Templates/Misc/logsAdmin.php";
+                include "Templates/Admin/logsAdmin.php";
             }
             elseif ($_GET["type"] == "users")
             {
-                
+                include "Templates/Admin/userAdmin.php";
             }
         ?>
     </div>

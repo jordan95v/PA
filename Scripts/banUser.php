@@ -8,8 +8,8 @@ if (isAdmin($pdo)) {
     $query = $pdo->prepare("UPDATE petitchat_user SET banned=:banned WHERE id=:id;");
     $query->execute(["banned" => 1, "id" => $_GET["id"]]);
     $_SESSION["banned"] = 1;
-    header("Location: ../users.php");
+    header("Location: ../admin.php?type=users");
 } else {
     $_SESSION["notAdmin"] = 1;
-    header("Location: ../admin.php?type=users");
+    header("Location: ../index.php");
 }

@@ -10,7 +10,7 @@
         $query->execute();
         $result = $query->fetchAll();
         ?>
-        <h2 class="text-center">Logs de vue des pages du site</h2>
+        <h2 class="text-center">Nombre de vue des pages du site</h2>
         <div class="table-responsive">
             <table class="table table-hover table-dark table-borderless">
                 <thead class="text-center">
@@ -38,7 +38,7 @@
             $query->execute();
             $result = $query->fetchAll();
             ?>
-            <h2 class="text-center">Logs d'actions des utilsateurs</h2>
+            <h2 class="text-center">Actions des utilsateurs</h2>
             <div class="table-responsive">
                 <div id="logs">
                     <table class="table table-hover table-dark table-borderless">
