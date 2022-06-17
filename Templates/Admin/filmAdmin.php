@@ -60,8 +60,8 @@ $results = $query->fetchAll();
                 <th scope="col">ID</th>
                 <th scope="col" style="cursor: pointer;">TITLE</th>
                 <th scope="col" style="cursor: pointer;">GENRE</th>
-                <th scope="col" style="cursor: pointer;">CREATION DATE</th>
-                <th scope="col" style="cursor: pointer;">UPDATED DATE</th>
+                <th scope="col" style="cursor: pointer;">CREATION-DATE</th>
+                <th scope="col" style="cursor: pointer;">UPDATED-DATE</th>
                 <th scope="col" style="cursor: pointer;">ACTION</th>
             </thead>
             <tbody class="text-center">

@@ -2,7 +2,7 @@
     <th scope="row" id="_id"><?php echo $user["id"]; ?></th>
     <td id="email"><?php echo $user["email"]; ?></td>
     <td id="username"><?php echo $user["username"]; ?></td>
-    <td id="date"><?php echo $user["creation_date"]; ?></td>
+    <td id="creation-date"><?php echo $user["creation_date"]; ?></td>
     <td id="admin"><?php echo $admin; ?></td>
     <td id="banned"><?php echo $banned; ?></td>
     <td class="text-center">

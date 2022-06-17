@@ -24,7 +24,7 @@ $title = (count($result) > 1) ? "Tous les utilisateurs" : "Résultat de la reche
                 <th scope="col">ID</th>
                 <th scope="col" style="cursor: pointer;">EMAIL</th>
                 <th scope="col" style="cursor: pointer;">USERNAME</th>
-                <th scope="col" style="cursor: pointer;">DATE D'ARRIVEE</th>
+                <th scope="col" style="cursor: pointer;">CREATION-DATE</th>
                 <th scope="col" style="cursor: pointer;">ADMIN</th>
                 <th scope="col" style="cursor: pointer;">BANNED</th>
                 <th scope="col">ACTION</th>

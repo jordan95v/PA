@@ -8,6 +8,7 @@ function sortTables(n) {
         swap = false;
         for (i = 1; i < rows.length - 1; i++) {
             change = false
+            console.log(n.target.param)
             let element = rows[i].querySelector(`#${n.target.param}`).innerHTML.toLowerCase();
             let next = rows[i + 1].querySelector(`#${n.target.param}`).innerHTML.toLowerCase();
 
@@ -44,5 +45,5 @@ const header = table.querySelectorAll("th")
 for (let index = 1; index < header.length; index++) {
     const element = header[index];
     element.addEventListener("click", sortTables)
-    element.param = element.innerHTML.toLocaleLowerCase();
+    element.param = element.innerHTML.toLowerCase();
 }
