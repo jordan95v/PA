@@ -1,7 +1,6 @@
 <?php
 
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
 
 require "PHPMailer/src/Exception.php";
 require "PHPMailer/src/PHPMailer.php";
@@ -161,7 +160,7 @@ function sendNewsMail($title, $body, $emails, &$errors)
 		)
 	);
 	$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-	$mail->Host = 'mail.yahoo.com';
+	$mail->Host = 'smtp-mail.outlook.com';
 	$mail->Port = 587;
 	$mail->Username = EMAIL;
 	$mail->Password = PWD;
@@ -205,7 +204,7 @@ function sendTicket($to, $title, $body, $img, &$errors)
 		)
 	);
 	$mail->SMTPSecure = 'tls';
-	$mail->Host = 'smtp.gmail.com';
+	$mail->Host = 'smtp-mail.outlook.com';
 	$mail->Port = 587;
 	$mail->Username = EMAIL;
 	$mail->Password = PWD;

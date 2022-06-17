@@ -25,7 +25,7 @@ if ($date_now > $date_convert) {
         Stripe::setApiKey("sk_test_51L53G8AzApjgsM9WZJl6ELzVSmw0nPrE0f1pBJxQPJz7HSDGqIOVsTZYAUpnSgcrIOrB1GqTAd5qoBAv6bmhOKQk00QDVr8jDR");
         header("Content-Type: application/json");
 
-        $domain = "http://localhost";
+        $domain = "http://leslumieres.site/";
 
         $checkout_session = \Stripe\Checkout\Session::create([
             "line_items" => [[
@@ -34,8 +34,8 @@ if ($date_now > $date_convert) {
                 "quantity" => 1,
             ]],
             "mode" => "payment",
-            "success_url" => $domain . "/PA/Scripts/success.php?date=" . $_POST["date"] . "&time=" . $_POST["time"] . "&film_id=" . $_POST["film_id"] . "&film_name=" . $_POST["film_name"],
-            "cancel_url" => $domain . "/PA/Scripts/cancel.php",
+            "success_url" => $domain . "Scripts/success.php?date=" . $_POST["date"] . "&time=" . $_POST["time"] . "&film_id=" . $_POST["film_id"] . "&film_name=" . $_POST["film_name"],
+            "cancel_url" => $domain . "Scripts/cancel.php",
         ]);
         $_SESSION["stripe_ok"] = 1;
         header("HTTP/1.1 303 See Other");

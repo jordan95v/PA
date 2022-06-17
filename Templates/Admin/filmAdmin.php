@@ -50,7 +50,7 @@
 <?php
 $query = $pdo->prepare("SELECT * FROM groschien_film ORDER BY id DESC;");
 $query->execute();
-$result = $query->fetchAll();
+$results = $query->fetchAll();
 ?>
 <h2 class="text-center pt-5">Liste des films</h2>
 <div class="table-responsive">
@@ -66,8 +66,8 @@ $result = $query->fetchAll();
             </thead>
             <tbody class="text-center">
                 <?php
-                for ($i = 0; $i < count($result); $i++) {
-                    $film = $result[$i];
+                for ($i = 0; $i < count($results); $i++) {
+                    $film = $results[$i];
                     include "Templates/Misc/filmLogs.php";
                 }
                 ?>
@@ -75,3 +75,11 @@ $result = $query->fetchAll();
         </table>
     </div>
 </div>
+<?php
+for ($i = 0; $i < count($results); $i++) {
+    $result = $results[$i];
+    include "Templates/Misc/modifyFilm.php";
+}
+?>
+
+<script src="JS/table.js"></script>

@@ -44,3 +44,5 @@ $result = $query->fetchAll();
         </tbody>
     </table>
 </div>
+
+<script src="JS/table.js"></script>
