@@ -41,24 +41,24 @@
             <h2 class="text-center">Actions des utilsateurs</h2>
             <div class="table-responsive">
                 <div id="logs">
-                    <table class="table table-hover table-dark table-borderless">
-                        <thead class="text-center">
+                    <table class="table table-hover table-dark table-borderless" id="logTable">
+                        <thead class="text-center" id="headers">
                             <th scope="col">ID</th>
-                            <th scope="col">USERNAME</th>
-                            <th scope="col">ACTION</th>
-                            <th scope="col">DATE</th>
+                            <th scope="col" style="cursor: pointer;">USERNAME</th>
+                            <th scope="col" style="cursor: pointer;">ACTION</th>
+                            <th scope="col" style="cursor: pointer;">DATE</th>
                         </thead>
                         <tbody class="text-center">
                             <?php
                             for ($i = 0; $i < count($result); $i++) {
                                 $action = $result[$i];
-                                echo '<tr><th scope="row">' . $action["id"] . '</th>';
+                                echo '<tr><th scope="row" id="_id">' . $action["id"] . '</th>';
                                 $query = $pdo->prepare("SELECT * FROM petitchat_user WHERE id=:id;");
                                 $query->execute(["id" => $action["user_id"]]);
                                 $username = $query->fetch()['username'];
-                                echo '<td>' . $username . '</td>';
-                                echo '<td>' . $action["type"] . '</td>';
-                                echo '<td>' . $action["date"] . '</td></tr>';
+                                echo '<td id="username">' . $username . '</td>';
+                                echo '<td id="action">' . $action["type"] . '</td>';
+                                echo '<td id="date">' . $action["date"] . '</td></tr>';
                             }
                             ?>
                         </tbody>
@@ -68,3 +68,5 @@
         </div>
     </div>
 </div>
+
+<script src="JS/table.js"></script>

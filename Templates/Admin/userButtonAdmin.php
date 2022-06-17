@@ -1,10 +1,10 @@
 <tr>
-    <th scope="row"><?php echo $user["id"]; ?></th>
-    <td><?php echo $user["email"]; ?></td>
-    <td><?php echo $user["username"]; ?></td>
-    <td><?php echo $user["creation_date"]; ?></td>
-    <td><?php echo $admin; ?></td>
-    <td><?php echo $banned; ?></td>
+    <th scope="row" id="_id"><?php echo $user["id"]; ?></th>
+    <td id="email"><?php echo $user["email"]; ?></td>
+    <td id="username"><?php echo $user["username"]; ?></td>
+    <td id="date"><?php echo $user["creation_date"]; ?></td>
+    <td id="admin"><?php echo $admin; ?></td>
+    <td id="banned"><?php echo $banned; ?></td>
     <td class="text-center">
         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
             <?php

@@ -19,17 +19,17 @@ $title = (count($result) > 1) ? "Tous les utilisateurs" : "Résultat de la reche
 
     <h2 class="text-center pt-4"><?php echo $title; ?></h2>
     <div class="table-responsive">
-        <table class="table table-hover mt-2 p-4 table-dark table-borderless">
-            <thead class="text-center">
+        <table class="table table-hover mt-2 p-4 table-dark table-borderless" id="logTable">
+            <thead class="text-center" id="headers">
                 <th scope="col">ID</th>
-                <th scope="col">EMAIL</th>
-                <th scope="col">USERNAME</th>
-                <th scope="col">DATE D'ARRIVEE</th>
-                <th scope="col">ADMIN</th>
-                <th scope="col">BANNED</th>
+                <th scope="col"style="cursor: pointer;">EMAIL</th>
+                <th scope="col" style="cursor: pointer;">USERNAME</th>
+                <th scope="col" style="cursor: pointer;">DATE D'ARRIVEE</th>
+                <th scope="col" style="cursor: pointer;">ADMIN</th>
+                <th scope="col" style="cursor: pointer;">BANNED</th>
                 <th scope="col">ACTION</th>
             </thead>
-            <tbody class="text-center">
+            <tbody class="text-center" id="content">
                 <?php
                 for ($i = 0; $i < count($result); $i++) {
                     $user = $result[$i];
@@ -42,3 +42,5 @@ $title = (count($result) > 1) ? "Tous les utilisateurs" : "Résultat de la reche
         </table>
     </div>
 </div>
+
+<script src="JS/table.js"></script>

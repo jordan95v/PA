@@ -18,7 +18,7 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
         </li>
         <?php
         if (isAdmin($pdo)) {
-            include "Admin/adminItem.php";
+            include "Templates/Admin/adminItem.php";
         }
         ?>
         <li>
@@ -107,9 +107,3 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
         </div>
     </div>
 </div>
-
-<?php
-if (isAdmin($pdo)) {
-    include "Admin/adminModal.php";
-}
-?>
