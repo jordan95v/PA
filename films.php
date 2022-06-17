@@ -32,7 +32,7 @@ if (isset($_GET["genre"])) {
             <h4><a class="nav-link text-light" href="?genre=drame">Drame</a></h4>
         </li>
         <li class="nav-item active mx-4">
-            <h4><a class="nav-link text-light" href="?genre=horror">Horreur</a></h4>
+            <h4><a class="nav-link text-light" href="?genre=horreur">Horreur</a></h4>
         </li>
         <li class="nav-item active mx-4">
             <h4><a class="nav-link text-light" href="?genre=thriller">Thriller</a></h4>

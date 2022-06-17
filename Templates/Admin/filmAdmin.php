@@ -10,7 +10,7 @@
             </div>
             <div class="mb-5 col-md-4 col-12">
                 <input type="text" name="title" class="form-control" placeholder="Entrez le titre du film.">
-                <div id="userHelp" class="form-text text-center">Titre du film 🐱‍👤</div>
+                <div id="userHelp" class="form-text text-center">Titre du film 🥷</div>
             </div>
             <div class="mb-3 col-md-4 col-12">
                 <select class="form-select" aria-label="Default select example" name="genre">
