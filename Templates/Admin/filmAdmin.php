@@ -47,3 +47,31 @@
 </div>
 
 <!-- Film list -->
+<?php
+$query = $pdo->prepare("SELECT * FROM groschien_film ORDER BY id DESC;");
+$query->execute();
+$result = $query->fetchAll();
+?>
+<h2 class="text-center pt-5">Liste des films</h2>
+<div class="table-responsive">
+    <div id="logs">
+        <table class="table table-hover table-dark table-borderless" id="logTable">
+            <thead class="text-center" id="headers">
+                <th scope="col">ID</th>
+                <th scope="col" style="cursor: pointer;">TITLE</th>
+                <th scope="col" style="cursor: pointer;">GENRE</th>
+                <th scope="col" style="cursor: pointer;">CREATION DATE</th>
+                <th scope="col" style="cursor: pointer;">UPDATED DATE</th>
+                <th scope="col" style="cursor: pointer;">ACTION</th>
+            </thead>
+            <tbody class="text-center">
+                <?php
+                for ($i = 0; $i < count($result); $i++) {
+                    $film = $result[$i];
+                    include "Templates/Misc/filmLogs.php";
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+</div>

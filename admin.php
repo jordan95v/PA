@@ -9,6 +9,7 @@ if (!isAdmin($pdo)) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,13 +40,22 @@ if (!isAdmin($pdo)) {
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <ul class="navbar-nav text-center ms-auto">
                     <?php include "Templates/Misc/userMenu.php"; ?>
-                </ul>   
+                </ul>
             </div>
         </div>
     </nav>
 
     <div class="container">
         <?php
+        if (!empty($_SESSION["errors"]) && isset($_SESSION["errors"])) {
+            echo '<div class="alert alert-danger mt-4 pb-1" role="alert">';
+            for ($i = 0; $i < count($_SESSION["errors"]); $i++) {
+                $element = $_SESSION["errors"][$i];
+                echo '<h5 class="fw-bold">- ' . $element . '</h5>';
+            }
+            echo '</div>';
+            unset($_SESSION["errors"]);
+        }
         if (!empty($_SESSION["upload"]) && isset($_SESSION["upload"])) {
             echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
             echo '<h5 class="fw-bold">Le film à été correctement enregistrer.</h5>';
@@ -94,7 +104,7 @@ if (!isAdmin($pdo)) {
             echo '</div>';
             unset($_SESSION["deleted"]);
         }
-    ?>
+        ?>
     </div>
 
     <div class="container text-light">
@@ -116,28 +126,21 @@ if (!isAdmin($pdo)) {
             <li class="nav-item mx-4">
                 <a class="nav-link text-light" href="?type=logs">Logs</a>
             </li>
-    </ul>
+        </ul>
 
         <?php
-            if ($_GET["type"] == "film")
-            {
-                include "Templates/Admin/filmAdmin.php";
-            }
-            elseif ($_GET["type"] == "newsletter")
-            {
-                include "Templates/Admin/newsletterAdmin.php";
-            }
-            elseif ($_GET["type"] == "logs")
-            {
-                include "Templates/Admin/logsAdmin.php";
-            }
-            elseif ($_GET["type"] == "users")
-            {
-                include "Templates/Admin/userAdmin.php";
-            }
+        if ($_GET["type"] == "film") {
+            include "Templates/Admin/filmAdmin.php";
+        } elseif ($_GET["type"] == "newsletter") {
+            include "Templates/Admin/newsletterAdmin.php";
+        } elseif ($_GET["type"] == "logs") {
+            include "Templates/Admin/logsAdmin.php";
+        } elseif ($_GET["type"] == "users") {
+            include "Templates/Admin/userAdmin.php";
+        }
         ?>
     </div>
 
-<?php 
-include "Templates/footer.php";
-?>
+    <?php
+    include "Templates/footer.php";
+    ?>

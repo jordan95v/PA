@@ -22,7 +22,7 @@ $title = (count($result) > 1) ? "Tous les utilisateurs" : "Résultat de la reche
         <table class="table table-hover mt-2 p-4 table-dark table-borderless" id="logTable">
             <thead class="text-center" id="headers">
                 <th scope="col">ID</th>
-                <th scope="col"style="cursor: pointer;">EMAIL</th>
+                <th scope="col" style="cursor: pointer;">EMAIL</th>
                 <th scope="col" style="cursor: pointer;">USERNAME</th>
                 <th scope="col" style="cursor: pointer;">DATE D'ARRIVEE</th>
                 <th scope="col" style="cursor: pointer;">ADMIN</th>
@@ -35,7 +35,7 @@ $title = (count($result) > 1) ? "Tous les utilisateurs" : "Résultat de la reche
                     $user = $result[$i];
                     $admin = ($user["is_admin"] == 0) ? "Non" : "Oui";
                     $banned = ($user["banned"] == 0) ? "Non" : "Oui";
-                    include "userButtonAdmin.php";
+                    include "Templates/Misc/userLogs.php";
                 }
                 ?>
             </tbody>

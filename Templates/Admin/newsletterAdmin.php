@@ -38,13 +38,7 @@ $result = $query->fetchAll();
             for ($i = 0; $i < count($result); $i++) {
                 $news = $result[$i];
                 echo '<tr><th scope="row">' . $news["id"] . '</th>';
-                $query = $pdo->prepare("SELECT * FROM petitchat_user WHERE id=:id");
-                $query->execute(["id" => $news["user_id"]]);
-                $username = $query->fetch()['username'];
-                echo '<td>' . $username . '</td>';
-                echo '<td>' . $news["subject"] . '</td>';
-                echo '<td>' . $news["content"] . '</td>';
-                echo '<td>' . $news["send_date"] . '</td></tr>';
+                include "Templates/Misc/newsletterLogs.php";
             }
             ?>
         </tbody>

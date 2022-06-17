@@ -25,7 +25,7 @@
                 <!-- Add description -->
                 <?php
                 if (isAdmin($pdo)) {
-                    include "Admin/filmAdminButton.php";
+                    include "Templates/Admin/filmAdminButton.php";
                 }
                 ?>
                 <a type="button" class="btn btn-success w-100 my-2" data-bs-toggle="modal" data-bs-target="#<?php echo str_replace(' ', '-', $result[$i]['title']); ?>-buy">Acheter un billet</a>

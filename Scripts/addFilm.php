@@ -126,8 +126,7 @@ $title = htmlspecialchars(strtolower($_POST["title"]));
 $maker = htmlspecialchars(strtolower($_POST["maker"]));
 $actors = htmlspecialchars(strtolower($_POST["actors"]));
 $info = htmlspecialchars(strtolower($_POST["desc"]));
-if (isset($_POST["featured"]))
-{
+if (isset($_POST["featured"])) {
     $featured = ($_POST["featured"] === "on") ? 1 : 0;
 }
 
@@ -144,14 +143,14 @@ if (isAdmin($pdo)) {
                 $query->execute(["image_path" => $target_file, "title" => $title, "genre" => $_POST["genre"], "maker" => $maker, "actors" => $actors, "info" => $info, "featured" => $featured]);
                 updateUserLogs($pdo, $_SESSION["id"], "added a movie: " . $title . ".");
                 $_SESSION["upload"] = 1;
-                header("Location: ../index.php");
+                header("Location: ../admin.php?type=film");
             } else {
                 $errors[] = "Impossible d\"uploader le fichier.";
             }
         }
         if (count($errors) != 0) {
             $_SESSION["errors"] = $errors;
-            header("Location: ../admin.php?type=film");
+            header("Location: ../index.php");
         }
     }
 } else {
