@@ -107,7 +107,7 @@ updateLogs($pdo, 'index.php');
         $count = (count($result) >= 5) ? 5 : count($result);
 
         for ($i = 0; $i < count($result); $i++) {
-            include "Templates/filmModal.php";
+            include "Templates/Misc/filmModal.php";
         }
         ?>
     </div>

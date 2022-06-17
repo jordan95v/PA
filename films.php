@@ -50,7 +50,7 @@ if (isset($_GET["genre"])) {
             $result = $query->fetchAll();
         }
         for ($i = 0; $i < count($result); $i++) {
-            include "Templates/filmModal.php";
+            include "Templates/Misc/filmModal.php";
         }
         ?>
     </div>

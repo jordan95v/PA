@@ -53,7 +53,7 @@ if (isset($_SESSION["email"])) {
                         <ul class="navbar-nav mt-2 mb-lg-0 text-center">
                             <?php
                             if (isConnected($pdo)) {
-                                include 'userMenu.php';
+                                include 'Misc/userMenu.php';
                             } else {
                                 include 'Auth/register.php';
                                 include 'Auth/login.php';
