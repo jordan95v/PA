@@ -1,6 +1,11 @@
 <?php
-require_once 'Scripts/functions.php';
+require_once "Scripts/functions.php";
 $pdo = connectDB();
+
+if (!isAdmin($pdo)) {
+    $_SESSION["notAdmin"] = 1;
+    header("Location: index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +38,7 @@ $pdo = connectDB();
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <ul class="navbar-nav text-center ms-auto">
-                    <?php include "Templates/userMenu.php"; ?>
+                    <?php include "Templates/Misc/userMenu.php"; ?>
                 </ul>   
             </div>
         </div>
