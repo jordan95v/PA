@@ -1,63 +1,6 @@
 <?php
 require_once "functions.php";
 
-if (
-    empty($_POST["title"]) || empty($_POST["genre"]) ||
-    empty($_POST["maker"]) || empty($_POST["actors"]) ||
-    empty($_FILES["file"]) || empty($_POST["desc"]) || empty($_FILES)
-) {
-    $_SESSION["empty"] = 1;
-    header("Location: ../index.php");
-    die();
-}
-
-$target_dir = "../Images/Movies/";
-$target_file = $target_dir . basename($_FILES["file"]["name"]);
-$imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-$errors = [];
-$pdo = connectDB();
-
-checkFileSize($_FILES["file"]["size"], $errors);
-checkFileExists($target_file, $errors);
-checkImage($_FILES["file"], $errors);
-checkFileExtension($imageFileType, $errors);
-
-$title = htmlspecialchars(strtolower($_POST["title"]));
-$maker = htmlspecialchars(strtolower($_POST["maker"]));
-$actors = htmlspecialchars(strtolower($_POST["actors"]));
-$info = htmlspecialchars(strtolower($_POST["desc"]));
-if (isset($_POST["featured"]))
-{
-    $featured = ($_POST["featured"] === "on") ? 1 : 0;
-}
-
-if (isAdmin($pdo)) {
-    if (count($errors) != 0) {
-        $_SESSION["errors"] = $errors;
-        header("Location: ../admin.php?type=film");
-        die();
-    } else {
-        if (filmExists($pdo, $title, $errors)) {
-            if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-                makeFiligrane($target_file);
-                $query = $pdo->prepare("INSERT INTO groschien_film (image_path, title, genre, maker, actors, info, featured) VALUES (:image_path, :title, :genre, :maker, :actors, :info, :featured);");
-                $query->execute(["image_path" => $target_file, "title" => $title, "genre" => $_POST["genre"], "maker" => $maker, "actors" => $actors, "info" => $info, "featured" => $featured]);
-                updateUserLogs($pdo, $_SESSION["id"], "added a movie: " . $title . ".");
-                $_SESSION["upload"] = 1;
-                header("Location: ../index.php");
-            } else {
-                $errors[] = "Impossible d\"uploader le fichier.";
-            }
-        }
-        if (count($errors) != 0) {
-            $_SESSION["errors"] = $errors;
-            header("Location: ../admin.php?type=film");
-        }
-    }
-} else {
-    $_SESSION["notAdmin"] = 1;
-    header("Location: ../index.php");
-}
 
 
 function checkFileSize($fileSize, &$errors)
@@ -155,4 +98,63 @@ function filmExists($pdo, $title, &$errors)
     }
     $errors[] = "Le film existe déjà dans la base de données.";
     return false;
+}
+
+
+if (
+    empty($_POST["title"]) || empty($_POST["genre"]) ||
+    empty($_POST["maker"]) || empty($_POST["actors"]) ||
+    empty($_FILES["file"]) || empty($_POST["desc"]) || empty($_FILES)
+) {
+    $_SESSION["empty"] = 1;
+    header("Location: ../index.php");
+    die();
+}
+
+$target_dir = "../Images/Movies/";
+$target_file = $target_dir . basename($_FILES["file"]["name"]);
+$imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+$errors = [];
+$pdo = connectDB();
+
+checkFileSize($_FILES["file"]["size"], $errors);
+checkFileExists($target_file, $errors);
+checkImage($_FILES["file"], $errors);
+checkFileExtension($imageFileType, $errors);
+
+$title = htmlspecialchars(strtolower($_POST["title"]));
+$maker = htmlspecialchars(strtolower($_POST["maker"]));
+$actors = htmlspecialchars(strtolower($_POST["actors"]));
+$info = htmlspecialchars(strtolower($_POST["desc"]));
+if (isset($_POST["featured"]))
+{
+    $featured = ($_POST["featured"] === "on") ? 1 : 0;
+}
+
+if (isAdmin($pdo)) {
+    if (count($errors) != 0) {
+        $_SESSION["errors"] = $errors;
+        header("Location: ../admin.php?type=film");
+        die();
+    } else {
+        if (filmExists($pdo, $title, $errors)) {
+            if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+                makeFiligrane($target_file);
+                $query = $pdo->prepare("INSERT INTO groschien_film (image_path, title, genre, maker, actors, info, featured) VALUES (:image_path, :title, :genre, :maker, :actors, :info, :featured);");
+                $query->execute(["image_path" => $target_file, "title" => $title, "genre" => $_POST["genre"], "maker" => $maker, "actors" => $actors, "info" => $info, "featured" => $featured]);
+                updateUserLogs($pdo, $_SESSION["id"], "added a movie: " . $title . ".");
+                $_SESSION["upload"] = 1;
+                header("Location: ../index.php");
+            } else {
+                $errors[] = "Impossible d\"uploader le fichier.";
+            }
+        }
+        if (count($errors) != 0) {
+            $_SESSION["errors"] = $errors;
+            header("Location: ../admin.php?type=film");
+        }
+    }
+} else {
+    $_SESSION["notAdmin"] = 1;
+    header("Location: ../index.php");
 }

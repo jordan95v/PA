@@ -1,6 +1,14 @@
 <?php
 require_once "functions.php";
 
+function deleteImage($pdo, $id)
+{
+    $query = $pdo->prepare("SELECT image_path FROM groschien_film WHERE id=:id;");
+    $query->execute(["id" => $id]);
+    $result = $query->fetch();
+    unlink($result["image_path"]);
+}
+
 $pdo = connectDB();
 
 if (isAdmin($pdo)) {
@@ -12,10 +20,4 @@ if (isAdmin($pdo)) {
     header("Location: ../admin.php?type=film");
 }
 
-function deleteImage($pdo, $id)
-{
-    $query = $pdo->prepare("SELECT image_path FROM groschien_film WHERE id=:id;");
-    $query->execute(["id" => $id]);
-    $result = $query->fetch();
-    unlink($result["image_path"]);
-}
+

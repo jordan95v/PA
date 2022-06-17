@@ -1,6 +1,13 @@
 <?php
 require_once "functions.php";
 
+function getTitle($pdo, $id)
+{
+    $query = $pdo->prepare("SELECT title FROM groschien_film WHERE id=:id;");
+    $query->execute(["id" => $id]);
+    return $query->fetch()["title"];
+}
+
 if (
     empty($_POST["title"]) || empty($_POST["genre"]) ||
     empty($_POST["maker"]) || empty($_POST["actors"]) ||
@@ -26,9 +33,3 @@ if (isAdmin($pdo)) {
     header("Location: ../admin.php?type=film");
 }
 
-function getTitle($pdo, $id)
-{
-    $query = $pdo->prepare("SELECT title FROM groschien_film WHERE id=:id;");
-    $query->execute(["id" => $id]);
-    return $query->fetch()["title"];
-}

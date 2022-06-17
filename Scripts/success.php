@@ -2,6 +2,24 @@
 require "functions.php";
 require "userFunction.php";
 
+function createBarcode($code, $name)
+{
+    $file_name = uniqid() . ".jpg";
+    $img = imagecreate(500, 300);
+    imagecolorallocate($img, 255, 255, 255);
+    imagesetthickness($img, 10);
+    $x = 20;
+
+    for ($i = 0; $x < 500; $i++) {
+        imageline($img, $x, 40, $x, 250, imagecolorallocate($img, 0, 0, 0));
+        $x += rand(15, 30);
+    }
+    imagettftext($img, 15, 0, 10, 30, imagecolorallocate($img, 0, 0, 0), "../Static/Font/CaviarDreams.ttf", ucwords($name));
+    imagettftext($img, 25, 0, 155, 290, imagecolorallocate($img, 0, 0, 0), "../Static/Font/CaviarDreams.ttf", $code);
+    imagepng($img, "../Images/Ticket/" . $file_name);
+    return $file_name;
+}
+
 $pdo = connectDB();
 $errors = [];
 $code = rand(10000000, 99999999);
@@ -27,22 +45,4 @@ if (isset($_SESSION["stripe_ok"])) {
     $_SESSION["notAdmin"] = 1;
 }
 header("Location: ../index.php");
-die();
 
-function createBarcode($code, $name)
-{
-    $file_name = uniqid() . ".jpg";
-    $img = imagecreate(500, 300);
-    imagecolorallocate($img, 255, 255, 255);
-    imagesetthickness($img, 10);
-    $x = 20;
-
-    for ($i = 0; $x < 500; $i++) {
-        imageline($img, $x, 40, $x, 250, imagecolorallocate($img, 0, 0, 0));
-        $x += rand(15, 30);
-    }
-    imagettftext($img, 15, 0, 10, 30, imagecolorallocate($img, 0, 0, 0), "../Static/Font/CaviarDreams.ttf", ucwords($name));
-    imagettftext($img, 25, 0, 155, 290, imagecolorallocate($img, 0, 0, 0), "../Static/Font/CaviarDreams.ttf", $code);
-    imagepng($img, "../Images/Ticket/" . $file_name);
-    return $file_name;
-}
