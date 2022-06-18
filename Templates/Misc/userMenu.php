@@ -10,7 +10,7 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
     </a>
 
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-         <li>
+        <li>
             <a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#profile">Mon profil</a>
         </li>
         <li>
@@ -87,16 +87,14 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
             <div class="modal-body text-center bg-dark">
                 <?php
                 $query = $pdo->prepare("SELECT * FROM megalapin_ticket WHERE user_id=:id ORDER BY id DESC;");
-                $query->execute(["id" => $user["id"]]);
+                $query->execute(["id" => $_SESSION["id"]]);
                 $tickets = $query->fetchAll();
-                if (!empty($ticket))
-                {
+                if (!empty($tickets)) {
                     for ($i = 0; $i < count($tickets); $i++) {
                         $ticket = $tickets[$i];
-                        include 'ticketCard.php';
+                        include 'Templates/Misc/ticketCard.php';
                     }
-                }
-                else {
+                } else {
                     echo '<h4 class="text-light p-4">Vous n\'avez pas acheté de billets pour le moment.</h1>';
                 }
                 ?>
