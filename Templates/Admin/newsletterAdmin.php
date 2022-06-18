@@ -25,24 +25,25 @@ $result = $query->fetchAll();
 <!-- Logs de la newsletter -->
 <h2 class="text-center pt-5 mt-4">Logs de la newsletter</h2>
 <div class="table-responsive">
-    <table class="table table-hover mt-2 p-4 table-dark table-borderless">
-        <thead class="text-center">
-            <th scope="col">ID</th>
-            <th scope="col">USERNAME</th>
-            <th scope="col">SUBJECT</th>
-            <th scope="col">CONTENT</th>
-            <th scope="col">DATE D'ENVOI</th>
-        </thead>
-        <tbody class="text-center">
-            <?php
-            for ($i = 0; $i < count($result); $i++) {
-                $news = $result[$i];
-                echo '<tr><th scope="row">' . $news["id"] . '</th>';
-                include "Templates/Misc/newsletterLogs.php";
-            }
-            ?>
-        </tbody>
-    </table>
+    <div id="logs">
+        <table class="table table-hover mt-2 p-4 table-dark table-borderless" id="logTable">
+            <thead class="text-center" id="headers">
+                <th scope="col">ID</th>
+                <th scope="col" style="cursor: pointer;">USERNAME</th>
+                <th scope="col" style="cursor: pointer;">SUBJECT</th>
+                <th scope="col" style="cursor: pointer;">CONTENT</th>
+                <th scope="col" style="cursor: pointer;">SEND-DATE</th>
+            </thead>
+            <tbody class="text-center">
+                <?php
+                for ($i = 0; $i < count($result); $i++) {
+                    $news = $result[$i];
+                    include "Templates/Misc/newsletterLogs.php";
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <script src="JS/table.js"></script>

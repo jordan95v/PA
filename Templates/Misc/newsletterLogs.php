@@ -5,8 +5,8 @@
     $username = $query->fetch()['username'];
     ?>
     <th scope="row"><?php echo $news["id"]; ?></th>
-    <td><?php echo $username; ?></td>
-    <td><?php echo $news["subject"]; ?></td>
-    <td><?php echo $news["content"]; ?></td>
-    <td><?php echo $news["send_date"]; ?></td>
+    <td id="username"><?php echo $username; ?></td>
+    <td id="subject"><?php echo $news["subject"]; ?></td>
+    <td id="content"><?php echo $news["content"]; ?></td>
+    <td id="send-date"><?php echo $news["send_date"]; ?></td>
 </tr>
