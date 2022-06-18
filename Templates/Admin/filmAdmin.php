@@ -1,3 +1,7 @@
+<?php
+updateLogs($pdo, 'films-admin.php');
+?>
+
 <h1 class="text-center mt-5 pt-4">Section administrateur pour les films</h1>
 
 <!-- Film form -->

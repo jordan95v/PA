@@ -1,3 +1,6 @@
+<?php
+updateLogs($pdo, 'logs-admin.php');
+?>
 <h1 class="text-center mt-5 pt-4">Section administrateur pour les logs</h1>
 
 <!-- Logs list -->

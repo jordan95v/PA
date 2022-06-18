@@ -1,4 +1,5 @@
 <?php
+updateLogs($pdo, 'user-admin.php');
 if (isset($_GET["search"])) {
     $query = $pdo->prepare("SELECT * FROM petitchat_user WHERE username=:username;");
     $query->execute(["username" => $_GET["search"]]);

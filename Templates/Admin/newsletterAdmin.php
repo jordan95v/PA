@@ -1,3 +1,6 @@
+<?php
+updateLogs($pdo, 'newsletter-admin.php');
+?>
 <h1 class="text-center mt-5 pt-4">Section administrateur pour la newletter</h1>
 
 <!-- Newsletter form -->
