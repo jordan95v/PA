@@ -29,7 +29,7 @@ $full_name = $_GET["film_name"] . " " . $date . " " . $time;
 
 if (isset($_SESSION["stripe_ok"])) {
     $img = "../Images/Ticket/" . createBarcode($code, $full_name);
-    $body = '<html><body>Votre achat à été validé, voici votre ticket.</br><img src="cid:barcode"></body></html>';
+    $body = '<html><body>Votre achat a ete valide, voici votre billet.</br><img src="cid:barcode"></body></html>';
 
     $query = $pdo->prepare("INSERT INTO megalapin_ticket (user_id, film_id, film_name, ticket, date, time) VALUES (:id, :film_id, :film_name,:ticket, :date, :time);");
     $query->execute(["id" => $_SESSION["id"], "film_id" => $_GET["film_id"], "film_name" => $_GET["film_name"], "ticket" => $img, "date" => $date, "time" => $time]);
@@ -45,4 +45,3 @@ if (isset($_SESSION["stripe_ok"])) {
     $_SESSION["notAdmin"] = 1;
 }
 header("Location: ../index.php");
-
