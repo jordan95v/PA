@@ -36,7 +36,7 @@ $title = (count($result) > 1) ? "Tous les utilisateurs" : "Résultat de la reche
                     $user = $result[$i];
                     $admin = ($user["is_admin"] == 0) ? "Non" : "Oui";
                     $banned = ($user["banned"] == 0) ? "Non" : "Oui";
-                    include "Templates/Misc/userLogs.php";
+                    include "Templates/Admin/Logs/userLogs.php";
                 }
                 ?>
             </tbody>

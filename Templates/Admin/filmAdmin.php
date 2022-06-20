@@ -72,7 +72,7 @@ $results = $query->fetchAll();
                 <?php
                 for ($i = 0; $i < count($results); $i++) {
                     $film = $results[$i];
-                    include "Templates/Misc/filmLogs.php";
+                    include "Templates/Admin/Logs/filmLogs.php";
                 }
                 ?>
             </tbody>
@@ -82,7 +82,7 @@ $results = $query->fetchAll();
 <?php
 for ($i = 0; $i < count($results); $i++) {
     $result = $results[$i];
-    include "Templates/Misc/modifyFilm.php";
+    include "Templates/Admin/Logs/modifyFilm.php";
 }
 ?>
 

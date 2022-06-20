@@ -41,7 +41,7 @@ $result = $query->fetchAll();
                 <?php
                 for ($i = 0; $i < count($result); $i++) {
                     $news = $result[$i];
-                    include "Templates/Misc/newsletterLogs.php";
+                    include "Templates/Admin/Logs/newsletterLogs.php";
                 }
                 ?>
             </tbody>

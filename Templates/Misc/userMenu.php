@@ -83,6 +83,7 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
         <div class="modal-content text-dark">
             <div class="modal-header">
                 <h4>Mes billets</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body text-center bg-dark">
                 <?php
@@ -90,6 +91,7 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
                 $query->execute(["id" => $_SESSION["id"]]);
                 $tickets = $query->fetchAll();
                 if (!empty($tickets)) {
+                    echo '<h4 class="text-light pt-4">Liste de vos billets</h4>';
                     for ($i = 0; $i < count($tickets); $i++) {
                         $ticket = $tickets[$i];
                         include 'Templates/Misc/ticketCard.php';
