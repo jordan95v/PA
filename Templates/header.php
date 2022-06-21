@@ -46,9 +46,11 @@ if (isset($_SESSION["email"])) {
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarText">
-                        <form class="d-flex mt-4 mt-lg-2 film-search mx-auto" method="post">
-                            <input class="form-control search pe-5" type="search" placeholder="Chercher un film ..." aria-label="Search">
-                            <button class="btn ms-5" type="submit">🔍</button>
+                        <form class=" mt-4 mt-lg-2 film-search mx-auto" method="post">
+                            <div class="d-flex">
+                                <input class="form-control search" type="search" id="search" placeholder="Chercher un film ..." aria-label="Search">
+                                <p class="mt-3">🔎</p>
+                            </div>
                         </form>
                         <ul class="navbar-nav mt-2 mb-lg-0 text-center">
                             <?php
