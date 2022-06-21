@@ -108,7 +108,7 @@ function sendUserMail($to, $title, $body, &$errors)
 	$mail = new PHPMailer();
 	$mail->SMTPDebug = 2;
 	$mail->IsSMTP();
-	$mail->SMTPSecure = 'tls';
+	$mail->SMTPSecure = 'STARTTLS';
 	$mail->Port = 587;
 	$mail->SMTPAuth = true;
 	$mail->Username = EMAIL;
@@ -120,7 +120,7 @@ function sendUserMail($to, $title, $body, &$errors)
 			'allow_self_signed' => true
 		)
 	);
-	$mail->Host = 'smtp-mail.outlook.com';
+	$mail->Host = 'smtp.office365.com';
 	$mail->IsHTML(true);
 	$mail->From = EMAIL;
 	$mail->FromName = "Les Lumieres";
@@ -150,7 +150,7 @@ function sendNewsMail($title, $body, $emails, &$errors)
 	$mail = new PHPMailer();
 	$mail->SMTPDebug = 2;
 	$mail->IsSMTP();
-	$mail->SMTPSecure = 'tls';
+	$mail->SMTPSecure = 'STARTTLS';
 	$mail->SMTPAuth = true;
 	$mail->SMTPOptions = array(
 		'ssl' => array(
@@ -159,8 +159,8 @@ function sendNewsMail($title, $body, $emails, &$errors)
 			'allow_self_signed' => true
 		)
 	);
-	$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-	$mail->Host = 'smtp-mail.outlook.com';
+	$mail->SMTPSecure = 2;
+	$mail->Host = 'smtp.office365.com';
 	$mail->Port = 587;
 	$mail->Username = EMAIL;
 	$mail->Password = PWD;
@@ -203,8 +203,8 @@ function sendTicket($to, $title, $body, $img, &$errors)
 			'allow_self_signed' => true
 		)
 	);
-	$mail->SMTPSecure = 'tls';
-	$mail->Host = 'smtp-mail.outlook.com';
+	$mail->SMTPSecure = 'STARTTLS';
+	$mail->Host = 'smtp.office365.com';
 	$mail->Port = 587;
 	$mail->Username = EMAIL;
 	$mail->Password = PWD;
