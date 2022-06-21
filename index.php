@@ -88,7 +88,8 @@ updateLogs($pdo, 'index.php');
     }
     ?>
 
-    <div id="livesearch" class="text-center" style="border: 0px;"></div>
+    <div class="row py-4" id="livesearch">
+    </div>
 
     <!-- Featured Movies + Cards for movies -->
     <div class="d-flex pt-4 bd-highlight">

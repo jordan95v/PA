@@ -1,23 +1,21 @@
 <?php
+require "../Scripts/functions.php";
+$pdo = connectDB();
 
-$xml = simplexml_load_file("./film.xml");
-$content = $xml->film;
+$param = htmlspecialchars($_GET["q"]);
 
-$param = $_GET["q"];
-$hint = "";
+$query = $pdo->prepare("SELECT * FROM groschien_film");
+$query->execute();
+$result = $query->fetchAll();
+$count = 0;
 
-for ($i = 0; $i < count($content); $i++) {
-    if (strchr($content[$i], trim($param))) {
-        if ($hint == "") {
-            $hint = '<a href="" class="mb-3 text-decoration-none text-white">' . ucwords($content[$i]) . '</a>';
-        } else {
-            $hint .= '</br><a href="" class="text-decoration-none text-white">' . ucwords($content[$i]) . '</a>';
-        }
+for ($i = 0; $i < count($result); $i++) {
+    if (strchr($result[$i]["title"], trim($param))) {
+        include "../Templates/Misc/filmModal.php";
+        $count++;
     }
 }
 
-if ($hint == "") {
-    echo "No suggestion";
-} else {
-    echo $hint;
+if (!$count) {
+    echo "No suggestions";
 }

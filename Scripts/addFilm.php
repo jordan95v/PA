@@ -143,8 +143,6 @@ if (isAdmin($pdo)) {
                 $query->execute(["image_path" => $target_file, "title" => $title, "genre" => $_POST["genre"], "maker" => $maker, "actors" => $actors, "info" => $info, "featured" => $featured]);
                 updateUserLogs($pdo, $_SESSION["id"], "added a movie: " . $title . ".");
                 $_SESSION["upload"] = 1;
-                $file_content = str_replace("</xml>", "", file_get_contents("../JS/film.xml")) . "<film>" . $title . "</film>\n</xml>";
-                file_put_contents("../JS/film.xml", $file_content);
                 header("Location: ../admin.php?type=film");
             } else {
                 $errors[] = "Impossible d\"uploader le fichier.";
