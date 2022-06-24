@@ -5,7 +5,7 @@ $user = $query->fetch();
 $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
 ?>
 <div class="dropdown mt-2 text-center">
-    <a class="text-decoration-none text-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="text-decoration-none text-light dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
         <?php echo $user["username"]; ?>
     </a>
 
@@ -15,6 +15,9 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
         </li>
         <li>
             <a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#ticket">Mes billets</a>
+        </li>
+        <li>
+            <a class="dropdown-item" href="forum.php">Forum</a>
         </li>
         <?php
         if (isAdmin($pdo)) {
