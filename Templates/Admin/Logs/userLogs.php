@@ -13,6 +13,13 @@
             } else {
                 echo '<a href="Scripts/banUser.php?id=' . $user["id"] . '" type="button" class="btn btn-warning">Bannir</a>';
             }
+            if (isSuperAdmin($pdo)) {
+                if ($user["is_admin"] == 1) {
+                    echo '<a href="Scripts/fireAdmin.php?id=' . $user["id"] . '" type="button" class="btn btn-secondary">Enlever admin</a>';
+                } else {
+                    echo '<a href="Scripts/hireAdmin.php?id=' . $user["id"] . '" type="button" class="btn btn-success">Promouvoir admin</a>';
+                }
+            }
             ?>
             <a href="Scripts/deleteUser.php?id=<?php echo $user["id"]; ?>" type="button" class="btn btn-danger">Supprimer</a>
         </div>

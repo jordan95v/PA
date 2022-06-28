@@ -104,6 +104,18 @@ if (!isAdmin($pdo)) {
             echo '</div>';
             unset($_SESSION["deleted"]);
         }
+        if (!empty($_SESSION["admin"]) && isset($_SESSION["admin"])) {
+            echo '<div class="alert alert-info mt-4 pb-1" role="alert">';
+            echo '<h5 class="fw-bold">Le compte à été promu administrateur.</h5>';
+            echo '</div>';
+            unset($_SESSION["admin"]);
+        }
+        if (!empty($_SESSION["unAdmin"]) && isset($_SESSION["unadmin"])) {
+            echo '<div class="alert alert-info mt-4 pb-1" role="alert">';
+            echo '<h5 class="fw-bold">Le rôle administrateur à été enlevé du compte.</h5>';
+            echo '</div>';
+            unset($_SESSION["unadmin"]);
+        }
         ?>
     </div>
 

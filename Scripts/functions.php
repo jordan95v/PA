@@ -117,6 +117,28 @@ function isAdmin($pdo)
 	return false;
 }
 
+function isSuperAdmin($pdo)
+{
+	// Check if a user is admin or no.
+
+	// Args:
+	// 	pdo (PDO): The instance of PDO.
+
+	// Returns:
+	// 	bool: If the user is admin or no.
+
+
+	if (!isset($_SESSION["email"]) || !isset($_SESSION["token"])) {
+		return false;
+	}
+	$query = $pdo->prepare("SELECT id FROM petitchat_user WHERE email=:email AND token=:token AND super_admin=:super_admin;");
+	$query->execute(["email" => $_SESSION["email"], "token" => $_SESSION["token"], "super_admin" => 1]);
+	if ($query->fetch()) {
+		return true;
+	}
+	return false;
+}
+
 function updateLogs($pdo, $view)
 {
 	$query = $pdo->prepare("SELECT * FROM grandcanard_logs WHERE view=:view");
