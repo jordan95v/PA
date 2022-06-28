@@ -3,8 +3,6 @@
 include "Templates/header.php";
 require "Scripts/addPublishSubject.php";
 
-$pdo = connectDB();
-
 if (!isConnected($pdo)) {
     header("Location: index.php");
 }
@@ -29,12 +27,10 @@ $selectFilm->execute(["featured" => 1]);
         <select class="form-select mb-4" aria-label="Default select example" name="film">
             <option selected>Choissiez le film</option>
             <?php
-            while ($optionFilm = $selectFilm->fetch()) {
-            ?>
-                <option value="<?= $optionFilm['title']; ?>">
-                    <?= ucwords($optionFilm['title']); ?>
-                </option>
-            <?
+            $result = $selectFilm->fetchAll();
+            for ($i = 0; $i < count($result); $i++) {
+                $film = $result[$i];
+                echo '<option value="' . $film["title"] . '">' . ucwords($film["title"]) . '</option>';
             }
             ?>
         </select>
