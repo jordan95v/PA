@@ -17,5 +17,5 @@ for ($i = 0; $i < count($result); $i++) {
 }
 
 if (!$count) {
-    echo "No suggestions";
+    echo '<p class="text-danger">No suggestions</p>';
 }

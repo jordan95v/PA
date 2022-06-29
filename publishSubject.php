@@ -19,7 +19,7 @@ $selectFilm->execute(["featured" => 1]);
 <div class="container mt-4">
     <div class="row py-4" id="livesearch">
     </div>
-    <h4 class="">Poster un sujet sur le forum 🥷</h4>
+    <h4 class="text-light">Poster un sujet sur le forum 🥷</h4>
     <form method="POST">
         <div class="mb-4">
             <input type="text" name="title" class="form-control" placeholder="Titre de votre sujet ...">
@@ -34,12 +34,15 @@ $selectFilm->execute(["featured" => 1]);
             }
             ?>
         </select>
-        <div class="mb-4">
+        <div class="mb-2">
             <label for="exampleInputEmail1" class="form-label">Contenu du sujet</label>
             <textarea name="content" class="form-control" placeholder="Contenu (limitez à 255 caractères"></textarea>
         </div>
         <button type="submit" class="btn btn-dark w-100" name="validate">Publier</button>
     </form>
+    <div class="text-center">
+        <a href="forum.php" class="btn btn-warning w-50 mt-4">Revenir au forum</a>
+    </div>
 </div>
 
 <?php

@@ -34,6 +34,9 @@ require "Scripts/showAllComments.php";
                         <br>
                         <button class="btn btn-primary" name="validate">Publier</button>
                     </div>
+                    <div class="text-center">
+                        <a href="forum.php" class="btn btn-warning w-50 mb-4">Revenir au forum</a>
+                    </div>
                     <br>
                 </form>
                 <?php

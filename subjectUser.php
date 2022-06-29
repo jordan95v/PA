@@ -14,7 +14,7 @@ $count = 0;
 <div class="container">
     <div class="row py-4" id="livesearch">
     </div>
-    <h1 class="text-center">Mes sujets</h1>
+    <h1 class="text-center text-light">Mes sujets</h1>
 
     <div class="row py-3 row-cols-sm-3 row-cols-lg-3 row-cols-md-3 row-cols-sm-3 g-3 text-dark">
         <?php

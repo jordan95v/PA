@@ -7,9 +7,10 @@ function showResult() {
     }
     var xmlhttp = new XMLHttpRequest();
     if (!document.querySelector('#result')) {
+        const theme = (localStorage.getItem('theme') == 'light') ? 'text-dark' : 'text-light';
         let html = `<div id="result" class="d-flex pt-4 bd-highlight">
             <div class="p-2 flex-grow-1 bd-highlight">
-                <h2 class="fw-bold">Résultat de la recherche 🤠</h2>
+                <h2 class="fw-bold ${theme}">Résultat de la recherche 🤠</h2>
             </div>
         </div>`;
         document.querySelector('#livesearch').insertAdjacentHTML('beforebegin', html)

@@ -88,7 +88,7 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
                 <h4>Mes billets</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body text-center bg-dark">
+            <div class="modal-body text-center">
                 <?php
                 $query = $pdo->prepare("SELECT * FROM megalapin_ticket WHERE user_id=:id ORDER BY id DESC;");
                 $query->execute(["id" => $_SESSION["id"]]);

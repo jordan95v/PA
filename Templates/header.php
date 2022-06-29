@@ -51,10 +51,10 @@ if (isset($_SESSION["email"])) {
                             <button class="btn" type="submit">🔍</button>
                         </form>
                         <ul class="navbar-nav mt-2 mb-lg-0 text-center">
-                                <div class="form-check form-switch me-md-5">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="darkSwitch">
-                                    <label class="form-check-label" for="darkSwitch">Toggle Light mode</label>
-                                </div>
+                            <div class="form-check form-switch me-md-5">
+                                <input class="form-check-input" type="checkbox" role="switch" id="darkSwitch">
+                                <label class="form-check-label" for="darkSwitch">Toggle Light mode</label>
+                            </div>
 
                             <?php
                             if (isConnected($pdo)) {
