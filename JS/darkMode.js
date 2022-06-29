@@ -4,6 +4,12 @@ const localTheme = localStorage.getItem('theme');
 if (localTheme == 'light') {
     document.body.classList.add('light-theme');
     btn.setAttribute('checked', 'true');
+    switchTheme('text-dark', 'text-light');
+}
+if (localTheme == 'dark') {
+    document.body.classList.remove('light-theme');
+    btn.removeAttribute('checked');
+    switchTheme('text-light', 'text-dark');
 }
 
 function switchTheme(theme_add, theme_rm) {
@@ -21,9 +27,10 @@ btn.addEventListener('click', function () {
 
     if (document.body.classList.contains('light-theme')) {
         theme = "light";
-        switchTheme('text-dark', 'text-light')
+        switchTheme('text-dark', 'text-light');
     } else {
-        switchTheme('text-light', 'text-dark')
+        theme = 'dark';
+        switchTheme('text-light', 'text-dark');
     }
     localStorage.setItem('theme', theme);
 })

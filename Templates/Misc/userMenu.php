@@ -5,7 +5,7 @@ $user = $query->fetch();
 $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
 ?>
 <div class="dropdown text-center">
-    <a class="text-decoration-none text-light dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="text-decoration-none dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
         <?php echo $user["username"]; ?>
     </a>
 

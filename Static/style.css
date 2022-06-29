@@ -3,20 +3,6 @@
     src: url(../Static/Font/CaviarDreams.ttf);
 }
 
-.light-theme {
-    color: black;
-    background-color: white;
-}
-
-.light-theme>h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: black;
-}
-
 body {
     font-family: Caviar;
     background-color: #0d0f27;
@@ -113,4 +99,22 @@ button {
 .card-color-search {
     background-color: #0d0f27;
 
+}
+
+.light-theme {
+    color: black;
+    background-color: white;
+}
+
+.light-theme>h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: black;
+}
+
+.navChoice {
+    color: white !important;
 }

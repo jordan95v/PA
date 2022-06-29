@@ -1,5 +1,5 @@
 <li class="nav-item">
-    <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#register">S'inscrire</a>
+    <a class="nav-link pt-0" href="" data-bs-toggle="modal" data-bs-target="#register">S'inscrire</a>
 
     <div class="modal fade" id="register" tabindex="-1" aria-labelledby="registerModal" aria-hidden="true">
         <div class="modal-dialog modal-lg">

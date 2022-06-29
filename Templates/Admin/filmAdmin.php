@@ -2,15 +2,15 @@
 updateLogs($pdo, 'films-admin.php');
 ?>
 
-<h1 class="text-center mt-5 pt-4">Section administrateur pour les films</h1>
+<h1 class="text-center mt-5 pt-4 text-light">Section administrateur pour les films</h1>
 
 <!-- Film form -->
 <div class="bg-dark p-5 rounded">
-    <h4 class="mb-4 text-center">Ajouter un film</h4>
+    <h4 class="mb-4 text-center text-light">Ajouter un film</h4>
     <form method="POST" action="Scripts/addFilm.php" enctype="multipart/form-data">
         <div class="row">
             <div class="mb-5 col-md-4 col-12">
-                <input type="file" name='file' class="form-control-file">
+                <input type="file" name='file' class="form-control-file text-light">
             </div>
             <div class="mb-5 col-md-4 col-12">
                 <input type="text" name="title" class="form-control" placeholder="Entrez le titre du film.">

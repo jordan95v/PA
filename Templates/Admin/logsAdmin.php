@@ -1,7 +1,7 @@
 <?php
 updateLogs($pdo, 'logs-admin.php');
 ?>
-<h1 class="text-center mt-5 pt-4">Section administrateur pour les logs</h1>
+<h1 class="text-center mt-5 pt-4 text-light">Section administrateur pour les logs</h1>
 
 <!-- Logs list -->
 
@@ -13,7 +13,7 @@ updateLogs($pdo, 'logs-admin.php');
         $query->execute();
         $result = $query->fetchAll();
         ?>
-        <h2 class="text-center">Nombre de vue des pages du site</h2>
+        <h2 class="text-center text-light">Nombre de vue des pages du site</h2>
         <div class="table-responsive">
             <table class="table table-hover table-dark table-borderless">
                 <thead class="text-center">
@@ -41,7 +41,7 @@ updateLogs($pdo, 'logs-admin.php');
         $query->execute();
         $result = $query->fetchAll();
         ?>
-        <h2 class="text-center">Actions des utilsateurs</h2>
+        <h2 class="text-center text-light">Actions des utilsateurs</h2>
         <div class="table-responsive">
             <div id="logs">
                 <table class="table table-hover table-dark table-borderless" id="logTable">

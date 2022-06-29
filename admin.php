@@ -39,6 +39,10 @@ if (!isAdmin($pdo)) {
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <ul class="navbar-nav text-center ms-auto">
+                    <div class="form-check form-switch me-md-5">
+                        <input class="form-check-input" type="checkbox" role="switch" id="darkSwitch">
+                        <label class="form-check-label" for="darkSwitch">Toggle Light mode</label>
+                    </div>
                     <?php include "Templates/Misc/userMenu.php"; ?>
                 </ul>
             </div>
@@ -121,22 +125,22 @@ if (!isAdmin($pdo)) {
 
     <div class="container text-light">
         <h4 class="text-center text-light my-4">🙅‍♂️ Ceci est une page réservé aux administrateurs ⛔</h4>
-        <h5>Choix de la section</h5>
+        <h5 class="text-light">Choix de la section</h5>
         <ul class="nav justify-content-center bg-dark rounded p-2">
             <li class="nav-item mx-4">
-                <a class="nav-link text-light" href="?type=film">Films</a>
+                <a class="nav-link navChoice" href="?type=film">Films</a>
             </li>
             <li class="nav-item mx-4">
-                <a class="nav-link text-light" href="?type=newsletter">Newsletter</a>
+                <a class="nav-link navChoice" href="?type=newsletter">Newsletter</a>
             </li>
             <li class="nav-item mx-4">
-                <a class="nav-link text-light" href="?type=event">Events</a>
+                <a class="nav-link navChoice" href="?type=event">Events</a>
             </li>
             <li class="nav-item mx-4">
-                <a class="nav-link text-light" href="?type=users">Users</a>
+                <a class="nav-link navChoice" href="?type=users">Users</a>
             </li>
             <li class="nav-item mx-4">
-                <a class="nav-link text-light" href="?type=logs">Logs</a>
+                <a class="nav-link navChoice" href="?type=logs">Logs</a>
             </li>
         </ul>
 
