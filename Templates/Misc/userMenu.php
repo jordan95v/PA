@@ -4,7 +4,7 @@ $query->execute(["email" => $_SESSION["email"]]);
 $user = $query->fetch();
 $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
 ?>
-<div class="dropdown mt-2 text-center">
+<div class="dropdown text-center">
     <a class="text-decoration-none text-light dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
         <?php echo $user["username"]; ?>
     </a>

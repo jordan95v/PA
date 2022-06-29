@@ -94,7 +94,7 @@ updateLogs($pdo, 'index.php');
     <!-- Featured Movies + Cards for movies -->
     <div class="d-flex pt-4 bd-highlight">
         <div class="p-2 flex-grow-1 bd-highlight">
-            <h2 class="fw-bold">Les films à l'affiche 🎥</h2>
+            <h2 class="fw-bold text-light">Les films à l'affiche 🎥</h2>
         </div>
         <div class="p-3 flex-shrink-1 bd-highlight">
             <h6><a href="films.php" class="text-danger text-decoration-none">Voir plus <span class='arrow right'></span></a></h6>

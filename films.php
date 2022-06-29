@@ -14,7 +14,7 @@ if (isset($_GET["genre"])) {
 <div class="container">
     <div class="d-flex pt-4 bd-highlight">
         <div class="p-2 flex-grow-1 bd-highlight">
-            <h2 class="fw-bold">Tous les films <?php echo (isset($genre)) ? "(" . ucwords($genre) . ")" : " "; ?>🎥</h2>
+            <h2 class="fw-bold text-light">Tous les films <?php echo (isset($genre)) ? "(" . ucwords($genre) . ")" : " "; ?>🎥</h2>
         </div>
         <div class="p-3 flex-shrink-1 bd-highlight">
             <a href="films.php" class="text-danger text-decoration-none">Enlevez les filtres <span class='arrow right'></span></a>
@@ -23,22 +23,22 @@ if (isset($_GET["genre"])) {
 
     <ul class="nav justify-content-center bg-dark p-2">
         <li class="nav-item active mx-4">
-            <h4><a class="nav-link text-light" href="?genre=action">Action</a></h4>
+            <h4><a class="nav-link" href="?genre=action">Action</a></h4>
         </li>
         <li class="nav-item active mx-4">
-            <h4><a class="nav-link text-light" href="?genre=aventure">Aventure</a></h4>
+            <h4><a class="nav-link" href="?genre=aventure">Aventure</a></h4>
         </li>
         <li class="nav-item active mx-4">
-            <h4><a class="nav-link text-light" href="?genre=drame">Drame</a></h4>
+            <h4><a class="nav-link" href="?genre=drame">Drame</a></h4>
         </li>
         <li class="nav-item active mx-4">
-            <h4><a class="nav-link text-light" href="?genre=horreur">Horreur</a></h4>
+            <h4><a class="nav-link" href="?genre=horreur">Horreur</a></h4>
         </li>
         <li class="nav-item active mx-4">
-            <h4><a class="nav-link text-light" href="?genre=thriller">Thriller</a></h4>
+            <h4><a class="nav-link" href="?genre=thriller">Thriller</a></h4>
         </li>
         <li class="nav-item active mx-4">
-            <h4><a class="nav-link text-light" href="?genre=sci-fi">Sci-Fi</a></h4>
+            <h4><a class="nav-link" href="?genre=sci-fi">Sci-Fi</a></h4>
         </li>
     </ul>
 
