@@ -6,7 +6,7 @@ require "Scripts/searchSubject.php";
 <div class="container">
     <div class="row py-4" id="livesearch">
     </div>
-    <h4 class="text-center text-light">Rechercher un sujet</h4>
+    <h2 class="text-center text-light">Rechercher un sujet 🔍</h2>
     <form method="get">
         <div class="mt-5 row">
             <div class="col-8">
@@ -42,6 +42,9 @@ require "Scripts/searchSubject.php";
     <?php
     }
     ?>
+    <div class="text-center">
+        <a href="forum.php" class="btn btn-warning w-50 mt-4">Revenir au forum</a>
+    </div>
 </div>
 
 <?php

@@ -11,14 +11,14 @@ $result = $query->fetchAll();
 $title = (count($result) > 1) ? "Tous les utilisateurs" : "Résultat de la recherche";
 ?>
 <div class="container">
-    <h2 class="text-center pt-5 mt-4">Recherche un utilisateur</h2>
+    <h2 class="text-center pt-5 mt-4 text-light">Recherche un utilisateur</h2>
     <form action="" method="get" class="my-4">
         <input type="text" class="form-control mb-2" name="search" placeholder="Entrez le nom d'utilsateur.">
         <input type="hidden" name="type" value="users">
         <input type="submit" class="btn btn-outline-danger w-100" value="Rechercher">
     </form>
 
-    <h2 class="text-center pt-4"><?php echo $title; ?></h2>
+    <h2 class="text-center pt-4 text-light"><?php echo $title; ?></h2>
     <div class="table-responsive">
         <table class="table table-hover mt-2 p-4 table-dark table-borderless" id="logTable">
             <thead class="text-center" id="headers">

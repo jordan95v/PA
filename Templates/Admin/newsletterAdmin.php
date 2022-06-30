@@ -26,7 +26,7 @@ $query->execute();
 $result = $query->fetchAll();
 ?>
 <!-- Logs de la newsletter -->
-<h2 class="text-center pt-5 mt-4">Logs de la newsletter</h2>
+<h2 class="text-center pt-5 mt-4 text-light">Logs de la newsletter</h2>
 <div class="table-responsive">
     <div id="logs">
         <table class="table table-hover mt-2 p-4 table-dark table-borderless" id="logTable">
