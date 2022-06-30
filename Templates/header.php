@@ -35,7 +35,7 @@ if (isset($_SESSION["email"])) {
     <!-- <link rel="shortcut icon" href="Static/favicon.ico" type="image/x-icon"> -->
 </head>
 
-<body class="text-light">
+<body>
     <!-- Navbar + jumbotron -->
     <div class="jumbotron" id="main">
         <div class="container">

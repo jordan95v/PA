@@ -2,7 +2,7 @@
     <a type="button" data-bs-toggle="modal" data-bs-target="#<?php echo str_replace(' ', '-', $result[$i]['title']); ?>" class="text-decoration-none">
         <div class="card border-0 custom-cards film">
             <img src="<?php echo str_replace('../', '', $result[$i]['image_path']); ?>" class="zoom card-img-top" alt="...">
-            <div class="card-body text-light text-start ps-0">
+            <div class="card-body text-start ps-0">
                 <h5 class="card-title text-light"><?php echo ucwords($result[$i]['title']); ?></h5>
                 <p class="card-text text-secondary"><?php echo ucwords($result[$i]['genre']); ?></p>
             </div>
@@ -12,7 +12,7 @@
 
 <div class="modal fade" id="<?php echo str_replace(' ', '-', $result[$i]['title']); ?>" tabindex="-1" aria-labelledby="filmModal" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content text-dark">
+        <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="loginModal"><?php echo ucwords($result[$i]['title']); ?></h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -33,7 +33,7 @@
 
 <div class="modal fade" id="<?php echo str_replace(' ', '-', $result[$i]['title']); ?>-buy" tabindex="-1" aria-labelledby="filmModal" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content text-dark">
+        <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="delModal"><?php echo ucwords($result[$i]['title']); ?></h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

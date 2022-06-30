@@ -42,7 +42,7 @@ if (isset($_GET["genre"])) {
         </li>
     </ul>
 
-    <div class="row py-4 text-dark">
+    <div class="row py-4">
         <?php
         if (!isset($result)) {
             $query = $pdo->prepare("SELECT * FROM groschien_film;");

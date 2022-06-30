@@ -102,7 +102,7 @@ updateLogs($pdo, 'index.php');
     </div>
 
     <!-- Cards for movie -->
-    <div class="row py-4 text-dark">
+    <div class="row py-4">
         <?php
         $query = $pdo->prepare("SELECT * FROM groschien_film WHERE featured=:featured;");
         $query->execute(["featured" => 1]);

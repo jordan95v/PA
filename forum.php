@@ -29,7 +29,7 @@ include "Templates/header.php";
         $count = (count($result) >= 5) ? 5 : count($result);
 
         for ($i = 0; $i < $count; $i++) {
-            include 'Templates/Misc/filmModal.php';
+            include 'Templates/Misc/filmForum.php';
         }
         ?>
     </div>

@@ -25,12 +25,13 @@ $count = 0;
                 </a>
             </div>
             <div class="card-body">
-                <h5 class="card-title">
+                <h5 class="card-title mb-4">
                     <?= ucwords($film['film_subject']); ?>
                 </h5>
+                <p class="pb-0"><?= $film['content']; ?></p>
             </div>
             <div class="card-footer">
-                <?= $film['username_author'] . " " . $film['date_publication']; ?>
+                <?= $film['username_author'] . " | " . $film['date_publication']; ?>
             </div>
         </div>
         <br>
@@ -39,7 +40,7 @@ $count = 0;
     }
     if (!$count) {
         echo '<div class="text-center">
-            <h4>Pas de sujet pour ce film</h4>
+            <h4 class="text-light">Pas de sujet pour ce film</h4>
             <a href="forum.php" class="btn btn-warning w-50">Revenir au forum</a>
         </div>';
     } else {

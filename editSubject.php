@@ -23,7 +23,7 @@ require "Scripts/editSubjectAction.php"
                 <label for="exampleInputEmail1" class="form-label"> Contenu de la question</label>
                 <textarea name="content" class="form-control"><?= $subjectContent; ?></textarea>
             </div>
-            <button type="submit" class="btn btn-dark w-100" name="validate">Publier</button>
+            <button type="submit" class="btn btn-dark w-100" name="validate">Modifier</button>
         </form>
 
 </div>
