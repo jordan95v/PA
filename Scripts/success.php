@@ -25,14 +25,14 @@ $errors = [];
 $code = rand(10000000, 99999999);
 $date = $_GET["date"];
 $time = $_GET["time"] . "h00";
-$full_name = $_GET["film_name"] . " " . $date . " " . $time;
+$full_name = $_GET["film_name"] . " x" . $_GET["place"] . " " . $date . " " . $time;
 
 if (isset($_SESSION["stripe_ok"])) {
     $img = "../Images/Ticket/" . createBarcode($code, $full_name);
     $body = '<html><body>Votre achat a ete valide, voici votre billet.</br><img src="cid:barcode"></body></html>';
 
-    $query = $pdo->prepare("INSERT INTO megalapin_ticket (user_id, film_id, film_name, ticket, date, time) VALUES (:id, :film_id, :film_name,:ticket, :date, :time);");
-    $query->execute(["id" => $_SESSION["id"], "film_id" => $_GET["film_id"], "film_name" => $_GET["film_name"], "ticket" => $img, "date" => $date, "time" => $time]);
+    $query = $pdo->prepare("INSERT INTO megalapin_ticket (user_id, film_id, film_name, ticket, place, date, time) VALUES (:id, :film_id, :film_name, :ticket, :place, :date, :time);");
+    $query->execute(["id" => $_SESSION["id"], "film_id" => $_GET["film_id"], "film_name" => $_GET["film_name"], "ticket" => $img, "place" => $_GET["place"], "date" => $date, "time" => $time]);
 
     sendTicket($_SESSION["email"], "Confirmation d'achat", $body, $img, $errors);
     updateUserLogs($pdo, $_SESSION["id"], "achat de billet");

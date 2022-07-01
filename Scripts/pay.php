@@ -5,10 +5,19 @@ use Stripe\Stripe;
 require "functions.php";
 require "stripe/init.php";
 
+if (
+    empty($_POST["date"]) || empty($_POST["time"]) ||
+    empty($_POST["place"]) || empty($_POST["film_id"]) ||
+    empty($_POST["film_name"])
+) {
+    $_SESSION["empty"] = 1;
+    header("Location: ../index.php");
+    die();
+}
+
 $pdo = connectDB();
 $time = [10, 14, 18, 22];
 
-print_r($_POST);
 $date_now = time(); //current timestamp
 $date_convert = strtotime($_POST["date"]);
 
@@ -25,16 +34,16 @@ if ($date_now > $date_convert) {
         Stripe::setApiKey("sk_test_51L53G8AzApjgsM9WZJl6ELzVSmw0nPrE0f1pBJxQPJz7HSDGqIOVsTZYAUpnSgcrIOrB1GqTAd5qoBAv6bmhOKQk00QDVr8jDR");
         header("Content-Type: application/json");
 
-        $domain = "https://leslumieres.site/";
+        $domain = "http://localhost/PA/";
 
         $checkout_session = \Stripe\Checkout\Session::create([
             "line_items" => [[
                 # Provide the exact Price ID (e.g. pr_1234) of the product you want to sell
                 "price" => "price_1L53zcAzApjgsM9WGe82vWKQ",
-                "quantity" => 1,
+                "quantity" => $_POST["place"],
             ]],
             "mode" => "payment",
-            "success_url" => $domain . "Scripts/success.php?date=" . $_POST["date"] . "&time=" . $_POST["time"] . "&film_id=" . $_POST["film_id"] . "&film_name=" . $_POST["film_name"],
+            "success_url" => $domain . "Scripts/success.php?date=" . $_POST["date"] . "&time=" . $_POST["time"] . "&film_id=" . $_POST["film_id"] . "&film_name=" . $_POST["film_name"] . "&place=" . $_POST["place"],
             "cancel_url" => $domain . "Scripts/cancel.php",
         ]);
         $_SESSION["stripe_ok"] = 1;

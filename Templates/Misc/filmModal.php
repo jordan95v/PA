@@ -19,9 +19,9 @@
             </div>
             <div class="modal-body text-center">
                 <img src="<?php echo str_replace('../', '', $result[$i]['image_path']); ?>" alt="...">
-                <p class="my-4">Réalisé par <b><?php echo ucwords($result[$i]['maker']); ?></b></p>
-                <p class="my-4"><b>Acteurs:</b> <?php echo ucwords($result[$i]['actors']); ?></p>
-                <p class="my-4"><b>Description:</b> <?php echo ucfirst($result[$i]['info']); ?></p>
+                <p class="my-4 dark">Réalisé par <b><?php echo ucwords($result[$i]['maker']); ?></b></p>
+                <p class="my-4 dark"><b>Acteurs:</b> <?php echo ucwords($result[$i]['actors']); ?></p>
+                <p class="my-4 dark"><b>Description:</b> <?php echo ucfirst($result[$i]['info']); ?></p>
                 <a type="button" class="btn btn-success w-100 my-2" data-bs-toggle="modal" data-bs-target="#<?php echo str_replace(' ', '-', $result[$i]['title']); ?>-buy">Acheter un billet</a>
             </div>
             <div class="modal-footer">
@@ -42,10 +42,10 @@
                 <h4 class="text-center mb-4">Choisissez votre séance</h4>
                 <form action="Scripts/pay.php" method="post">
                     <div class="row">
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-4">
                             <input type="date" class="form-control" name="date">
                         </div>
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-4">
                             <select name="time" class="form-select">
                                 <option value="" selected>Choose an hour</option>
                                 <option value="10">10 : 00</option>
@@ -54,9 +54,19 @@
                                 <option value="22">22 : 00</option>
                             </select>
                         </div>
+                        <div class="col-12 col-md-4">
+                            <select name="place" class="form-select">
+                                <option value="" selected>Nombre de place</option>
+                                <?php
+                                for ($j = 0; $j < 100; $j++) {
+                                    echo '<option value="' . $j . '">' . $j . '</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
                     </div>
-                    <input type="hidden" name="film_id" value="<?php echo $result[$i]['id']; ?>">
-                    <input type="hidden" name="film_name" value="<?php echo $result[$i]['title']; ?>">
+                    <input type="hidden" name="film_id" value="<?php echo $result[$i]["id"]; ?>">
+                    <input type="hidden" name="film_name" value="<?php echo $result[$i]["title"]; ?>">
                     <input type="submit" class="btn btn-success w-100 my-2" value="Acheter un billet">
                 </form>
             </div>

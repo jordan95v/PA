@@ -7,7 +7,7 @@ include "Templates/header.php";
     <div class="row py-4" id="livesearch">
     </div>
 
-    <div class="d-flex pt-4 bd-highlight">
+    <div class="d-flex bd-highlight">
         <div class="p-2 flex-grow-1 bd-highlight">
             <h2 class="fw-bold text-light">Forum des Lumières ⭐</h2>
         </div>
