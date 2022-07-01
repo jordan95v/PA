@@ -25,7 +25,7 @@ if ($date_now > $date_convert) {
         Stripe::setApiKey("sk_test_51L53G8AzApjgsM9WZJl6ELzVSmw0nPrE0f1pBJxQPJz7HSDGqIOVsTZYAUpnSgcrIOrB1GqTAd5qoBAv6bmhOKQk00QDVr8jDR");
         header("Content-Type: application/json");
 
-        $domain = "http://localhost/PA/";
+        $domain = "https://leslumieres.site/";
 
         $checkout_session = \Stripe\Checkout\Session::create([
             "line_items" => [[

@@ -6,11 +6,11 @@ updateLogs($pdo, 'films-admin.php');
 
 <!-- Film form -->
 <div class="bg-dark p-5 rounded">
-    <h4 class="mb-4 text-center text-light">Ajouter un film</h4>
+    <h4 class="mb-4 text-center white">Ajouter un film</h4>
     <form method="POST" action="Scripts/addFilm.php" enctype="multipart/form-data">
         <div class="row">
             <div class="mb-5 col-md-4 col-12">
-                <input type="file" name='file' class="form-control-file text-light">
+                <input type="file" name='file' class="form-control-file white">
             </div>
             <div class="mb-5 col-md-4 col-12">
                 <input type="text" name="title" class="form-control" placeholder="Entrez le titre du film.">
@@ -41,7 +41,7 @@ updateLogs($pdo, 'films-admin.php');
             </div>
             <div class="form-check mb-4 text-start">
                 <input class="form-check-input" type="checkbox" name="featured" id="flexCheck">
-                <label class="form-check-label" for="flexCheck">
+                <label class="form-check-label white" for="flexCheck">
                     Est-ce que le film est à l'affiche ?
                 </label>
             </div>

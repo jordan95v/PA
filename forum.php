@@ -20,7 +20,7 @@ include "Templates/header.php";
         </div>
     </div>
 
-    <div class="row py-4 row-cols-sm-2 row-cols-lg-5 row-cols-md-3 row-cols-sm-2 g-4 text-dark">
+    <div class="row py-4">
         <?php
         //Afficher les films à l'affiche vers leurs sujets
         $query = $pdo->prepare("SELECT * FROM groschien_film WHERE featured=:featured");

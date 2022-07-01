@@ -5,7 +5,7 @@ updateLogs($pdo, 'newsletter-admin.php');
 
 <!-- Newsletter form -->
 <div class="bg-dark p-5 rounded">
-    <h4 class="mb-4 text-center text-light">Envoyez une newsletter</h4>
+    <h4 class="mb-4 text-center white">Envoyez une newsletter</h4>
     <form method="POST" action="Scripts/sendNews.php">
         <div class="mb-5">
             <input type="text" name="title" class="form-control" placeholder="Entrez le titre de la newsletter.">

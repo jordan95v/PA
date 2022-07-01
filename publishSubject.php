@@ -7,14 +7,23 @@ if (!isConnected($pdo)) {
     header("Location: index.php");
 }
 
-if (isset($errorMsg)) {
-    echo '<p>' . $errorMsg . '</p>';
-}
 
 
 // Requete pour afficher les films à l'affiche dans les choix possibles
 $selectFilm = $pdo->prepare("SELECT title FROM groschien_film WHERE featured=:featured ORDER BY id DESC");
 $selectFilm->execute(["featured" => 1]);
+
+if (!empty($_SESSION["postSend"]) && isset($_SESSION["postSend"])) {
+    echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
+    echo '<h5 class="fw-bold">Le post à bien été crée !.</h5>';
+    echo '</div>';
+    unset($_SESSION["postSend"]);
+}
+if (isset($errorMsg)) {
+    echo '<div class="alert alert-danger mt-4 pb-1" role="alert">';
+    echo '<h5 class="fw-bold">' . $errorMsg . '</h5>';
+    echo '</div>';
+}
 ?>
 <div class="container mt-4">
     <div class="row py-4" id="livesearch">
@@ -36,7 +45,7 @@ $selectFilm->execute(["featured" => 1]);
         </select>
         <div class="mb-2">
             <label for="exampleInputEmail1" class="form-label">Contenu du sujet</label>
-            <textarea name="content" class="form-control" placeholder="Contenu (limitez à 255 caractères"></textarea>
+            <textarea name="content" class="form-control" placeholder="Contenu (limitez à 255 caractères)"></textarea>
         </div>
         <button type="submit" class="btn btn-dark w-100" name="validate">Publier</button>
     </form>
@@ -46,7 +55,5 @@ $selectFilm->execute(["featured" => 1]);
 </div>
 
 <?php
-
 include "Templates/footer.php";
-
 ?>

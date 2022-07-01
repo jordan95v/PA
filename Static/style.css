@@ -115,10 +115,11 @@ h6 {
     color: black;
 }
 
-.navChoice {
-    color: white !important;
+.white {
+    color: white;
 }
 
-.modal-body {
-    color: black;
+
+.dark {
+    color: dark;
 }

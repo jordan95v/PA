@@ -26,8 +26,8 @@ if (isset($_POST['validate'])) {
                 $subjectDate
             )
         );
-        header("Location: subjectUser.php");
+        $_SESSION["postSend"] = 1;
     } else {
-        $errorMsg = "Veuillez compléter tous les champs";
+        $errorMsg = "Veuillez compléter tous les champs.";
     }
 }

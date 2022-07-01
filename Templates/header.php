@@ -53,7 +53,7 @@ if (isset($_SESSION["email"])) {
                         <ul class="navbar-nav mt-2 mb-lg-0 text-center">
                             <div class="form-check form-switch me-md-5">
                                 <input class="form-check-input" type="checkbox" role="switch" id="darkSwitch">
-                                <label class="form-check-label" for="darkSwitch">Toggle Light mode</label>
+                                <label class="form-check-label white" for="darkSwitch">Toggle Light mode</label>
                             </div>
 
                             <?php
@@ -70,7 +70,7 @@ if (isset($_SESSION["email"])) {
                     </div>
                 </div>
             </nav>
-            <div class="text-center mt-5" style="color: white;">
+            <div class="text-center mt-5 white">
                 <h1>Les Lumières<br>Le cinéma qui vous va bien.</h1>
             </div>
         </div>

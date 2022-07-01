@@ -5,7 +5,7 @@ $user = $query->fetch();
 $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
 ?>
 <div class="dropdown text-center">
-    <a class="text-decoration-none dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
+    <a class="text-decoration-none dropdown-toggle white" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
         <?php echo $user["username"]; ?>
     </a>
 
@@ -94,13 +94,13 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
                 $query->execute(["id" => $_SESSION["id"]]);
                 $tickets = $query->fetchAll();
                 if (!empty($tickets)) {
-                    echo '<h4 class="text-light pt-4">Liste de vos billets</h4>';
+                    echo '<h4 class="pt-4">Liste de vos billets</h4>';
                     for ($i = 0; $i < count($tickets); $i++) {
                         $ticket = $tickets[$i];
                         include 'Templates/Misc/ticketCard.php';
                     }
                 } else {
-                    echo '<h4 class="text-light p-4">Vous n\'avez pas acheté de billets pour le moment.</h1>';
+                    echo '<h4 class="p-4">Vous n\'avez pas acheté de billets pour le moment.</h1>';
                 }
                 ?>
             </div>

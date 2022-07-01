@@ -41,7 +41,7 @@ if (!isAdmin($pdo)) {
                 <ul class="navbar-nav text-center ms-auto">
                     <div class="form-check form-switch me-md-5">
                         <input class="form-check-input" type="checkbox" role="switch" id="darkSwitch">
-                        <label class="form-check-label" for="darkSwitch">Toggle Light mode</label>
+                        <label class="form-check-label white" for="darkSwitch">Toggle Light mode</label>
                     </div>
                     <?php include "Templates/Misc/userMenu.php"; ?>
                 </ul>
@@ -128,19 +128,19 @@ if (!isAdmin($pdo)) {
         <h5 class="text-light">Choix de la section</h5>
         <ul class="nav justify-content-center bg-dark rounded p-2">
             <li class="nav-item mx-4">
-                <a class="nav-link navChoice" href="?type=film">Films</a>
+                <a class="nav-link white" href="?type=film">Films</a>
             </li>
             <li class="nav-item mx-4">
-                <a class="nav-link navChoice" href="?type=newsletter">Newsletter</a>
+                <a class="nav-link white" href="?type=newsletter">Newsletter</a>
             </li>
             <li class="nav-item mx-4">
-                <a class="nav-link navChoice" href="?type=event">Events</a>
+                <a class="nav-link white" href="?type=event">Events</a>
             </li>
             <li class="nav-item mx-4">
-                <a class="nav-link navChoice" href="?type=users">Users</a>
+                <a class="nav-link white" href="?type=users">Users</a>
             </li>
             <li class="nav-item mx-4">
-                <a class="nav-link navChoice" href="?type=logs">Logs</a>
+                <a class="nav-link white" href="?type=logs">Logs</a>
             </li>
         </ul>
 
