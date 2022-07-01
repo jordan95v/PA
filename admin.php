@@ -127,8 +127,12 @@ if (!isAdmin($pdo)) {
         <h4 class="text-center text-light my-4">🙅‍♂️ Ceci est une page réservé aux administrateurs ⛔</h4>
         <h5 class="text-light">Choix de la section</h5>
         <ul class="nav justify-content-center bg-dark rounded p-2">
-            <li class="nav-item mx-4">
-                <a class="nav-link navChoice" href="?type=film">Films</a>
+            <li class="nav-item mx-4 dropdown">
+                <a class="nav-link navChoice dropdown-toggle" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Films</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="?type=film">Liste et création</a></li>
+                    <li><a class="dropdown-item" href="?type=ticket">Ticket</a></li>
+                </ul>
             </li>
             <li class="nav-item mx-4">
                 <a class="nav-link navChoice" href="?type=newsletter">Newsletter</a>
@@ -153,6 +157,8 @@ if (!isAdmin($pdo)) {
             include "Templates/Admin/logsAdmin.php";
         } elseif ($_GET["type"] == "users") {
             include "Templates/Admin/userAdmin.php";
+        } elseif ($_GET["type"] == "ticket") {
+            include "Templates/Admin/ticketAdmin.php";
         }
         ?>
     </div>

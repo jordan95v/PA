@@ -27,12 +27,13 @@ $date = $_GET["date"];
 $time = $_GET["time"] . "h00";
 $full_name = $_GET["film_name"] . " " . $date . " " . $time;
 
+$codeTicket = $code;
 if (isset($_SESSION["stripe_ok"])) {
     $img = "../Images/Ticket/" . createBarcode($code, $full_name);
     $body = '<html><body>Votre achat a ete valide, voici votre billet.</br><img src="cid:barcode"></body></html>';
 
-    $query = $pdo->prepare("INSERT INTO megalapin_ticket (user_id, film_id, film_name, ticket, date, time) VALUES (:id, :film_id, :film_name,:ticket, :date, :time);");
-    $query->execute(["id" => $_SESSION["id"], "film_id" => $_GET["film_id"], "film_name" => $_GET["film_name"], "ticket" => $img, "date" => $date, "time" => $time]);
+    $query = $pdo->prepare("INSERT INTO megalapin_ticket (user_id, film_id, film_name, ticket, date, time, code) VALUES (:id, :film_id, :film_name,:ticket, :date, :time, :code);");
+    $query->execute(["id" => $_SESSION["id"], "film_id" => $_GET["film_id"], "film_name" => $_GET["film_name"], "ticket" => $img, "date" => $date, "time" => $time, "code" => $codeTicket]);
 
     sendTicket($_SESSION["email"], "Confirmation d'achat", $body, $img, $errors);
     updateUserLogs($pdo, $_SESSION["id"], "achat de billet");

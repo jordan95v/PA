@@ -90,7 +90,7 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
             </div>
             <div class="modal-body text-center">
                 <?php
-                $query = $pdo->prepare("SELECT * FROM megalapin_ticket WHERE user_id=:id ORDER BY id DESC;");
+                $query = $pdo->prepare("SELECT * FROM megalapin_ticket WHERE user_id=:id AND statut = 0 ORDER BY id DESC;");
                 $query->execute(["id" => $_SESSION["id"]]);
                 $tickets = $query->fetchAll();
                 if (!empty($tickets)) {
