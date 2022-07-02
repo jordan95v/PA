@@ -1,9 +1,9 @@
 USE leslumieres;
 DROP TABLE petitchat_user;
+DROP TABLE groschien_film;
 DROP TABLE geantemarmotte_comments;
 DROP TABLE geantemarmotte_forum;
 DROP TABLE gigaecureil_event;
-DROP TABLE groschien_film;
 DROP TABLE grandcanard_logs;
 DROP TABLE minisculecome_newsletter;
 DROP TABLE megalapin_ticket;
@@ -114,7 +114,7 @@ CREATE TABLE moyenlezard_user_logs(
   id INT PRIMARY KEY AUTO_INCREMENT,
   type VARCHAR(50) DEFAULT NULL,
   date timestamp  DEFAULT CURRENT_TIMESTAMP,
-  user_id INT REFERENCES petitchat_user(user_id)
+  user_id INT REFERENCES petitchat_user(id)
 );
 
 

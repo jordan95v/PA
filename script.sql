@@ -103,7 +103,7 @@ CREATE TABLE moyenlezard_user_logs(
   id INT PRIMARY KEY AUTO_INCREMENT,
   type VARCHAR(50) DEFAULT NULL,
   date timestamp  DEFAULT CURRENT_TIMESTAMP,
-  user_id INT REFERENCES petitchat_user(user_id)
+  user_id INT REFERENCES petitchat_user(id)
 );
 
 
