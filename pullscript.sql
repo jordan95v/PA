@@ -10,6 +10,48 @@ DROP TABLE megalapin_ticket;
 DROP TABLE moyenlezard_user_logs;
 DROP TABLE enormepingouin_like;
 
+CREATE TABLE petitchat_user(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  email VARCHAR(255) ,
+  username VARCHAR(60) ,
+  pwd VARCHAR(255) ,
+  creation_date timestamp  DEFAULT CURRENT_TIMESTAMP,
+  update_date timestamp  DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  statut TINYINT(4)  DEFAULT '0',
+  is_admin TINYINT(4)  DEFAULT '0',
+  super_admin TINYINT(4)  DEFAULT '0',
+  token VARCHAR(40) DEFAULT NULL,
+  confirmKey INT DEFAULT NULL,
+  newsletter TINYINT(4)  DEFAULT '0',
+  banned INT  DEFAULT '0',
+  head char(8)  DEFAULT 'head-1',
+  eyes char(6)  DEFAULT 'eyes-1',
+  mouth char(7)  DEFAULT 'mouth-1'
+);
+
+CREATE TABLE groschien_film(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  image_path VARCHAR(255),
+  title VARCHAR(60),
+  genre VARCHAR(20),
+  maker VARCHAR(40),
+  actors VARCHAR(255),
+  info VARCHAR(255),
+  creation_date timestamp DEFAULT CURRENT_TIMESTAMP,
+  update_date timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  featured TINYINT(4) DEFAULT '0'
+);
+
+CREATE TABLE geantemarmotte_forum(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  film_subject VARCHAR(60),
+  title TEXT,
+  content TEXT,
+  id_author INT REFERENCES petitchat_user(id_author),
+  username_author VARCHAR(255),
+  date_publication TEXT
+);
+
 -- Table creation
 CREATE TABLE enormepingouin_like(
   id INT PRIMARY KEY AUTO_INCREMENT,
@@ -27,15 +69,7 @@ CREATE TABLE geantemarmotte_comments(
   date_publication TEXT 
 );
 
-CREATE TABLE geantemarmotte_forum(
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  film_subject VARCHAR(60),
-  title TEXT,
-  content TEXT,
-  id_author INT REFERENCES petitchat_user(id_author),
-  username_author VARCHAR(255),
-  date_publication TEXT
-);
+
 
 CREATE TABLE gigaecureil_event(
   id INT PRIMARY KEY AUTO_INCREMENT,
@@ -58,18 +92,7 @@ CREATE TABLE grandcanard_logs(
   connection INT DEFAULT '0'
 );
 
-CREATE TABLE groschien_film(
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  image_path VARCHAR(255),
-  title VARCHAR(60),
-  genre VARCHAR(20),
-  maker VARCHAR(40),
-  actors VARCHAR(255),
-  info VARCHAR(255),
-  creation_date timestamp DEFAULT CURRENT_TIMESTAMP,
-  update_date timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  featured TINYINT(4) DEFAULT '0'
-);
+
 
 CREATE TABLE megalapin_ticket(
   id INT PRIMARY KEY AUTO_INCREMENT,
@@ -97,24 +120,7 @@ CREATE TABLE moyenlezard_user_logs(
   user_id INT REFERENCES petitchat_user(user_id)
 );
 
-CREATE TABLE petitchat_user(
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  email VARCHAR(255) ,
-  username VARCHAR(60) ,
-  pwd VARCHAR(255) ,
-  creation_date timestamp  DEFAULT CURRENT_TIMESTAMP,
-  update_date timestamp  DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  statut TINYINT(4)  DEFAULT '0',
-  is_admin TINYINT(4)  DEFAULT '0',
-  super_admin TINYINT(4)  DEFAULT '0',
-  token VARCHAR(40) DEFAULT NULL,
-  confirmKey INT DEFAULT NULL,
-  newsletter TINYINT(4)  DEFAULT '0',
-  banned INT  DEFAULT '0',
-  head char(8)  DEFAULT 'head-1',
-  eyes char(6)  DEFAULT 'eyes-1',
-  mouth char(7)  DEFAULT 'mouth-1'
-);
+
 
 INSERT INTO petitchat_user(id, email, username, pwd, creation_date, update_date, statut, is_admin, super_admin, token, confirmKey, newsletter, banned, head, eyes, mouth) VALUES
 (1, 'jordan.dfrsne@dufrsne.com', 'jdufresne3', '$2y$10$2xkaDyqa5UkuhjH3qYL7Mu2GQxp2RltzlC1Ka0dj5e5loC3ZH944K', '2022-04-12 15:05:47', '2022-05-31 10:09:03', 1, 0, 0, 'b76f91a2e17ce9d019354849c5ca51c6a0e83391', NULL, 0, 0, 'head-1', 'eyes-1', 'mouth-1'),
