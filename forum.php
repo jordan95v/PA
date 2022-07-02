@@ -26,9 +26,8 @@ include "Templates/header.php";
         $query = $pdo->prepare("SELECT * FROM groschien_film WHERE featured=:featured");
         $query->execute(["featured" => 1]);
         $result = $query->fetchAll();
-        $count = (count($result) >= 5) ? 5 : count($result);
 
-        for ($i = 0; $i < $count; $i++) {
+        for ($i = 0; $i < count($result); $i++) {
             include 'Templates/Misc/filmForum.php';
         }
         ?>

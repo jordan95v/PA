@@ -12,6 +12,9 @@ if (isset($_GET["genre"])) {
 
 <!-- Featured Movies + Cards for movies -->
 <div class="container">
+    <div class="row py-4" id="livesearch">
+    </div>
+
     <div class="d-flex bd-highlight">
         <div class="p-2 flex-grow-1 bd-highlight">
             <h2 class="fw-bold text-light">Tous les films <?php echo (isset($genre)) ? "(" . ucwords($genre) . ")" : " "; ?>🎥</h2>

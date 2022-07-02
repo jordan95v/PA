@@ -1,26 +1,5 @@
-function switchCards(theme, theme_add, theme_rm) {
-    const cards = document.querySelectorAll('.film');
-    for (let index = 0; index < cards.length; index++) {
-        const element = cards[index];
-        const texts = element.querySelectorAll(`.${theme_rm}`)
-        if (theme == 'light') {
-            element.classList.remove('custom-cards');
-            for (let j = 0; j < texts.length; j++) {
-                const text = texts[j];
-                text.classList.remove(theme_rm);
-                text.classList.remove(theme_add);
-            }
-        }
-        if (theme == 'dark') {
-            element.classList.add('custom-cards');
-            for (let j = 0; j < texts.length; j++) {
-                const text = texts[j];
-                text.classList.remove(theme_rm);
-                text.classList.remove(theme_add);
-            }
-        }
-    }
-}
+import { switchCards } from "./function.js";
+import { switchTheme } from "./function.js";
 
 function showResult() {
     const localTheme = localStorage.getItem('theme');
@@ -44,13 +23,14 @@ function showResult() {
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("livesearch").innerHTML = this.responseText;
-            document.getElementById("livesearch").querySelectorAll()
             switchCards(localStorage.getItem('theme'));
             if (localTheme == 'light') {
-                switchCards('light', 'text-dark', 'text-light');
+                switchTheme('text-dark', 'text-light');
+                switchCards('light');
             }
             if (localTheme == 'dark') {
-                switchCards('dark', 'text-light', 'text-dark');
+                switchTheme('text-light', 'text-dark');
+                switchCards('dark');
             }
         }
     }

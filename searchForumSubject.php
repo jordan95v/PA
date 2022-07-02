@@ -6,6 +6,7 @@ require "Scripts/searchSubject.php";
 <div class="container">
     <div class="row py-4" id="livesearch">
     </div>
+
     <h2 class="text-center text-light">Rechercher un sujet 🔍</h2>
     <form method="get">
         <div class="mt-5 row">
