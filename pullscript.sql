@@ -10,6 +10,7 @@ DROP TABLE megalapin_ticket;
 DROP TABLE moyenlezard_user_logs;
 DROP TABLE enormepingouin_like;
 
+-- Table creation
 CREATE TABLE petitchat_user(
   id INT PRIMARY KEY AUTO_INCREMENT,
   email VARCHAR(255) ,
@@ -55,21 +56,19 @@ CREATE TABLE geantemarmotte_forum(
 -- Table creation
 CREATE TABLE enormepingouin_like(
   id INT PRIMARY KEY AUTO_INCREMENT,
-  film_id INT REFERENCES groschien_film(film_id),
-  user_id INT REFERENCES petitchat_user(user_id),
+  film_id INT REFERENCES groschien_film(id),
+  user_id INT REFERENCES petitchat_user(id),
   value INT 
 );
 
 CREATE TABLE geantemarmotte_comments(
   id INT PRIMARY KEY AUTO_INCREMENT,
-  id_author INT REFERENCES petitchat_user(id_author),
+  id_author INT REFERENCES petitchat_user(id),
   username_author VARCHAR(255),
-  id_subject INT REFERENCES geantemarmotte_forum(id_subject),
+  id_subject INT REFERENCES geantemarmotte_forum(id),
   content TEXT,
   date_publication TEXT 
 );
-
-
 
 CREATE TABLE gigaecureil_event(
   id INT PRIMARY KEY AUTO_INCREMENT,
@@ -92,12 +91,10 @@ CREATE TABLE grandcanard_logs(
   connection INT DEFAULT '0'
 );
 
-
-
 CREATE TABLE megalapin_ticket(
   id INT PRIMARY KEY AUTO_INCREMENT,
-  user_id INT REFERENCES petitchat_user(user_id),
-  film_id INT REFERENCES groschien_film(film_id),
+  user_id INT REFERENCES petitchat_user(id),
+  film_id INT REFERENCES groschien_film(id),
   film_name VARCHAR(50),
   ticket VARCHAR(70),
   place INT,
@@ -107,7 +104,7 @@ CREATE TABLE megalapin_ticket(
 
 CREATE TABLE minisculecome_newsletter(
   id INT PRIMARY KEY AUTO_INCREMENT,
-  user_id INT REFERENCES petitchat_user(user_id),
+  user_id INT REFERENCES petitchat_user(id),
   subject VARCHAR(90) DEFAULT NULL,
   content VARCHAR(250) DEFAULT NULL,
   send_date timestamp  DEFAULT CURRENT_TIMESTAMP
