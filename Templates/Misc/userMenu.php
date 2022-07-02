@@ -73,6 +73,7 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
                 <h5 class="my-5">Psssst ... Quelque petites infos sur vous 🤩</h5>
                 <p class=mt-3>Vous avez rejoins <b>Les Lumières</b> le : <b><?php echo $user["creation_date"]; ?></b></p>
                 <p>Dernière MaJ du profil : <b><?php echo $user["update_date"]; ?></b></p>
+                <a class="btn btn-success text-center" href="PDF/donnees.php">Mes données ici !</a>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger w-100" data-bs-dismiss="modal">Fermer</button>
