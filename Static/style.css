@@ -1,3 +1,4 @@
+/* general */
 @font-face {
     font-family: Caviar;
     src: url(../Static/Font/CaviarDreams.ttf);
@@ -19,7 +20,23 @@ button {
     margin: 0;
 }
 
-/* ID */
+/* dark mode */
+
+.light-theme {
+    color: black;
+    background-color: white;
+}
+
+.light-theme>h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: black;
+}
+
+/* id */
 #main {
     height: 400px;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 20%, rgba(5, 5, 5, 0.4) 100%), url(../Images/cover.jpg);
@@ -40,7 +57,7 @@ button {
     overflow-y: auto;
 }
 
-/* Class */
+/* class */
 .search {
     background: none;
     border: none;
@@ -63,11 +80,17 @@ button {
     border-width: 0 3px 3px 0;
     display: inline-block;
     padding: 3px;
+    cursor: pointer;
 }
 
 .right {
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
+}
+
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
 }
 
 .custom-cards {
@@ -101,20 +124,6 @@ button {
 
 }
 
-.light-theme {
-    color: black;
-    background-color: white;
-}
-
-.light-theme>h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: black;
-}
-
 .white {
     color: white;
 }
@@ -122,4 +131,26 @@ h6 {
 
 .dark {
     color: black;
+}
+
+
+
+.head {
+    position: relative;
+    left: 110px;
+    z-index: 1;
+}
+
+.eyes {
+    position: relative;
+    top: 0px;
+    left: -112px;
+    z-index: 2;
+}
+
+.mouth {
+    position: relative;
+    top: 60px;
+    left: -208px;
+    z-index: 3;
 }

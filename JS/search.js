@@ -1,21 +1,23 @@
-function switchTheme(theme_add, theme_rm) {
-    const lightText = document.body.querySelectorAll(`.${theme_rm}`);
-    for (let index = 0; index < lightText.length; index++) {
-        const element = lightText[index];
-        element.classList.remove(theme_rm);
-        element.classList.add(theme_add);
-    }
-}
-
-function switchCards(theme) {
+function switchCards(theme, theme_add, theme_rm) {
     const cards = document.querySelectorAll('.film');
     for (let index = 0; index < cards.length; index++) {
         const element = cards[index];
+        const texts = element.querySelectorAll(`.${theme_rm}`)
         if (theme == 'light') {
             element.classList.remove('custom-cards');
+            for (let j = 0; j < texts.length; j++) {
+                const text = texts[j];
+                text.classList.remove(theme_rm);
+                text.classList.remove(theme_add);
+            }
         }
         if (theme == 'dark') {
             element.classList.add('custom-cards');
+            for (let j = 0; j < texts.length; j++) {
+                const text = texts[j];
+                text.classList.remove(theme_rm);
+                text.classList.remove(theme_add);
+            }
         }
     }
 }
@@ -42,14 +44,13 @@ function showResult() {
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("livesearch").innerHTML = this.responseText;
+            document.getElementById("livesearch").querySelectorAll()
             switchCards(localStorage.getItem('theme'));
             if (localTheme == 'light') {
-                switchTheme('text-dark', 'text-light');
-                switchCards('light');
+                switchCards('light', 'text-dark', 'text-light');
             }
             if (localTheme == 'dark') {
-                switchTheme('text-light', 'text-dark');
-                switchCards('dark');
+                switchCards('dark', 'text-light', 'text-dark');
             }
         }
     }

@@ -19,11 +19,11 @@ require "Scripts/showAllComments.php";
             <div class="card border-dark mb-3">
                 <div class="card-header"><?= ucwords($SubjectFilm); ?></div>
                 <div class="card-body text-dark">
-                    <h5 class="card-title"><?= $SubjectTitle; ?></h5>
+                    <h5 class="card-title dark"><?= $SubjectTitle; ?></h5>
                     <br>
-                    <p class="card-text"><?= $SubjectContent; ?></p>
+                    <p class="card-text dark"><?= $SubjectContent; ?></p>
                 </div>
-                <div class="card-footer bg-transparent border-success"><?= $SubjectUsernameAuthor . " " . $SubjectDate; ?></div>
+                <div class="card-footer bg-transparent border-dark"><?= $SubjectUsernameAuthor . " " . $SubjectDate; ?></div>
             </div>
             <br>
             <section class="show-answers">
