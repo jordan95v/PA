@@ -48,7 +48,7 @@ CREATE TABLE geantemarmotte_forum(
   film_subject VARCHAR(60),
   title TEXT,
   content TEXT,
-  id_author INT REFERENCES petitchat_user(id_author),
+  id_author INT REFERENCES petitchat_user(id),
   username_author VARCHAR(255),
   date_publication TEXT
 );
