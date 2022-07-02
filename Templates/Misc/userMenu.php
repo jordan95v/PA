@@ -47,7 +47,9 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
                     <div class="row">
                         <div class="col-12 col-md-6">
                             <div class="avatar">
-                                <img src="Images/Avatar/<?php echo $user["head"]; ?>.png" alt="" class="head">
+                                <div class="text-center">
+                                    <img src="Images/Avatar/<?php echo $user["head"]; ?>.png" alt="" class="head">
+                                </div>
                                 <img src="Images/Avatar/<?php echo $user["eyes"]; ?>.png" alt="" class="eyes">
                                 <img src="Images/Avatar/<?php echo $user["mouth"]; ?>.png" alt="" class="mouth">
                             </div>

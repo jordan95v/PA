@@ -133,24 +133,32 @@ h6 {
     color: black;
 }
 
-
-
-.head {
-    position: relative;
-    left: 110px;
-    z-index: 1;
-}
-
 .eyes {
     position: relative;
-    top: 0px;
-    left: -112px;
+    top: -200px;
+    left: 210px;
     z-index: 2;
 }
 
 .mouth {
     position: relative;
-    top: 60px;
-    left: -208px;
+    top: -130px;
+    left: 110px;
     z-index: 3;
+}
+
+@media (max-width: 1200px) {
+    .eyes {
+        position: relative;
+        top: -200px;
+        left: 100px;
+        z-index: 2;
+    }
+
+    .mouth {
+        position: relative;
+        top: -130px;
+        left: 20px;
+        z-index: 3;
+    }
 }
