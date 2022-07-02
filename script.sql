@@ -1,3 +1,4 @@
+USE leslumieres;
 -- Table creation
 CREATE TABLE enormepingouin_like(
   id INT PRIMARY KEY AUTO_INCREMENT,
