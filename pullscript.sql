@@ -1,14 +1,14 @@
 USE leslumieres;
-DROP TABLE petitchat_user;
-DROP TABLE groschien_film;
 DROP TABLE geantemarmotte_comments;
-DROP TABLE geantemarmotte_forum;
 DROP TABLE gigaecureil_event;
 DROP TABLE grandcanard_logs;
 DROP TABLE minisculecome_newsletter;
 DROP TABLE megalapin_ticket;
 DROP TABLE moyenlezard_user_logs;
 DROP TABLE enormepingouin_like;
+DROP TABLE geantemarmotte_forum;
+DROP TABLE petitchat_user;
+DROP TABLE groschien_film;
 
 -- Table creation
 CREATE TABLE petitchat_user(
