@@ -53,7 +53,7 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
                                 <img src="Images/Avatar/<?php echo $user["eyes"]; ?>.png" alt="" class="eyes">
                                 <img src="Images/Avatar/<?php echo $user["mouth"]; ?>.png" alt="" class="mouth">
                             </div>
-                            <div class="btn-avatar text-center mt-4">
+                            <div class="btn-avatar text-center">
                                 <h6><span class="arrow left last-head" onclick="changePart('last-head')"></span> Changer la tête <span class="arrow right next-head" onclick="changePart('next-head')"></span></h6>
                                 <h6><span class="arrow left last-eyes" onclick="changePart('last-eyes')"></span> Changer les yeux <span class="arrow right next-eyes" onclick="changePart('next-eyes')"></span></h6>
                                 <h6><span class="arrow left last-mouth" onclick="changePart('last-mouth')"></span> Changer la bouche <span class="arrow right next-eyes" onclick="changePart('next-mouth')"></span></h6>
