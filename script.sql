@@ -1,3 +1,4 @@
+USE leslumieres;
 -- Table creation
 CREATE TABLE petitchat_user(
   id INT PRIMARY KEY AUTO_INCREMENT,
