@@ -16,7 +16,7 @@
                         </div>
                         <div class="mb-5">
                             <input type="password" name="password" class="form-control" placeholder="Entrez votre mot de passe.">
-                            <div id="pwdHelp" class="form-text text-center">Mot de passe oublier ? <a href="">Cliquez ici</a></div>
+                            <div id="pwdHelp" class="form-text text-center">Mot de passe oublier ? <a href="forgot_password.php">Cliquez ici</a></div>
                         </div>
                         <button type="submit" class="btn btn-dark w-100">Se connecter</button>
                     </form>

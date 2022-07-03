@@ -86,6 +86,18 @@ updateLogs($pdo, 'index.php');
         echo '</div>';
         unset($_SESSION["badDate"]);
     }
+    if(!empty($_SESSION["badAccount"]) && isset($_SESSION["badAccount"])){
+        echo '<div class="alert alert-warning mt-4 pb-1" role="alert">';
+        echo '<h5 class="fw-bold">Mauvais compte.</h5>';
+        echo '</div>';
+        unset($_SESSION["badAccount"]);
+    }
+    if(!empty($_SESSION["badLink"]) && isset($_SESSION["badLink"])){
+        echo '<div class="alert alert-warning mt-4 pb-1" role="alert">';
+        echo '<h5 class="fw-bold">Mauvais lien.</h5>';
+        echo '</div>';
+        unset($_SESSION["badLink"]);
+    }
     ?>
 
     <div class="row py-4" id="livesearch">

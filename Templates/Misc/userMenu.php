@@ -71,7 +71,7 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
                                 </div>
                                 <div class="mb-4">
                                     <input type="password" name="oldPassword" class="form-control" placeholder="Entrez votre ancien mot de passe.">
-                                    <div id="pwdHelp" class="form-text text-center">Mot de passe oublier ? <a href="">Cliquez ici</a></div>
+                                    <div id="pwdHelp" class="form-text text-center">Mot de passe oublier ? <a href="forgot_password.php">Cliquez ici</a></div>
                                 </div>
                                 <div class="mb-1">
                                     <input type="password" name="password" class="form-control" placeholder="Entrez votre nouveau mot de passe.">
@@ -112,11 +112,7 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
             </div>
             <div class="modal-body text-center">
                 <?php
-<<<<<<< HEAD
-                $query = $pdo->prepare("SELECT * FROM megalapin_ticket WHERE user_id=:id ORDER BY id DESC");
-=======
                 $query = $pdo->prepare("SELECT * FROM megalapin_ticket WHERE user_id=:id ORDER BY id DESC;");
->>>>>>> d6cd1ade0bfbb8904292ee4c196b3bbda988a6fa
                 $query->execute(["id" => $_SESSION["id"]]);
                 $tickets = $query->fetchAll();
 
