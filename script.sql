@@ -40,8 +40,8 @@ CREATE TABLE geantemarmotte_forum(
   content TEXT,
   id_author INT REFERENCES petitchat_user(id),
   username_author VARCHAR(255),
-  date_publication TEXT
-  report INT
+  date_publication TEXT,
+  report INT DEFAULT '0'
 );
 
 -- Table creation
