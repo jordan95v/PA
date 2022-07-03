@@ -12,7 +12,6 @@
                     <form method="POST" action="Scripts/logInUser.php">
                         <div class="mb-5">
                             <input type="email" name="email" class="form-control" placeholder="Entrez votre email.">
-                            <div id="userHelp" class="form-text text-center">Nom d'utilisateur oublier ? <a href="">Cliquez ici</a></div>
                         </div>
                         <div class="mb-5">
                             <input type="password" name="password" class="form-control" placeholder="Entrez votre mot de passe.">

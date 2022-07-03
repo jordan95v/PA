@@ -48,7 +48,7 @@ $count = 0;
     <?php
     if (!$count) {
         echo '<div class="text-center">
-                <h4>Vous n\'avez pas encore créer de sujet.</h4>
+                <h4 class="text-light">Vous n\'avez pas encore créer de sujet.</h4>
                 <a href="forum.php" class="btn btn-warning w-50">Revenir au forum</a>
             </div>';
     } else {
