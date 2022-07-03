@@ -41,6 +41,7 @@ CREATE TABLE geantemarmotte_forum(
   id_author INT REFERENCES petitchat_user(id),
   username_author VARCHAR(255),
   date_publication TEXT
+  report TINYINT
 );
 
 -- Table creation

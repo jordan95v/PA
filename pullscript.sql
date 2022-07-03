@@ -38,6 +38,7 @@ CREATE TABLE groschien_film(
   maker VARCHAR(40),
   actors VARCHAR(255),
   info TEXT,
+  duration CHAR(5);
   creation_date timestamp DEFAULT CURRENT_TIMESTAMP,
   update_date timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   featured TINYINT(4) DEFAULT '0'
@@ -51,6 +52,7 @@ CREATE TABLE geantemarmotte_forum(
   id_author INT REFERENCES petitchat_user(id),
   username_author VARCHAR(255),
   date_publication TEXT
+  report TINYINT
 );
 
 -- Table creation
