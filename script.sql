@@ -5,8 +5,8 @@ CREATE TABLE petitchat_user(
   email VARCHAR(255),
   username VARCHAR(60),
   pwd VARCHAR(255),
-  creation_date timestamp DEFAULT CURRENT_TIMESTAMP,
-  update_date timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  update_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   statut TINYINT(4) DEFAULT 0,
   is_admin TINYINT(4) DEFAULT 0,
   super_admin TINYINT(4) DEFAULT 0,
@@ -17,7 +17,7 @@ CREATE TABLE petitchat_user(
   head char(8) DEFAULT 'head-1',
   eyes char(6) DEFAULT 'eyes-1',
   mouth char(7) DEFAULT 'mouth-1'
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;;
 
 CREATE TABLE groschien_film(
   id INT PRIMARY KEY AUTO_INCREMENT,
@@ -28,10 +28,10 @@ CREATE TABLE groschien_film(
   actors VARCHAR(255),
   info TEXT,
   duration CHAR(5);
-  creation_date timestamp DEFAULT CURRENT_TIMESTAMP,
-  update_date timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  update_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   featured TINYINT(4) DEFAULT 0
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;;
 
 CREATE TABLE geantemarmotte_forum(
   id INT PRIMARY KEY AUTO_INCREMENT,
@@ -42,7 +42,7 @@ CREATE TABLE geantemarmotte_forum(
   username_author VARCHAR(255),
   date_publication TEXT
   report TINYINT
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;;
 
 -- Table creation
 CREATE TABLE enormepingouin_like(
@@ -50,7 +50,7 @@ CREATE TABLE enormepingouin_like(
   film_id INT REFERENCES groschien_film(id),
   user_id INT REFERENCES petitchat_user(id),
   value INT 
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;;
 
 CREATE TABLE geantemarmotte_comments(
   id INT PRIMARY KEY AUTO_INCREMENT,
@@ -59,7 +59,7 @@ CREATE TABLE geantemarmotte_comments(
   id_subject INT REFERENCES geantemarmotte_forum(id),
   content TEXT,
   date_publication TEXT 
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;;
 
 CREATE TABLE gigaecureil_event(
   id INT PRIMARY KEY AUTO_INCREMENT,
@@ -74,13 +74,13 @@ CREATE TABLE gigaecureil_event(
   featured TINYINT(4) DEFAULT 1,
   like_count INT DEFAULT 0,
   dislike_count INT DEFAULT 0
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;;
 
 CREATE TABLE grandcanard_logs(
   id INT PRIMARY KEY AUTO_INCREMENT,
   view VARCHAR(50),
   connection INT DEFAULT 0
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;;
 
 CREATE TABLE megalapin_ticket(
   id INT PRIMARY KEY AUTO_INCREMENT,
@@ -92,24 +92,22 @@ CREATE TABLE megalapin_ticket(
   date VARCHAR(20),
   time VARCHAR(20),
   code INT
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;;
 
 CREATE TABLE minisculecome_newsletter(
   id INT PRIMARY KEY AUTO_INCREMENT,
   user_id INT REFERENCES petitchat_user(id),
   subject VARCHAR(90) DEFAULT NULL,
   content VARCHAR(250) DEFAULT NULL,
-  send_date timestamp  DEFAULT CURRENT_TIMESTAMP
-);
+  send_date TIMESTAMP  DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;;
 
 CREATE TABLE moyenlezard_user_logs(
   id INT PRIMARY KEY AUTO_INCREMENT,
   type VARCHAR(50) DEFAULT NULL,
-  date timestamp  DEFAULT CURRENT_TIMESTAMP,
+  date TIMESTAMP  DEFAULT CURRENT_TIMESTAMP,
   user_id INT REFERENCES petitchat_user(id)
-);
-
-
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;;
 
 INSERT INTO petitchat_user(id, email, username, pwd, creation_date, update_date, statut, is_admin, super_admin, token, confirmKey, newsletter, banned, head, eyes, mouth) VALUES
 (1, jordan.dfrsne@dufrsne.com, jdufresne3, $2y$10$2xkaDyqa5UkuhjH3qYL7Mu2GQxp2RltzlC1Ka0dj5e5loC3ZH944K, 2022-04-12 15:05:47, 2022-05-31 10:09:03, 1, 0, 0, b76f91a2e17ce9d019354849c5ca51c6a0e83391, NULL, 0, 0, head-1, eyes-1, mouth-1),
