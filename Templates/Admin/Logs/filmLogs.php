@@ -6,8 +6,8 @@
     <td id="updated-date"><?php echo $film["update_date"]; ?></td>
     <td>
         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-            <a type="button" class="btn btn-warning w-50" data-bs-toggle="modal" data-bs-target="#<?php echo str_replace(' ', '-', $film['title']); ?>-modif">Modifier</a>
-            <a type="button" class="btn btn-danger w-50" data-bs-toggle="modal" data-bs-target="#<?php echo str_replace(' ', '-', $film['title']); ?>-del">Supprimer</a>
+            <a type="button" class="btn btn-warning w-50" data-bs-toggle="modal" data-bs-target="#film<?php echo $film['id']; ?>-modif">Modifier</a>
+            <a type="button" class="btn btn-danger w-50" data-bs-toggle="modal" data-bs-target="#film<?php echo $film['id']; ?>-del">Supprimer</a>
         </div>
     </td>
 </tr>
