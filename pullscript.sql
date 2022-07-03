@@ -57,7 +57,7 @@ CREATE TABLE geantemarmotte_forum(
   film_subject VARCHAR(60),
   title TEXT,
   content TEXT,
-  id_author INT REFERENCES petitchat_user(id),
+  id_author INT,
   username_author VARCHAR(255),
   date_publication TEXT,
   report INT DEFAULT '0'
@@ -66,15 +66,15 @@ CREATE TABLE geantemarmotte_forum(
 CREATE TABLE enormepingouin_like(
   id INT PRIMARY KEY AUTO_INCREMENT,
   film_id INT REFERENCES groschien_film(id),
-  user_id INT REFERENCES petitchat_user(id),
+  user_id INT,
   value INT 
 );
 
 CREATE TABLE geantemarmotte_comments(
   id INT PRIMARY KEY AUTO_INCREMENT,
-  id_author INT REFERENCES petitchat_user(id),
+  id_author INT,
   username_author VARCHAR(255),
-  id_subject INT REFERENCES geantemarmotte_forum(id),
+  id_subject INT,
   content TEXT,
   date_publication TEXT 
 );
@@ -100,8 +100,8 @@ CREATE TABLE grandcanard_logs(
 
 CREATE TABLE megalapin_ticket(
   id INT PRIMARY KEY AUTO_INCREMENT,
-  user_id INT REFERENCES petitchat_user(id),
-  film_id INT REFERENCES groschien_film(id),
+  user_id INT,
+  film_id INT,
   film_name VARCHAR(50),
   ticket VARCHAR(70),
   place INT,
@@ -112,8 +112,8 @@ CREATE TABLE megalapin_ticket(
 
 CREATE TABLE mignonours_ticket_event(
   id INT PRIMARY KEY AUTO_INCREMENT,
-  user_id INT REFERENCES petitchat_user(id),
-  event_id INT REFERENCES gigaecureil_event(id),
+  user_id INT,
+  event_id INT,
   event_name VARCHAR(50),
   ticket VARCHAR(70),
   place INT,
@@ -124,7 +124,7 @@ CREATE TABLE mignonours_ticket_event(
 
 CREATE TABLE minisculecome_newsletter(
   id INT PRIMARY KEY AUTO_INCREMENT,
-  user_id INT REFERENCES petitchat_user(id),
+  user_id INT,
   subject VARCHAR(90) DEFAULT NULL,
   content VARCHAR(250) DEFAULT NULL,
   send_date timestamp  DEFAULT CURRENT_TIMESTAMP
@@ -134,7 +134,7 @@ CREATE TABLE moyenlezard_user_logs(
   id INT PRIMARY KEY AUTO_INCREMENT,
   type VARCHAR(50) DEFAULT NULL,
   date timestamp DEFAULT CURRENT_TIMESTAMP,
-  user_id INT REFERENCES petitchat_user(id)
+  user_id INT
 );
 
 INSERT INTO petitchat_user(id, email, username, pwd, creation_date, update_date, statut, is_admin, super_admin, token, confirmKey, newsletter, banned, head, eyes, mouth) VALUES

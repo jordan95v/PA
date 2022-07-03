@@ -9,7 +9,7 @@ if (isAdmin($pdo)) {
     $query->execute(["id" => $_GET["id"]]);
     //updateUserLogs($pdo, $results["id"], "deleted film" . $_GET["id"] . ".");
     $_SESSION["deletedEvent"] = 1;
-    header("Location: ../index.php");
+    header("Location: ../admin.php?type=event");
 }
 
 function deleteImage($pdo, $id)
