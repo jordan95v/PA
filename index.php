@@ -117,8 +117,34 @@ updateLogs($pdo, 'index.php');
     <div class="text-center mt-2 mb-4">
         <a href="films.php" class="btn btn-outline-danger p-2">Voir tous les films</a>
     </div>
-</div>
 
+
+    <!-- Cards events -->
+
+    <div class="d-flex bd-highlight">
+        <div class="p-2 flex-grow-1 bd-highlight">
+            <h2 class="fw-bold text-light">Les évènements</h2>
+        </div>
+        <div class="p-3 flex-shrink-1 bd-highlight">
+            <h6><a href="films.php" class="text-danger text-decoration-none">Voir plus <span class='arrow right'></span></a></h6>
+        </div>
+    </div>
+
+    <div class="row py-4">
+    <?php
+
+        $queryEvent = $pdo->prepare('SELECT * FROM gigaecureil_event WHERE featured=:featured');
+        $queryEvent->execute(["featured" => 1]);
+        $resultEvent = $queryEvent->fetchAll();
+        $count = (count($resultEvent) >= 5) ? 5 : count($resultEvent);
+        
+        for ($i=0; $i < count($resultEvent); $i++) { 
+            include "Templates/Misc/eventModal.php";
+        }
+    ?>
+    </div>
+
+</div>
 <?php
 include "Templates/footer.php";
 ?>

@@ -135,6 +135,9 @@ if (!isAdmin($pdo)) {
                 </ul>            
             </li>
             <li class="nav-item mx-4">
+                <a class="nav-link white" href="?type=event">Event</a>
+            </li>
+            <li class="nav-item mx-4">
                 <a class="nav-link white" href="?type=newsletter">Newsletter</a>
             </li>
             <li class="nav-item mx-4">
@@ -159,6 +162,8 @@ if (!isAdmin($pdo)) {
             include "Templates/Admin/userAdmin.php";
         } elseif ($_GET["type"] == "ticket") {
             include "Templates/Admin/ticketAdmin.php";
+        } elseif ($_GET["type"] == "event") {
+            include "Templates/Admin/eventAdmin.php";
         }
         ?>
     </div>
