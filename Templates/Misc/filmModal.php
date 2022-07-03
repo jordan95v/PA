@@ -85,6 +85,7 @@
                     </div>
                     <input type="hidden" name="film_id" value="<?php echo $result[$i]["id"]; ?>">
                     <input type="hidden" name="film_name" value="<?php echo $result[$i]["title"]; ?>">
+                    <input type="submit" value="Acheter un billet" class="btn btn-success w-100">
                 </form>
             </div>
             <div class="modal-footer">
