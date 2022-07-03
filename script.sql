@@ -34,6 +34,13 @@ CREATE TABLE groschien_film(
   featured INT DEFAULT '0'
 );
 
+CREATE TABLE `grandegirafe_pwd_recover` (
+  id int(11) NOT NULL,
+  token_user varchar(64) REFERENCES petitchat_user(token),
+  token varchar(64) NOT NULL,
+  date_recover datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE geantemarmotte_forum(
   id INT PRIMARY KEY AUTO_INCREMENT,
   film_subject VARCHAR(60),
