@@ -26,7 +26,7 @@ CREATE TABLE groschien_film(
   genre VARCHAR(20),
   maker VARCHAR(40),
   actors VARCHAR(255),
-  info VARCHAR(255),
+  info TEXT,
   creation_date timestamp DEFAULT CURRENT_TIMESTAMP,
   update_date timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   featured TINYINT(4) DEFAULT '0'
@@ -88,7 +88,8 @@ CREATE TABLE megalapin_ticket(
   ticket VARCHAR(70),
   place INT,
   date VARCHAR(20),
-  time VARCHAR(20) 
+  time VARCHAR(20),
+  code INT
 );
 
 CREATE TABLE minisculecome_newsletter(
