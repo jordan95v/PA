@@ -135,9 +135,6 @@ if (!isAdmin($pdo)) {
                 </ul>
             </li>
             <li class="nav-item mx-4">
-                <a class="nav-link white" href="?type=event">Event</a>
-            </li>
-            <li class="nav-item mx-4">
                 <a class="nav-link white" href="?type=newsletter">Newsletter</a>
             </li>
             <li class="nav-item mx-4">

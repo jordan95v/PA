@@ -1,4 +1,3 @@
-
 <h1 class="text-center mt-5 pt-4 text-light">Section administrateur pour les évènements</h1>
 
 <!-- Film form -->
@@ -29,8 +28,11 @@
             </div>
             <div class="mb-5 col-md-6 col-12">
                 <input type="date" class="form-control" name="date-debut" placeholder="Date début évent">
-                    Au 
+                <div id="userHelp" class="form-text text-center">Date du début de l'évènement</div>
+            </div>
+            <div class="mb-5 col-md-6 col-12">
                 <input type="date" class="form-control" name="date-fin" placeholder="Date fin évent">
+                <div id="userHelp" class="form-text text-center">Date de la fin de l'évènement</div>
             </div>
             <div class="mb-5">
                 <textarea name="content" class="form-control" placeholder="Entrez la description du film." rows="4"></textarea>

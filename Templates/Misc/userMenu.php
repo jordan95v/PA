@@ -119,7 +119,7 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
                 $query = $pdo->prepare("SELECT * FROM mignonours_ticket_event WHERE user_id=:id ORDER BY id DESC");
                 $query->execute(["id" => $_SESSION["id"]]);
                 $ticketsEvent = $query->fetchAll();
-                if (!empty($tickets)) {
+                if (!empty($tickets) || !empty($ticketEvent)) {
                     echo '<h4 class="pt-4">Liste de vos billets</h4>';
                     for ($i = 0; $i < count($tickets); $i++) {
                         $ticket = $tickets[$i];
