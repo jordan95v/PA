@@ -84,6 +84,7 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
                                     <label class="form-check-label dark" for="flexCheck">
                                         Activer / désactiver la newsletter.
                                     </label>
+                                    <a class="btn btn-success text-center" href="PDF/donnees.php">Mes données ici !</a>
                                 </div>
                                 <input type="hidden" name="head" value="<?php echo $user["head"]; ?>" id="headInput">
                                 <input type="hidden" name="eyes" value="<?php echo $user["eyes"]; ?>" id="eyesInput">
@@ -112,7 +113,7 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
             </div>
             <div class="modal-body text-center">
                 <?php
-                $query = $pdo->prepare("SELECT * FROM megalapin_ticket WHERE user_id=:id ORDER BY id DESC;");
+                $query = $pdo->prepare("SELECT * FROM megalapin_ticket WHERE user_id=:id AND statut = 0 ORDER BY id DESC;");
                 $query->execute(["id" => $_SESSION["id"]]);
                 $tickets = $query->fetchAll();
                 if (!empty($tickets)) {
