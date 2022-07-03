@@ -25,6 +25,7 @@
                             <input type="password" name="passwordConfirm" class="form-control" placeholder="Confirmez votre mot de passe." required="required">
                             <div id="pwdHelp" class="form-text text-center">Vous trompez pas, c'est relou de tout réecrire ! 😎</div>
                         </div>
+                        <h4 id="round">Manche 1 / 3</h4>
                         <div id="captcha" class="mb-4">
                             <img src="Images/Captcha/pikachu.png" alt="" id="Pikachu" class="captchaBtn">
                             <img src="Images/Captcha/ronflex.png" alt="" id="Ronflex" class="captchaBtn">
