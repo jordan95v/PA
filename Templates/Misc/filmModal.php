@@ -1,5 +1,5 @@
 <div class="col-6 col-md-2">
-    <a type="button" data-bs-toggle="modal" data-bs-target="#<?php echo str_replace(' ', '-', $result[$i]['title']); ?>" class="text-decoration-none">
+    <a type="button" data-bs-toggle="modal" data-bs-target="#film<?php echo $result[$i]['id']; ?>" class="text-decoration-none">
         <div class="card border-0 custom-cards film">
             <img src="<?php echo str_replace('../', '', $result[$i]['image_path']); ?>" class="zoom card-img-top" alt="...">
             <div class="card-body text-start ps-0">
@@ -10,7 +10,7 @@
     </a>
 </div>
 
-<div class="modal fade" id="<?php echo str_replace(' ', '-', $result[$i]['title']); ?>" tabindex="-1" aria-labelledby="filmModal" aria-hidden="true">
+<div class="modal fade" id="film<?php echo $result[$i]['id']; ?>" tabindex="-1" aria-labelledby="filmModal" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -35,7 +35,7 @@
                 </div>
                 <?php
                 if ($result[$i]["featured"] == 1) {
-                    echo '<a type="button" class="btn btn-success w-100 my-2" data-bs-toggle="modal" data-bs-target="' . str_replace(' ', '-', $result[$i]['title']) . '-buy">Acheter un billet</a>';
+                    echo '<a type="button" class="btn btn-success w-100 my-2" data-bs-toggle="modal" data-bs-target="#film' . $result[$i]['id'] . '-buy">Acheter un billet</a>';
                 } else {
                     echo '<h4 class="text-danger">Ce film n\'est pas à l\'affiche</h4>';
                 }
@@ -49,7 +49,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="<?php echo str_replace(' ', '-', $result[$i]['title']); ?>-buy" tabindex="-1" aria-labelledby="filmModal" aria-hidden="true">
+<div class="modal fade" id="film<?php echo $result[$i]['id']; ?>-buy" tabindex="-1" aria-labelledby="filmModal" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
