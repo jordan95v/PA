@@ -33,7 +33,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="film<?php echo str_replace(' ', '-', $results['title']); ?>-del" tabindex="-1" aria-labelledby="filmModal" aria-hidden="true">
+<div class="modal fade" id="<?php echo str_replace(' ', '-', $results['title']); ?>-del" tabindex="-1" aria-labelledby="filmModal" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content text-dark">
             <div class="modal-header">

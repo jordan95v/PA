@@ -55,7 +55,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="<?php echo $result['id']; ?>-del" tabindex="-1" aria-labelledby="filmModal" aria-hidden="true">
+<div class="modal fade" id="film<?php echo $result['id']; ?>-del" tabindex="-1" aria-labelledby="filmModal" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content text-dark">
             <div class="modal-header">
