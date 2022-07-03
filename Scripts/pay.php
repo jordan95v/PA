@@ -20,8 +20,7 @@ $time = [10, 14, 18, 22];
 
 $date_now = time(); //current timestamp
 $date_convert = strtotime($_POST["date"]);
-
-$filmName = htmlspecialchars($_POST["film_name"]);
+$filmName = htmlspecialchars(str_replace('\'', '', $_POST["film_name"]));
 $filmId = htmlspecialchars($_POST["film_id"]);
 
 if ($date_now > $date_convert) {
