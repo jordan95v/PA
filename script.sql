@@ -2,21 +2,21 @@ USE leslumieres;
 -- Table creation
 CREATE TABLE petitchat_user(
   id INT PRIMARY KEY AUTO_INCREMENT,
-  email VARCHAR(255) ,
-  username VARCHAR(60) ,
-  pwd VARCHAR(255) ,
-  creation_date timestamp  DEFAULT CURRENT_TIMESTAMP,
-  update_date timestamp  DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  statut TINYINT(4)  DEFAULT '0',
-  is_admin TINYINT(4)  DEFAULT '0',
-  super_admin TINYINT(4)  DEFAULT '0',
+  email VARCHAR(255),
+  username VARCHAR(60),
+  pwd VARCHAR(255),
+  creation_date timestamp DEFAULT CURRENT_TIMESTAMP,
+  update_date timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  statut INT DEFAULT '0',
+  is_admin INT DEFAULT '0',
+  super_admin INT DEFAULT '0',
   token VARCHAR(40) DEFAULT NULL,
   confirmKey INT DEFAULT NULL,
-  newsletter TINYINT(4)  DEFAULT '0',
-  banned INT  DEFAULT '0',
-  head char(8)  DEFAULT 'head-1',
-  eyes char(6)  DEFAULT 'eyes-1',
-  mouth char(7)  DEFAULT 'mouth-1'
+  newsletter INT DEFAULT '0',
+  banned INT DEFAULT '0',
+  head char(8) DEFAULT 'head-1',
+  eyes char(6) DEFAULT 'eyes-1',
+  mouth char(7) DEFAULT 'mouth-1'
 );
 
 CREATE TABLE groschien_film(
@@ -30,7 +30,7 @@ CREATE TABLE groschien_film(
   duration CHAR(5),
   creation_date timestamp DEFAULT CURRENT_TIMESTAMP,
   update_date timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  featured TINYINT(4) DEFAULT '0'
+  featured INT DEFAULT '0'
 );
 
 CREATE TABLE geantemarmotte_forum(
@@ -41,7 +41,7 @@ CREATE TABLE geantemarmotte_forum(
   id_author INT REFERENCES petitchat_user(id),
   username_author VARCHAR(255),
   date_publication TEXT
-  report TINYINT
+  report INT
 );
 
 -- Table creation
@@ -71,7 +71,7 @@ CREATE TABLE gigaecureil_event(
   content VARCHAR(255),
   start_date_event TEXT,
   end_date_event TEXT,
-  featured TINYINT(4) DEFAULT '1',
+  featured INT DEFAULT '1',
   like_count INT DEFAULT '0',
   dislike_count INT DEFAULT '0'
 );
