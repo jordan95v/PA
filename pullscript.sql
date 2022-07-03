@@ -47,7 +47,7 @@ CREATE TABLE groschien_film(
 
 CREATE TABLE grandegirafe_pwd_recover(
   id int(11) NOT NULL,
-  token_user varchar(64) REFERENCES petitchat_user(token),
+  token_user varchar(64),
   token varchar(64) NOT NULL,
   date_recover datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
