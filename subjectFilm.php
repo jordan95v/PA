@@ -1,7 +1,7 @@
 <?php
 require "Templates/header.php";
 $pdo = connectDB();
-if (isset($_GET['film']) and !empty($_GET['film'])) {
+if (isset($_GET['film']) && !empty($_GET['film'])) {
     $subjectFilm = $pdo->prepare('SELECT id, film_subject, title, content, username_author, date_publication FROM geantemarmotte_forum WHERE film_subject=:film_subject ORDER BY id DESC');
     $subjectFilm->execute(['film_subject' => $_GET['film']]);
 }
@@ -19,10 +19,11 @@ $count = 0;
     ?>
         <br>
         <div class="card cardQuestion">
-            <div class="card-header">
+            <div class="card-header d-flex justify-content-between">
                 <a href="showSubject.php?id=<?= $film['id']; ?>">
                     <?= $film['title']; ?>
                 </a>
+                <a href="Scripts/report.php?id=<?= $film['id']; ?>" class="btn btn-warning">Signaler</a>
             </div>
             <div class="card-body">
                 <h5 class="card-title mb-4">

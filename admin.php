@@ -142,6 +142,9 @@ if (!isAdmin($pdo)) {
             <li class="nav-item mx-4">
                 <a class="nav-link white" href="?type=logs">Logs</a>
             </li>
+            <li class="nav-item mx-4">
+                <a class="nav-link white" href="?type=report">Report</a>
+            </li>
         </ul>
 
         <?php
@@ -153,7 +156,10 @@ if (!isAdmin($pdo)) {
             include "Templates/Admin/logsAdmin.php";
         } elseif ($_GET["type"] == "users") {
             include "Templates/Admin/userAdmin.php";
+        } elseif ($_GET["type"] == "report") {
+            include "Templates/Admin/reportAdmin.php";
         }
+
         ?>
     </div>
 

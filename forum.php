@@ -4,6 +4,14 @@ include "Templates/header.php";
 ?>
 
 <div class="container">
+    <?php 
+     if (!empty($_SESSION["report"]) && isset($_SESSION["report"])) {
+        echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
+        echo '<h5 class="fw-bold">Le post a bien été signaler.</h5>';
+        echo '</div>';
+        unset($_SESSION["report"]);
+    }
+    ?>
     <div class="row py-4" id="livesearch">
     </div>
 
