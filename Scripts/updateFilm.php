@@ -11,7 +11,7 @@ function getTitle($pdo, $id)
 if (
     empty($_POST["title"]) || empty($_POST["genre"]) ||
     empty($_POST["maker"]) || empty($_POST["actors"]) ||
-    empty($_POST["desc"])
+    empty($_POST["desc"]) || empty($_POST["time"])
 ) {
     $_SESSION["empty"] = 1;
     header("Location: ../index.php");
@@ -26,10 +26,9 @@ $info = htmlspecialchars(strtolower($_POST["desc"]));
 $featured = ($_POST["featured"] === "on") ? 1 : 0;
 
 if (isAdmin($pdo)) {
-    $query = $pdo->prepare("UPDATE groschien_film SET title=:title, maker=:maker, genre=:genre, actors=:actors, info=:info, featured=:featured WHERE id=:id;");
-    $query->execute(["title" => $title, "maker" => $maker, "genre" => $_POST["genre"], "actors" => $actors, "info" => $info, "featured" => $featured, "id" => $_GET["id"]]);
+    $query = $pdo->prepare("UPDATE groschien_film SET title=:title, maker=:maker, genre=:genre, actors=:actors, info=:info, featured=:featured, duration=:duration WHERE id=:id;");
+    $query->execute(["title" => $title, "maker" => $maker, "genre" => $_POST["genre"], "actors" => $actors, "info" => $info, "featured" => $featured, "duration" => $_POST["time"], "id" => $_GET["id"]]);
     updateUserLogs($pdo, $_SESSION["id"], "updated film: " . getTitle($pdo, $_GET["id"]) . ".");
     $_SESSION["modified"] = 1;
     header("Location: ../admin.php?type=film");
 }
-

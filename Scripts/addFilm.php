@@ -1,8 +1,6 @@
 <?php
 require_once "functions.php";
 
-
-
 function checkFileSize($fileSize, &$errors)
 {
     // Check file size.
@@ -100,14 +98,14 @@ function filmExists($pdo, $title, &$errors)
     return false;
 }
 
-
 if (
     empty($_POST["title"]) || empty($_POST["genre"]) ||
     empty($_POST["maker"]) || empty($_POST["actors"]) ||
-    empty($_FILES["file"]) || empty($_POST["desc"]) || empty($_FILES)
+    empty($_FILES["file"]) || empty($_POST["desc"]) ||
+    empty($_POST["time"]) || empty($_FILES)
 ) {
     $_SESSION["empty"] = 1;
-    header("Location: ../index.php");
+    header("Location: ../admin.php?type=film");
     die();
 }
 
@@ -139,8 +137,8 @@ if (isAdmin($pdo)) {
         if (filmExists($pdo, $title, $errors)) {
             if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
                 makeFiligrane($target_file);
-                $query = $pdo->prepare("INSERT INTO groschien_film (image_path, title, genre, maker, actors, info, featured) VALUES (:image_path, :title, :genre, :maker, :actors, :info, :featured);");
-                $query->execute(["image_path" => $target_file, "title" => $title, "genre" => $_POST["genre"], "maker" => $maker, "actors" => $actors, "info" => $info, "featured" => $featured]);
+                $query = $pdo->prepare("INSERT INTO groschien_film (image_path, title, genre, maker, actors, info, duration, featured) VALUES (:image_path, :title, :genre, :maker, :actors, :info, :duration, :featured);");
+                $query->execute(["image_path" => $target_file, "title" => $title, "genre" => $_POST["genre"], "maker" => $maker, "actors" => $actors, "info" => $info, "duration" => $_POST["time"], "featured" => $featured]);
                 updateUserLogs($pdo, $_SESSION["id"], "added a movie: " . $title . ".");
                 $_SESSION["upload"] = 1;
                 header("Location: ../admin.php?type=film");
@@ -150,7 +148,7 @@ if (isAdmin($pdo)) {
         }
         if (count($errors) != 0) {
             $_SESSION["errors"] = $errors;
-            header("Location: ../index.php");
+            header("Location: ../admin.php?type=film");
         }
     }
 } else {

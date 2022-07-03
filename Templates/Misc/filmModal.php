@@ -19,9 +19,20 @@
             </div>
             <div class="modal-body text-center">
                 <img src="<?php echo str_replace('../', '', $result[$i]['image_path']); ?>" alt="...">
-                <p class="my-4 dark">Réalisé par <b><?php echo ucwords($result[$i]['maker']); ?></b></p>
-                <p class="my-4 dark"><b>Acteurs:</b> <?php echo ucwords($result[$i]['actors']); ?></p>
-                <p class="my-4 dark"><b>Description:</b> <?php echo ucfirst($result[$i]['info']); ?></p>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <p class="my-4 dark">Réalisé par <b><?php echo ucwords($result[$i]['maker']); ?></b></p>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <p class="my-4 dark"><b>Durée:</b> <?php echo str_replace(':', 'h', $result[$i]['duration']); ?></p>
+                    </div>
+                    <div class="col-12">
+                        <p class="my-4 dark"><b>Acteurs:</b> <?php echo ucwords($result[$i]['actors']); ?></p>
+                    </div>
+                    <div class="col-12">
+                        <p class="my-4 dark"><b>Description:</b> <?php echo ucfirst($result[$i]['info']); ?></p>
+                    </div>
+                </div>
                 <?php
                 if ($result[$i]["featured"] == 1) {
                     echo '<a type="button" class="btn btn-success w-100 my-2" data-bs-toggle="modal" data-bs-target="' . str_replace(' ', '-', $result[$i]['title']) . '-buy">Acheter un billet</a>';

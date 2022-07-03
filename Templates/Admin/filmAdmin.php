@@ -27,13 +27,17 @@ updateLogs($pdo, 'films-admin.php');
                     <option value="sci-fi">Science-fiction</option>
                 </select>
             </div>
-            <div class="mb-5 col-md-6 col-12">
+            <div class="mb-5 col-md-4 col-12">
                 <input type="text" name="maker" class="form-control" placeholder="Entrez le nom du réalisateur.">
                 <div id="userHelp" class="form-text text-center">Le nom du réal 🎞</div>
             </div>
-            <div class="mb-5 col-md-6 col-12">
+            <div class="mb-5 col-md-4 col-12">
                 <input type="text" name="actors" class="form-control" placeholder="Entrez le nom des acteurs.">
                 <div id="userHelp" class="form-text text-center">Le nom des acteurs 🎦</div>
+            </div>
+            <div class="mb-5 col-md-4 col-12">
+                <input type="time" name="time" class="form-control">
+                <div id="timeHelp" class="form-text text-center">La durée du film 🎦</div>
             </div>
             <div class="mb-5">
                 <textarea name="desc" class="form-control" placeholder="Entrez la description du film." rows="4"></textarea>
