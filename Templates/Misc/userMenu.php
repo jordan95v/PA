@@ -112,11 +112,7 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
             </div>
             <div class="modal-body text-center">
                 <?php
-<<<<<<< HEAD
-                $query = $pdo->prepare("SELECT * FROM megalapin_ticket WHERE user_id=:id ORDER BY id DESC");
-=======
                 $query = $pdo->prepare("SELECT * FROM megalapin_ticket WHERE user_id=:id ORDER BY id DESC;");
->>>>>>> d6cd1ade0bfbb8904292ee4c196b3bbda988a6fa
                 $query->execute(["id" => $_SESSION["id"]]);
                 $tickets = $query->fetchAll();
 
@@ -130,7 +126,7 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
                         include 'Templates/Misc/ticketCard.php';
                     }
 
-                    for($i = 0; $i < count($ticketsEvent); $i++) {
+                    for ($i = 0; $i < count($ticketsEvent); $i++) {
                         $ticketEvent = $ticketsEvent[$i];
                         include 'Templates/Misc/ticketCardEvent.php';
                     }
