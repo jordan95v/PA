@@ -26,8 +26,12 @@
                             <div id="pwdHelp" class="form-text text-center">Vous trompez pas, c'est relou de tout réecrire ! 😎</div>
                         </div>
                         <div id="captcha" class="mb-4">
-                            <div id="puzzle"></div>
-                            <div id="captchaHelp" class="form-text text-center">Complétez le captcha pour vous inscrire 😉</div>
+                            <img src="Images/Captcha/pikachu.png" alt="" id="Pikachu" class="captchaBtn">
+                            <img src="Images/Captcha/ronflex.png" alt="" id="Ronflex" class="captchaBtn">
+                            <img src="Images/Captcha/salameche.png" alt="" id="Salameche" class="captchaBtn">
+                            <img src="Images/Captcha/bulbizarre.png" alt="" id="Bulbizarre" class="captchaBtn">
+                            <img src="Images/Captcha/miaouss.png" alt="" id="Miaouss" class="captchaBtn">
+                            <div id="captchaHelp" class="form-text text-center"></div>
                         </div>
                         <div class="form-check mb-1 text-start">
                             <input class="form-check-input" type="checkbox" name="age" id="flexCheckDefault" required="required">
@@ -47,7 +51,7 @@
                                 Je confirme avoir lu les CGU.
                             </label>
                         </div>
-                        <button type="submit" class="btn btn-dark w-100">S'inscrire</button>
+                        <button id="reg" type="submit" class="btn btn-dark w-100 disabled">S'inscrire</button>
                     </form>
 
                 </div>
