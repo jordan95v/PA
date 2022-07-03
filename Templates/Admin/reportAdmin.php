@@ -5,7 +5,20 @@ $query->execute([1]);
 
 ?>
 <div class="container">
-
+    <?php
+    if (!empty($_SESSION["safePost"]) && isset($_SESSION["safePost"])) {
+        echo '<div class="alert alert-info mt-4 pb-1" role="alert">';
+        echo '<h5 class="fw-bold">Le signalement à été retirée.</h5>';
+        echo '</div>';
+        unset($_SESSION["safePost"]);
+    }
+    if (!empty($_SESSION["delPost"]) && isset($_SESSION["delPost"])) {
+        echo '<div class="alert alert-warning mt-4 pb-1" role="alert">';
+        echo '<h5 class="fw-bold">Le post à été supprimé.</h5>';
+        echo '</div>';
+        unset($_SESSION["delPost"]);
+    }
+    ?>
     <h1 class="text-center mt-5 pt-4 text-light">Section administrateur pour les films</h1>
 
     <div class="table-responsive">
@@ -22,7 +35,7 @@ $query->execute([1]);
             </thead>
             <tbody class="text-center" id="content">
                 <?php while ($reports = $query->fetch()) : ?>
-                
+
                     <tr>
                         <td scope="col"><?php echo $reports['id'] ?></td>
                         <td scope="col"><?php echo $reports['film_subject'] ?></td>
