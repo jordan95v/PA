@@ -1,4 +1,5 @@
 USE leslumieres;
+
 -- Table creation
 CREATE TABLE petitchat_user(
   id INT PRIMARY KEY AUTO_INCREMENT,
@@ -44,7 +45,6 @@ CREATE TABLE geantemarmotte_forum(
   report INT DEFAULT '0'
 );
 
--- Table creation
 CREATE TABLE enormepingouin_like(
   id INT PRIMARY KEY AUTO_INCREMENT,
   film_id INT REFERENCES groschien_film(id),
@@ -94,6 +94,18 @@ CREATE TABLE megalapin_ticket(
   code INT
 );
 
+CREATE TABLE mignonours_ticket_event(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  user_id INT REFERENCES petitchat_user(id),
+  event_id INT REFERENCES gigaecureil_event(id),
+  event_name VARCHAR(50),
+  ticket VARCHAR(70),
+  place INT,
+  date VARCHAR(20),
+  time VARCHAR(20),
+  code INT
+);
+
 CREATE TABLE minisculecome_newsletter(
   id INT PRIMARY KEY AUTO_INCREMENT,
   user_id INT REFERENCES petitchat_user(id),
@@ -108,8 +120,6 @@ CREATE TABLE moyenlezard_user_logs(
   date timestamp  DEFAULT CURRENT_TIMESTAMP,
   user_id INT REFERENCES petitchat_user(id)
 );
-
-
 
 INSERT INTO petitchat_user(id, email, username, pwd, creation_date, update_date, statut, is_admin, super_admin, token, confirmKey, newsletter, banned, head, eyes, mouth) VALUES
 (1, 'jordan.dfrsne@dufrsne.com', 'jdufresne3', '$2y$10$2xkaDyqa5UkuhjH3qYL7Mu2GQxp2RltzlC1Ka0dj5e5loC3ZH944K', '2022-04-12 15:05:47', '2022-05-31 10:09:03', 1, 0, 0, 'b76f91a2e17ce9d019354849c5ca51c6a0e83391', NULL, 0, 0, 'head-1', 'eyes-1', 'mouth-1'),

@@ -128,11 +128,11 @@ if (!isAdmin($pdo)) {
         <h5 class="text-light">Choix de la section</h5>
         <ul class="nav justify-content-center bg-dark rounded p-2">
             <li class="nav-item mx-4">
-                <a class="nav-link navChoice dropdown-toggle" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Films</a>
+                <a class="nav-link navChoice dropdown-toggle white" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Films</a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="?type=film">Liste et création</a></li>
                     <li><a class="dropdown-item" href="?type=ticket">Ticket</a></li>
-                </ul>            
+                </ul>
             </li>
             <li class="nav-item mx-4">
                 <a class="nav-link white" href="?type=newsletter">Newsletter</a>

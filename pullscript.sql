@@ -55,7 +55,6 @@ CREATE TABLE geantemarmotte_forum(
   report INT DEFAULT '0'
 );
 
--- Table creation
 CREATE TABLE enormepingouin_like(
   id INT PRIMARY KEY AUTO_INCREMENT,
   film_id INT REFERENCES groschien_film(id),
@@ -98,6 +97,18 @@ CREATE TABLE megalapin_ticket(
   user_id INT REFERENCES petitchat_user(id),
   film_id INT REFERENCES groschien_film(id),
   film_name VARCHAR(50),
+  ticket VARCHAR(70),
+  place INT,
+  date VARCHAR(20),
+  time VARCHAR(20),
+  code INT
+);
+
+CREATE TABLE mignonours_ticket_event(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  user_id INT REFERENCES petitchat_user(id),
+  event_id INT REFERENCES gigaecureil_event(id),
+  event_name VARCHAR(50),
   ticket VARCHAR(70),
   place INT,
   date VARCHAR(20),

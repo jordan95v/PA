@@ -26,22 +26,25 @@ if (isset($_GET["genre"])) {
 
     <ul class="nav justify-content-center bg-dark p-2">
         <li class="nav-item active mx-4">
-            <h4><a class="nav-link navChoice" href="?genre=action">Action</a></h4>
+            <h4><a class="nav-link navChoice white" href="?genre=action">Action</a></h4>
         </li>
         <li class="nav-item active mx-4">
-            <h4><a class="nav-link navChoice" href="?genre=aventure">Aventure</a></h4>
+            <h4><a class="nav-link navChoice white" href="?genre=aventure">Aventure</a></h4>
         </li>
         <li class="nav-item active mx-4">
-            <h4><a class="nav-link navChoice" href="?genre=drame">Drame</a></h4>
+            <h4><a class="nav-link navChoice white" href="?genre=comedie">Comédie</a></h4>
         </li>
         <li class="nav-item active mx-4">
-            <h4><a class="nav-link navChoice" href="?genre=horreur">Horreur</a></h4>
+            <h4><a class="nav-link navChoice white" href="?genre=drame">Drame</a></h4>
         </li>
         <li class="nav-item active mx-4">
-            <h4><a class="nav-link navChoice" href="?genre=thriller">Thriller</a></h4>
+            <h4><a class="nav-link navChoice white" href="?genre=horreur">Horreur</a></h4>
         </li>
         <li class="nav-item active mx-4">
-            <h4><a class="nav-link navChoice" href="?genre=sci-fi">Sci-Fi</a></h4>
+            <h4><a class="nav-link navChoice white" href="?genre=thriller">Thriller</a></h4>
+        </li>
+        <li class="nav-item active mx-4">
+            <h4><a class="nav-link navChoice white" href="?genre=sci-fi">Sci-Fi</a></h4>
         </li>
     </ul>
 
