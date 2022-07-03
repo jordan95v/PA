@@ -28,12 +28,15 @@ if (isConnected($pdo)) {
         $_SESSION["errors"] = $errors;
         header("Location: ../index.php");
     } else {
-        $query = $pdo->prepare("UPDATE petitchat_user SET email=:email, username=:username, newsletter=:news WHERE token=:token;");
+        $query = $pdo->prepare("UPDATE petitchat_user SET email=:email, username=:username, newsletter=:news, head=:head, eyes=:eyes, mouth=:mouth WHERE token=:token;");
         $query->execute([
             "email" => $email,
             "username" => $username,
             "token" => $_SESSION["token"],
-            "news" => $newsletter
+            "news" => $newsletter,
+            "head" => $_POST["head"],
+            "eyes" => $_POST["eyes"],
+            "mouth" => $_POST["mouth"]
         ]);
     }
     if (!empty($_POST["oldPassword"]) && !empty($_POST["password"]) && !empty($_POST["passwordConfirm"])) {

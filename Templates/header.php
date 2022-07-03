@@ -47,7 +47,7 @@ if (isset($_SESSION["email"])) {
                     </button>
                     <div class="collapse navbar-collapse" id="navbarText">
                         <form class="d-flex  mt-4 mt-lg-2 film-search mx-auto" method="post">
-                            <input class="form-control search" type="search" id="search" placeholder="Chercher un film ..." aria-label="Search">
+                            <input class="form-control search white" type="search" id="search" placeholder="Chercher un film ..." aria-label="Search">
                             <button class="btn" type="submit">🔍</button>
                         </form>
                         <ul class="navbar-nav mt-2 mb-lg-0 text-center">

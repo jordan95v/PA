@@ -28,6 +28,7 @@ if (isset($errorMsg)) {
 <div class="container mt-4">
     <div class="row py-4" id="livesearch">
     </div>
+
     <h4 class="text-light">Poster un sujet sur le forum 🥷</h4>
     <form method="POST">
         <div class="mb-4">

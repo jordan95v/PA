@@ -19,10 +19,28 @@
             </div>
             <div class="modal-body text-center">
                 <img src="<?php echo str_replace('../', '', $result[$i]['image_path']); ?>" alt="...">
-                <p class="my-4 dark">Réalisé par <b><?php echo ucwords($result[$i]['maker']); ?></b></p>
-                <p class="my-4 dark"><b>Acteurs:</b> <?php echo ucwords($result[$i]['actors']); ?></p>
-                <p class="my-4 dark"><b>Description:</b> <?php echo ucfirst($result[$i]['info']); ?></p>
-                <a type="button" class="btn btn-success w-100 my-2" data-bs-toggle="modal" data-bs-target="#<?php echo str_replace(' ', '-', $result[$i]['title']); ?>-buy">Acheter un billet</a>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <p class="my-4 dark">Réalisé par <b><?php echo ucwords($result[$i]['maker']); ?></b></p>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <p class="my-4 dark"><b>Durée:</b> <?php echo str_replace(':', 'h', $result[$i]['duration']); ?></p>
+                    </div>
+                    <div class="col-12">
+                        <p class="my-4 dark"><b>Acteurs:</b> <?php echo ucwords($result[$i]['actors']); ?></p>
+                    </div>
+                    <div class="col-12">
+                        <p class="my-4 dark"><b>Description:</b> <?php echo ucfirst($result[$i]['info']); ?></p>
+                    </div>
+                </div>
+                <?php
+                if ($result[$i]["featured"] == 1) {
+                    echo '<a type="button" class="btn btn-success w-100 my-2" data-bs-toggle="modal" data-bs-target="' . str_replace(' ', '-', $result[$i]['title']) . '-buy">Acheter un billet</a>';
+                } else {
+                    echo '<h4 class="text-danger">Ce film n\'est pas à l\'affiche</h4>';
+                }
+                ?>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger w-100" data-bs-dismiss="modal">Fermer</button>
@@ -67,7 +85,6 @@
                     </div>
                     <input type="hidden" name="film_id" value="<?php echo $result[$i]["id"]; ?>">
                     <input type="hidden" name="film_name" value="<?php echo $result[$i]["title"]; ?>">
-                    <input type="submit" class="btn btn-success w-100 my-2" value="Acheter un billet">
                 </form>
             </div>
             <div class="modal-footer">
