@@ -1,4 +1,5 @@
 USE leslumieres;
+DROP TABLE grandegirafe_pwd_recover;
 DROP TABLE geantemarmotte_comments;
 DROP TABLE gigaecureil_event;
 DROP TABLE grandcanard_logs;
@@ -44,6 +45,13 @@ CREATE TABLE groschien_film(
   featured INT DEFAULT '0'
 );
 
+CREATE TABLE grandegirafe_pwd_recover(
+  id int(11) NOT NULL,
+  token_user varchar(64) REFERENCES petitchat_user(token),
+  token varchar(64) NOT NULL,
+  date_recover datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE geantemarmotte_forum(
   id INT PRIMARY KEY AUTO_INCREMENT,
   film_subject VARCHAR(60),
@@ -81,9 +89,7 @@ CREATE TABLE gigaecureil_event(
   content VARCHAR(255),
   start_date_event TEXT,
   end_date_event TEXT,
-  featured INT DEFAULT '1',
-  like_count INT DEFAULT '0',
-  dislike_count INT DEFAULT '0'
+  featured INT DEFAULT '1'
 );
 
 CREATE TABLE grandcanard_logs(
@@ -127,11 +133,9 @@ CREATE TABLE minisculecome_newsletter(
 CREATE TABLE moyenlezard_user_logs(
   id INT PRIMARY KEY AUTO_INCREMENT,
   type VARCHAR(50) DEFAULT NULL,
-  date timestamp  DEFAULT CURRENT_TIMESTAMP,
+  date timestamp DEFAULT CURRENT_TIMESTAMP,
   user_id INT REFERENCES petitchat_user(id)
 );
-
-
 
 INSERT INTO petitchat_user(id, email, username, pwd, creation_date, update_date, statut, is_admin, super_admin, token, confirmKey, newsletter, banned, head, eyes, mouth) VALUES
 (1, 'jordan.dfrsne@dufrsne.com', 'jdufresne3', '$2y$10$2xkaDyqa5UkuhjH3qYL7Mu2GQxp2RltzlC1Ka0dj5e5loC3ZH944K', '2022-04-12 15:05:47', '2022-05-31 10:09:03', 1, 0, 0, 'b76f91a2e17ce9d019354849c5ca51c6a0e83391', NULL, 0, 0, 'head-1', 'eyes-1', 'mouth-1'),
