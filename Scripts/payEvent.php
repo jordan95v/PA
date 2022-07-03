@@ -36,7 +36,7 @@ $events = ["marathon" => "price_1LHRCOAzApjgsM9W61oeVBAq", "avant-premiere" => "
 if (isConnected($pdo)) {
     Stripe::setApiKey("sk_test_51L53G8AzApjgsM9WZJl6ELzVSmw0nPrE0f1pBJxQPJz7HSDGqIOVsTZYAUpnSgcrIOrB1GqTAd5qoBAv6bmhOKQk00QDVr8jDR");
     header("Content-Type: application/json");
-    $domain = "https://leslumieres.site";
+    $domain = "https://leslumieres.site/";
     $checkout_session = \Stripe\Checkout\Session::create([
         "line_items" => [[
             # Provide the exact Price ID (e.g. pr_1234) of the product you want to sell

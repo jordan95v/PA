@@ -14,7 +14,7 @@ if (
 
 $targetDir = "../Images/Events/";
 $targetFile = $targetDir . basename($_FILES["file"]["name"]); //$_FILE variable de telechargement de fichier | basename retourne le chemin
-$fileType = strtolower(pathinfo($targetFile,PATHINFO_EXTENSION)); // pathinfo retourne des informations sur un chemin (extension indique l'extension d'un fichier)
+$fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION)); // pathinfo retourne des informations sur un chemin (extension indique l'extension d'un fichier)
 $errors = [];
 $pdo = connectDB();
 
@@ -30,48 +30,44 @@ $startDate = $_POST['date-debut'];
 $endDate = $_POST['date-fin'];
 $eventContent = nl2br(htmlspecialchars($_POST["content"]));
 
-if (isAdmin($pdo))
-{
-    if (count($errors) != 0)
-    {
+if (isAdmin($pdo)) {
+    if (count($errors) != 0) {
         $_SESSION["errors"] = $errors;
         header("Location: ../admin.php?type=event");
-    }
-    else {
-        if (eventExists($pdo, $title, $errors))
-        {
+    } else {
+        if (eventExists($pdo, $title, $errors)) {
             if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile)) {
                 makeFiligrane($targetFile);
                 $query = $pdo->prepare("INSERT INTO gigaecureil_event (image_event, title, type_event, maker, actors, content, start_date_event, end_date_event) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
                 $query->execute(
                     array(
-                        $targetFile, 
-                        $title, 
-                        $_POST["type"], 
-                        $maker, 
+                        $targetFile,
+                        $title,
+                        $_POST["type"],
+                        $maker,
                         $actor,
-                        $eventContent, 
-                        $startDate, 
+                        $eventContent,
+                        $startDate,
                         $endDate
                     )
                 );
                 $_SESSION["uploadEvent"] = 1;
                 header("Location: ../admin.php?type=event");
             } else {
+                unlink($targetFile);
                 $errors[] = "Impossible d\"uploader le fichier.";
             }
         }
-        if (count($errors) != 0)
-        {
+        if (count($errors) != 0) {
             $_SESSION["errors"] = $errors;
             header("Location: ../admin.php?type=event");
-        } 
+        }
     }
 }
 
 function checkFileSize($fileSize, &$errors)
 {
-    
+
     if ($fileSize > 500000) {
         $errors[] = "L\"image est trop volumineuse.";
     }
@@ -79,7 +75,7 @@ function checkFileSize($fileSize, &$errors)
 
 function checkFileExists($target, &$errors)
 {
-   
+
     if (file_exists($target)) {
         $errors[] = "Le fichier existe déjà dans la base de données.";
     }
@@ -88,21 +84,22 @@ function checkFileExists($target, &$errors)
 function checkImage($image, &$errors)
 {
 
-  $check = getimagesize($image["tmp_name"]);
-  if($check === false) {
+    $check = getimagesize($image["tmp_name"]);
+    if ($check === false) {
         $errors[] = "Le fichier n\"est pas valide.";
-  }
+    }
 }
 
 function checkFileExtension($extension, &$errors)
 {
 
-    if($extension != "jpg" && $extension != "png" && $extension != "jpeg") {
+    if ($extension != "jpg" && $extension != "png" && $extension != "jpeg") {
         $errors[] = "L\"image doit être en .jpg, .png ou .jpeg.";
     }
 }
 
-function makeFiligrane($imageName) {
+function makeFiligrane($imageName)
+{
 
     $stamp = imagecreatefrompng("../Images/stamps.png");
     $im = imagecreatefromjpeg($imageName);
@@ -113,19 +110,18 @@ function makeFiligrane($imageName) {
     $sy = imagesy($stamp);
 
     imagecopy($im, $stamp, imagesx($im) - $sx - $marge_right, imagesy($im) - $sy - $marge_bottom, 0, 0, imagesx($stamp), imagesy($stamp));
-    
+
     imagejpeg($im, $imageName);
     imagedestroy($im);
 }
 
-function eventExists ($pdo, $title, &$errors)
+function eventExists($pdo, $title, &$errors)
 {
 
-    $query=$pdo->prepare("SELECT * FROM gigaecureil_event WHERE title=:title");
-    $query->execute(["title"=>$title]);
+    $query = $pdo->prepare("SELECT * FROM gigaecureil_event WHERE title=:title");
+    $query->execute(["title" => $title]);
 
-    if (empty($query->fetch()))
-    {
+    if (empty($query->fetch())) {
         return true;
     }
     $errors[] = "L'évènement existe déjà dans la base de données.";

@@ -143,6 +143,7 @@ if (isAdmin($pdo)) {
                 $_SESSION["upload"] = 1;
                 header("Location: ../admin.php?type=film");
             } else {
+                unlink($target_file);
                 $errors[] = "Impossible d\"uploader le fichier.";
             }
         }
