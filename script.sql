@@ -34,6 +34,13 @@ CREATE TABLE groschien_film(
   featured INT DEFAULT '0'
 );
 
+CREATE TABLE `grandegirafe_pwd_recover` (
+  id int(11) NOT NULL,
+  token_user varchar(64) REFERENCES petitchat_user(token),
+  token varchar(64) NOT NULL,
+  date_recover datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE geantemarmotte_forum(
   id INT PRIMARY KEY AUTO_INCREMENT,
   film_subject VARCHAR(60),
@@ -71,9 +78,7 @@ CREATE TABLE gigaecureil_event(
   content VARCHAR(255),
   start_date_event TEXT,
   end_date_event TEXT,
-  featured INT DEFAULT '1',
-  like_count INT DEFAULT '0',
-  dislike_count INT DEFAULT '0'
+  featured INT DEFAULT '1'
 );
 
 CREATE TABLE grandcanard_logs(
@@ -117,7 +122,7 @@ CREATE TABLE minisculecome_newsletter(
 CREATE TABLE moyenlezard_user_logs(
   id INT PRIMARY KEY AUTO_INCREMENT,
   type VARCHAR(50) DEFAULT NULL,
-  date timestamp  DEFAULT CURRENT_TIMESTAMP,
+  date timestamp DEFAULT CURRENT_TIMESTAMP,
   user_id INT REFERENCES petitchat_user(id)
 );
 

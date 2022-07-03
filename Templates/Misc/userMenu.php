@@ -126,7 +126,7 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
                         include 'Templates/Misc/ticketCard.php';
                     }
 
-                    for($i = 0; $i < count($ticketsEvent); $i++) {
+                    for ($i = 0; $i < count($ticketsEvent); $i++) {
                         $ticketEvent = $ticketsEvent[$i];
                         include 'Templates/Misc/ticketCardEvent.php';
                     }
