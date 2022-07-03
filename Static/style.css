@@ -106,11 +106,6 @@ h6 {
     transform: scale(1.05);
 }
 
-.captcha-btn {
-    margin: 0;
-    padding: 0;
-}
-
 .cardQuestion {
     color: black;
 }
@@ -131,6 +126,10 @@ h6 {
 
 .dark {
     color: black;
+}
+
+.captchaBtn {
+    cursor: pointer;
 }
 
 .eyes {

@@ -128,11 +128,11 @@ if (!isAdmin($pdo)) {
         <h5 class="text-light">Choix de la section</h5>
         <ul class="nav justify-content-center bg-dark rounded p-2">
             <li class="nav-item mx-4">
-                <a class="nav-link navChoice dropdown-toggle" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Films</a>
+                <a class="nav-link navChoice dropdown-toggle white" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Films</a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="?type=film">Liste et création</a></li>
                     <li><a class="dropdown-item" href="?type=ticket">Ticket</a></li>
-                </ul>            
+                </ul>
             </li>
             <li class="nav-item mx-4">
                 <a class="nav-link white" href="?type=event">Event</a>
@@ -149,6 +149,9 @@ if (!isAdmin($pdo)) {
             <li class="nav-item mx-4">
                 <a class="nav-link white" href="?type=logs">Logs</a>
             </li>
+            <li class="nav-item mx-4">
+                <a class="nav-link white" href="?type=report">Report</a>
+            </li>
         </ul>
 
         <?php
@@ -160,11 +163,14 @@ if (!isAdmin($pdo)) {
             include "Templates/Admin/logsAdmin.php";
         } elseif ($_GET["type"] == "users") {
             include "Templates/Admin/userAdmin.php";
+        } elseif ($_GET["type"] == "report") {
+            include "Templates/Admin/reportAdmin.php";
         } elseif ($_GET["type"] == "ticket") {
             include "Templates/Admin/ticketAdmin.php";
         } elseif ($_GET["type"] == "event") {
             include "Templates/Admin/eventAdmin.php";
         }
+
         ?>
     </div>
 

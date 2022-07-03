@@ -90,12 +90,11 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
                                 <input type="hidden" name="eyes" value="<?php echo $user["eyes"]; ?>" id="eyesInput">
                                 <input type="hidden" name="mouth" value="<?php echo $user["mouth"]; ?>" id="mouthInput">
                                 <button type="submit" class="btn btn-dark w-100">Modifier mon profil</button>
+                                <a href="" class="btn btn-danger mt-2 w-100" data-bs-toggle="modal" data-bs-target="#user-delete">Supprimer mon profil</a>
                             </div>
                         </div>
                 </form>
             </div>
-
-
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-danger w-100" data-bs-dismiss="modal">Fermer</button>
@@ -113,7 +112,11 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
             </div>
             <div class="modal-body text-center">
                 <?php
+<<<<<<< HEAD
                 $query = $pdo->prepare("SELECT * FROM megalapin_ticket WHERE user_id=:id ORDER BY id DESC");
+=======
+                $query = $pdo->prepare("SELECT * FROM megalapin_ticket WHERE user_id=:id ORDER BY id DESC;");
+>>>>>>> d6cd1ade0bfbb8904292ee4c196b3bbda988a6fa
                 $query->execute(["id" => $_SESSION["id"]]);
                 $tickets = $query->fetchAll();
 
@@ -135,6 +138,28 @@ $newsletter = ($user['newsletter'] == 1) ? 'checked' : '';
                     echo '<h4 class="p-4">Vous n\'avez pas acheté de billets pour le moment.</h1>';
                 }
                 ?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger w-100" data-bs-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="user-delete" tabindex="-1" aria-labelledby="user-delete" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content text-dark">
+            <div class="modal-header">
+                <h4>Mes billets</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <form action="Scripts/deleteUser.php" method="post">
+                    <h4>Voulez vraiment supprimer votre compte ?</h4>
+                    <input type="hidden" name="id" value="<?php echo $_SESSION["id"]; ?>">
+                    <input type="hidden" name="type" value="self">
+                    <input type="submit" class="btn btn-dark w-100" value="Supprimer mon compte">
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger w-100" data-bs-dismiss="modal">Fermer</button>

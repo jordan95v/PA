@@ -2,7 +2,7 @@
 
 include "Templates/header.php";
 require "Scripts/infoEditSubjectAction.php";
-require "Scripts/editSubjectAction.php"
+require "Scripts/editSubjectAction.php";
 ?>
 
 <div class="container">
