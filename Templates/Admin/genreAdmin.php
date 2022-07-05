@@ -13,8 +13,7 @@ updateLogs($pdo, 'genre-admin.php');
             <div id="userHelp" class="form-text text-center">Genre 🥷</div>
             <button type="submit" class="btn btn-success mt-4 w-50">Enregistrer le genre</button>
         </div>
-</div>
-</form>
+    </form>
 </div>
 
 <!-- Genre list -->
