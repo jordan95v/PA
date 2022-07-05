@@ -24,7 +24,7 @@ $query = $pdo->prepare("SELECT * FROM gelar_herisson_genre ORDER BY id DESC;");
 $query->execute();
 $results = $query->fetchAll();
 ?>
-<h2 class="text-center pt-5 text-light">Liste des films</h2>
+<h2 class="text-center pt-5 text-light">Liste des genres</h2>
 <div class="table-responsive">
     <div id="logs">
         <table class="table table-hover table-dark table-borderless" id="logTable">
