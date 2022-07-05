@@ -190,3 +190,26 @@ function getUserId($pdo)
 
 	return $query->fetch()[0];
 }
+
+function getGenres($pdo)
+{
+	// Récupère les genres en BDD.
+	$query = $pdo->prepare("SELECT * FROM gelar_herisson_genre ORDER BY genre;");
+	$query->execute();
+	return $query->fetchAll();
+}
+
+function checkGenreExists($pdo, $genre)
+{
+	// Renvoie faux si le genre n'existe pas en BDD, sinon renvoie vrai.
+	$query = $pdo->prepare("SELECT * FROM gelar_herisson_genre;");
+	$query->execute();
+	$result = $query->fetchAll();
+
+	for ($i = 0; $i < count($result); $i++) {
+		if ($result[$i]["genre"] == $genre) {
+			return true;
+		}
+	}
+	return false;
+}

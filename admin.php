@@ -6,6 +6,15 @@ if (!isAdmin($pdo)) {
     $_SESSION["notAdmin"] = 1;
     header("Location: index.php");
 }
+
+// Récupère les genres en BDD.
+$genres = getGenres($pdo);
+$genreArray = [];
+
+// Tableau avec pour clé l'id du genre et en valeur le genre.
+for ($i = 0; $i < count($genres); $i++) {
+    $genreArray[$genres[$i]["id"]] = $genres[$i]["genre"];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -120,6 +129,36 @@ if (!isAdmin($pdo)) {
             echo '</div>';
             unset($_SESSION["unAdmin"]);
         }
+        if (!empty($_SESSION["emptyChar"]) && isset($_SESSION["emptyChar"])) {
+            echo '<div class="alert alert-warning mt-4 pb-1" role="alert">';
+            echo '<h5 class="fw-bold">Un des champs envoyer est vide.</h5>';
+            echo '</div>';
+            unset($_SESSION["emptyChar"]);
+        }
+        if (!empty($_SESSION["genre"]) && isset($_SESSION["genre"])) {
+            echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
+            echo '<h5 class="fw-bold">Le genre a bien été enregistrer.</h5>';
+            echo '</div>';
+            unset($_SESSION["genre"]);
+        }
+        if (!empty($_SESSION["genreExists"]) && isset($_SESSION["genreExists"])) {
+            echo '<div class="alert alert-warning mt-4 pb-1" role="alert">';
+            echo '<h5 class="fw-bold">Le genre existe déjà en BDD.</h5>';
+            echo '</div>';
+            unset($_SESSION["genreExists"]);
+        }
+        if (!empty($_SESSION["modifyGenre"]) && isset($_SESSION["modifyGenre"])) {
+            echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
+            echo '<h5 class="fw-bold">Le genre à bien été modifiée.</h5>';
+            echo '</div>';
+            unset($_SESSION["modifyGenre"]);
+        }
+        if (!empty($_SESSION["deletedGenre"]) && isset($_SESSION["deletedGenre"])) {
+            echo '<div class="alert alert-success mt-4 pb-1" role="alert">';
+            echo '<h5 class="fw-bold">Le genre à bien été supprimé.</h5>';
+            echo '</div>';
+            unset($_SESSION["deletedGenre"]);
+        }
         ?>
     </div>
 
@@ -132,6 +171,7 @@ if (!isAdmin($pdo)) {
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="?type=film">Liste et création</a></li>
                     <li><a class="dropdown-item" href="?type=ticket">Ticket</a></li>
+                    <li><a class="dropdown-item" href="?type=genre">Genres</a></li>
                 </ul>
             </li>
             <li class="nav-item mx-4">
@@ -166,6 +206,8 @@ if (!isAdmin($pdo)) {
             include "Templates/Admin/ticketAdmin.php";
         } elseif ($_GET["type"] == "event") {
             include "Templates/Admin/eventAdmin.php";
+        } elseif ($_GET["type"] == "genre") {
+            include "Templates/Admin/genreAdmin.php";
         }
 
         ?>

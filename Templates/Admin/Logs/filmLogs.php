@@ -1,7 +1,7 @@
 <tr>
     <th scope="row" id="_id"><?php echo $film["id"]; ?></th>
     <td id="title"><?php echo $film["title"]; ?></td>
-    <td id="genre"><?php echo $film["genre"]; ?></td>
+    <td id="genre"><?php echo $genreArray[$film['genre']]; ?></td>
     <td id="creation-date"><?php echo $film["creation_date"]; ?></td>
     <td id="updated-date"><?php echo $film["update_date"]; ?></td>
     <td>

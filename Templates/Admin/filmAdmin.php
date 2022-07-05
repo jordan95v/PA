@@ -19,13 +19,12 @@ updateLogs($pdo, 'films-admin.php');
             <div class="mb-3 col-md-4 col-12">
                 <select class="form-select" aria-label="Default select example" name="genre">
                     <option selected>Choissisez le genre du film</option>
-                    <option value="action">Action</option>
-                    <option value="aventure">Aventure</option>
-                    <option value="comedie">Comédie</option>
-                    <option value="drame">Drame</option>
-                    <option value="horreur">Horreur</option>
-                    <option value="thriller">Thriller</option>
-                    <option value="sci-fi">Science-fiction</option>
+                    <?php
+                    // Affiche dans le select du HTML les genres présent en BDD lors de l'ajout d'un film.
+                    for ($i = 0; $i < count($genres); $i++) {
+                        echo '<option value="' . $genres[$i]["id"] . '">' . ucwords($genres[$i]["genre"]) . '</option>';
+                    }
+                    ?>
                 </select>
             </div>
             <div class="mb-5 col-md-4 col-12">

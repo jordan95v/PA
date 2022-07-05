@@ -11,6 +11,18 @@ if (isset($_SESSION["email"])) {
         $_SESSION["banned"] = 1;
     }
 }
+// Recupère les genres en BDD.
+$query = $pdo->prepare("SELECT * FROM gelar_herisson_genre;");
+$query->execute();
+$result = $query->fetchAll();
+
+$genres = getGenres($pdo);
+$genreArray = [];
+
+// Tableau avec pour clé l'id du genre et en valeur le genre.
+for ($i = 0; $i < count($genres); $i++) {
+    $genreArray[$genres[$i]["id"]] = $genres[$i]["genre"];
+}
 ?>
 
 <!doctype html>
